@@ -233,4 +233,18 @@ function shuffle(arr) {
 
 // ── BOOTSTRAP ────────────────────────────────────────────────────────────
 document.getElementById('q-count').addEventListener('change', updateCount);
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  // KaTeX re-render after dynamic panels injected (auto-render may have fired before init())
+  setTimeout(() => {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$',  right: '$',  display: false },
+        ],
+        throwOnError: false,
+      });
+    }
+  }, 100);
+});

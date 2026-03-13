@@ -43,10 +43,12 @@ Tài sản cố định        Vốn chủ sở hữu (= TS − Nợ)</div>
       <tr><td><b>Vốn</b></td><td>Đủ an toàn, tối ưu ROE</td><td>Phá sản hoặc ROE thấp</td></tr>
     </table>
     <h3>Công thức hiệu quả</h3>
-    <div class="formula-box">ROA = Lợi nhuận / Tổng tài sản   (benchmark: 0.5–1.5%)
-ROE = Lợi nhuận / Vốn CSH       (benchmark: 10–20%)
-EM  = Tổng TS / Vốn CSH         (đòn bẩy)
-ROE = ROA × EM   ← quan trọng!</div>
+    <p>
+      $$ROA = \frac{\text{Lợi nhuận}}{\text{Tổng tài sản}} \quad \text{(benchmark: 0.5–1.5\%)}$$
+      $$ROE = \frac{\text{Lợi nhuận}}{\text{Vốn CSH}} \quad \text{(benchmark: 10–20\%)}$$
+      $$EM = \frac{\text{Tổng TS}}{\text{Vốn CSH}} \quad \text{(đòn bẩy)}$$
+      $$\boxed{ROE = ROA \times EM}$$
+    </p>
     <p style="color:var(--danger);font-size:.85rem">⚠️ EM cao → ROE cao nhưng RỦI RO PHÁ SẢN cao. NH A (ROA=1.5%, EM=10) an toàn hơn NH B (ROA=0.8%, EM=18) dù ROE gần bằng nhau.</p>`,
   },
 
@@ -54,10 +56,11 @@ ROE = ROA × EM   ← quan trọng!</div>
     title: 'C15 — Quá trình Cung tiền',
     content: `
     <h3>Công thức cốt lõi</h3>
-    <div class="formula-box">MB = C + R = MBn + BR       # Cơ sở tiền
-m  = (1 + c) / (rr + e + c) # Số nhân tiền đầy đủ
-M  = m × MB                  # Cung tiền
-m_simple = 1/rr              # Số nhân đơn giản (c=e=0)</div>
+    <p>
+      $$MB = C + R = MB_n + BR$$
+      $$m = \frac{1 + c}{rr + e + c} \qquad m_{simple} = \frac{1}{rr} \text{ (khi } c=e=0\text{)}$$
+      $$\boxed{M = m \times MB}$$
+    </p>
     <h3>Ba chủ thể trong cung tiền</h3>
     <table>
       <tr><th>Chủ thể</th><th>Kiểm soát</th><th>Biến số</th></tr>
@@ -108,13 +111,15 @@ iff* |......./  |  ← Điểm cân bằng
     title: 'C17 — Chiến lược CSTT',
     content: `
     <h3>Taylor Rule</h3>
-    <div class="formula-box">i_ff = π + r* + 0.5(π − π*) + 0.5(Y_gap)
-
-π   = lạm phát hiện tại
-π*  = mục tiêu lạm phát (thường 2%)
-r*  = lãi suất thực cân bằng (thường 2%)
-gap = Y_thực − Y_tiềm_năng (% — dương = quá nóng)</div>
-    <p style="font-size:.85rem"><b>Taylor Principle:</b> Khi π↑1pp → i_ff phải tăng 1.5pp → lãi suất thực tăng 0.5pp → CSTT mới đủ thắt chặt.</p>
+    <p>$$\boxed{i_{ff} = \pi + r^* + 0.5(\pi - \pi^*) + 0.5 \cdot (Y - Y^*)}$$</p>
+    <table>
+      <tr><th>Ký hiệu</th><th>Ý nghĩa</th><th>Giá trị thường dùng</th></tr>
+      <tr><td>$\pi$</td><td>Lạm phát hiện tại</td><td>Số liệu thực tế</td></tr>
+      <tr><td>$\pi^*$</td><td>Mục tiêu lạm phát</td><td>2%</td></tr>
+      <tr><td>$r^*$</td><td>Lãi suất thực cân bằng</td><td>2%</td></tr>
+      <tr><td>$Y - Y^*$</td><td>Output gap (dương = quá nóng)</td><td>%</td></tr>
+    </table>
+    <p style="font-size:.85rem;margin-top:8px"><b>Taylor Principle:</b> Khi $\pi\uparrow 1\text{pp}$ → $i_{ff}$ phải tăng $1.5\text{pp}$ → lãi suất thực tăng $0.5\text{pp}$ → CSTT mới đủ thắt chặt.</p>
     <h3>So sánh Mandate</h3>
     <table>
       <tr><th>Tiêu chí</th><th>Hierarchical (ECB)</th><th>Dual (Fed)</th></tr>
@@ -165,9 +170,8 @@ Mỹ = (2)+(3) → mất (1) — tỷ giá thả nổi</div>
       <tr><td><b>Balance sheet</b></td><td>M↑ → NW↑ → AS↓, MH↓ → Cho vay↑ → Y↑</td></tr>
     </table>
     <h3>Tobin's q</h3>
-    <div class="formula-box">q = Giá thị trường DN / Chi phí thay thế vốn
-q > 1 → đầu tư mới có lợi (CK đắt hơn xây mới)
-q < 1 → mua DN cũ rẻ hơn đầu tư mới → I↓</div>
+    <p>$$q = \frac{\text{Giá thị trường DN}}{\text{Chi phí thay thế vốn}}$$</p>
+    <p style="font-size:.9rem">$q > 1$ → đầu tư mới có lợi &nbsp;|&nbsp; $q < 1$ → mua DN cũ rẻ hơn → $I\downarrow$</p>
     <h3>4 bài học điều hành CSTT</h3>
     <p>(1) Không chỉ nhìn i ngắn hạn danh nghĩa — xem i thực, i dài hạn. (2) Giá tài sản khác cũng quan trọng. (3) CSTT hiệu quả ngay cả khi iff=0 — QE, Forward Guidance. (4) Tránh giảm phát bằng mọi giá — mục tiêu LP dương (+2%).</p>
     <h3>Giảm phát nguy hiểm vì</h3>

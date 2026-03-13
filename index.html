@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lý thuyết Tài chính — Quiz UEH</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="document.addEventListener('DOMContentLoaded', () => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$',  right: '$',  display: false}
+        ],
+        throwOnError: false
+      });
+    })"></script>
 </head>
 <body>
 
@@ -101,13 +113,33 @@
   <div class="cheat-section">
     <h2>📐 5 Công thức cốt lõi</h2>
     <div class="cheat-body">
-      <div class="formula-box">
-MB = C + R = MBn + BR                <span class="cmt"># Cơ sở tiền</span>
-m  = (1 + c) / (rr + e + c)          <span class="cmt"># Số nhân tiền đầy đủ</span>
-M  = m × MB                           <span class="cmt"># Cung tiền</span>
-i_ff = π + r* + 0.5(π−π*) + 0.5·gap  <span class="cmt"># Taylor Rule</span>
-r  = i − πᵉ                           <span class="cmt"># Lãi suất thực (Fisher)</span></div>
-      <p style="font-size:.85rem;color:var(--muted)">Ghi nhớ: c↑ e↑ rr↑ → m↓ → M↓ &nbsp;|&nbsp; MB↑ (OMO mua) → M↑</p>
+      <div class="math-grid">
+        <div class="math-card">
+          <div class="math-label">Cơ sở tiền</div>
+          <div class="math-formula">$$MB = C + R = MB_n + BR$$</div>
+        </div>
+        <div class="math-card">
+          <div class="math-label">Số nhân tiền đầy đủ</div>
+          <div class="math-formula">$$m = \frac{1 + c}{rr + e + c}$$</div>
+        </div>
+        <div class="math-card">
+          <div class="math-label">Cung tiền</div>
+          <div class="math-formula">$$M = m \times MB$$</div>
+        </div>
+        <div class="math-card">
+          <div class="math-label">Taylor Rule</div>
+          <div class="math-formula">$$i_{ff} = \pi + r^* + 0.5(\pi - \pi^*) + 0.5 \cdot gap$$</div>
+        </div>
+        <div class="math-card">
+          <div class="math-label">Lãi suất thực (Fisher)</div>
+          <div class="math-formula">$$r = i - \pi^e$$</div>
+        </div>
+        <div class="math-card">
+          <div class="math-label">Số nhân đơn giản</div>
+          <div class="math-formula">$$m_{simple} = \frac{1}{rr} \quad (c = e = 0)$$</div>
+        </div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);margin-top:8px">Ghi nhớ: $c\uparrow$, $e\uparrow$, $rr\uparrow$ → $m\downarrow$ → $M\downarrow$ &nbsp;|&nbsp; $MB\uparrow$ (OMO mua) → $M\uparrow$</p>
     </div>
   </div>
 
