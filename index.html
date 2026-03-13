@@ -27,7 +27,6 @@
     <div class="nav-tab"         onclick="showPage('theory', this)">📚 Lý thuyết</div>
     <div class="nav-tab"         onclick="showPage('cheatsheet', this)">⚡ Cheat Sheet</div>
     <div class="nav-tab"         onclick="showPage('questions', this)">📋 Câu hỏi</div>
-    <button class="nav-export" onclick="exportPDF()" title="Xuất PDF trang hiện tại">⬇ PDF</button>
   </div>
 </nav>
 
@@ -105,7 +104,10 @@
 
 <!-- ════════════════════════ THEORY PAGE ════════════════════════ -->
 <div id="page-theory" class="page">
-  <div class="theory-nav"  id="theory-nav"></div>
+  <div class="page-toolbar">
+    <div class="theory-nav" id="theory-nav"></div>
+    <button class="btn-pdf" onclick="exportPDF('theory')" title="Xuất PDF toàn bộ lý thuyết">⬇ Xuất PDF</button>
+  </div>
   <div id="theory-panels"></div>
 </div>
 
@@ -228,6 +230,7 @@
     <input id="qlist-search" type="search" placeholder="🔍 Tìm kiếm câu hỏi..." oninput="filterQuestions()">
     <div class="qlist-filters" id="qlist-filters"></div>
     <span class="qlist-count" id="qlist-count"></span>
+    <button class="btn-pdf" onclick="exportPDF('questions')" title="Xuất PDF danh sách câu hỏi">⬇ Xuất PDF</button>
   </div>
   <div id="qlist-body"></div>
 </div>

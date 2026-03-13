@@ -173,46 +173,44 @@ tr:hover td { background: #fafafa; }
 .theory-content .katex-display .katex { color: #e2e8f0; font-size: 1.05rem; }
 .theory-content .katex { color: #1e40af; }
 
-/* EXPORT BUTTON in NAV */
-.nav-export { margin-left: auto; padding: 8px 16px; background: rgba(255,255,255,.15); color: white; border: 1px solid rgba(255,255,255,.4); border-radius: 6px; cursor: pointer; font-size: .85rem; font-weight: 600; transition: all .15s; white-space: nowrap; }
-.nav-export:hover { background: rgba(255,255,255,.25); }
+/* PDF EXPORT BUTTON (inline, per-page) */
+.btn-pdf { padding: 7px 16px; background: #1e40af; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: .82rem; font-weight: 600; white-space: nowrap; transition: background .15s; flex-shrink: 0; }
+.btn-pdf:hover { background: #1d4ed8; }
+.btn-pdf:active { transform: scale(.97); }
+.page-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.page-toolbar .theory-nav { flex: 1; margin-bottom: 0; }
 
 /* ── PRINT / PDF ── */
 @media print {
-  /* Hide UI chrome */
-  nav, .nav-export, .setup-grid, #quiz-setup, #quiz-play, #quiz-result,
-  .theory-nav, .qlist-toolbar, .qlist-item-toggle,
-  button, .btn { display: none !important; }
+  /* Hide ALL UI chrome */
+  nav, .page-toolbar, .qlist-toolbar, .btn-pdf,
+  .theory-nav, .qlist-item-toggle,
+  #quiz-setup, #quiz-play, #quiz-result { display: none !important; }
 
-  /* Reset layout */
-  body { background: white; color: black; font-size: 11pt; }
-  .page { display: block !important; max-width: 100%; padding: 0; }
-  .page:not(.active) { display: none !important; }
-  .card { border: none; box-shadow: none; padding: 0; margin-bottom: 12pt; }
+  body { background: white; color: black; font-size: 11pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-  /* Theory: show all panels */
-  .theory-content { display: block !important; break-inside: avoid; margin-bottom: 20pt; }
+  /* Hide ALL pages by default, then show only the target */
+  .page { display: none !important; }
+  body[data-print-page="theory"]    #page-theory    { display: block !important; }
+  body[data-print-page="questions"] #page-questions { display: block !important; }
+
+  /* ── THEORY print ── */
+  #page-theory { max-width: 100%; }
+  .theory-content { display: none; break-inside: avoid; margin-bottom: 20pt; }
+  .theory-content.print-show { display: block !important; }
   .theory-content h2 { font-size: 13pt; font-weight: 700; color: #1e40af; border-bottom: 1.5pt solid #1e40af; padding-bottom: 4pt; margin-bottom: 8pt; }
   .theory-content h3 { font-size: 11pt; font-weight: 700; color: #1e40af; margin: 10pt 0 4pt; border-left: 3pt solid #1e40af; padding-left: 6pt; }
 
-  /* Cheatsheet */
-  .cheat-section { break-inside: avoid; margin-bottom: 16pt; }
-  .cheat-section h2 { font-size: 11pt; background: #1e40af; color: white; padding: 6pt 10pt; border-radius: 0; margin: 0; }
-  .cheat-body { border: 1pt solid #e5e7eb; padding: 8pt; }
-  .math-grid { grid-template-columns: repeat(3, 1fr); gap: 8pt; }
-  .math-card { background: #f8fafc; border: 1pt solid #e2e8f0; padding: 8pt; border-radius: 4pt; }
-  .math-label { color: #64748b; font-size: 8pt; }
-
-  /* Questions list: expand all */
-  .qlist-item-body { display: block !important; }
-  .qlist-chapter-header { background: #1e40af; color: white; padding: 6pt 10pt; font-size: 11pt; }
+  /* ── QUESTIONS print ── */
+  .qlist-chapter-header { background: #1e40af !important; color: white !important; padding: 6pt 10pt; font-size: 11pt; }
   .qlist-item { border: 1pt solid #e5e7eb; break-inside: avoid; margin-bottom: 6pt; }
   .qlist-item-header { padding: 6pt 10pt; cursor: default; }
-  .qlist-item-num { background: #dbeafe; color: #1e40af; font-size: 8pt; }
+  .qlist-item-num { background: #dbeafe !important; color: #1e40af !important; font-size: 8pt; }
   .qlist-item-text { font-size: 10pt; font-weight: 600; }
+  .qlist-item-body.open { display: block !important; }
   .qlist-option { font-size: 9.5pt; padding: 4pt 8pt; }
-  .qlist-option.is-answer { background: #f0fdf4; border-color: #15803d; }
-  .qlist-explanation { font-size: 9pt; padding: 6pt 10pt; background: #fefce8; }
+  .qlist-option.is-answer { background: #f0fdf4 !important; border-color: #15803d !important; }
+  .qlist-explanation { font-size: 9pt; padding: 6pt 10pt; background: #fefce8 !important; }
 
   /* Tables */
   table { font-size: 9.5pt; border-collapse: collapse; width: 100%; }
@@ -220,25 +218,23 @@ tr:hover td { background: #fafafa; }
   th, td { border: 0.5pt solid #d1d5db; padding: 4pt 8pt; }
 
   /* Tags */
-  .tag-up   { background: #dcfce7 !important; color: #15803d !important; -webkit-print-color-adjust: exact; }
-  .tag-down { background: #fee2e2 !important; color: #b91c1c !important; -webkit-print-color-adjust: exact; }
+  .tag-up   { background: #dcfce7 !important; color: #15803d !important; }
+  .tag-down { background: #fee2e2 !important; color: #b91c1c !important; }
   .tag-same { background: #f3f4f6 !important; color: #374151 !important; }
 
   /* Reserve diagram & Trinity */
   .reserve-diagram { border: 1pt solid #cbd5e1; background: #f8fafc !important; color: black !important; }
   .rd-ceiling { color: #dc2626 !important; border-top-color: #dc2626 !important; }
   .rd-floor   { color: #2563eb !important; border-bottom-color: #2563eb !important; }
-  .trinity-diagram { border: 1pt solid #e5e7eb; }
-  .trinity-node { background: #1e40af !important; -webkit-print-color-adjust: exact; }
-  .trinity-center { border-color: #f59e0b !important; background: #fef3c7 !important; -webkit-print-color-adjust: exact; }
+  .trinity-node { background: #1e40af !important; }
+  .trinity-center { border-color: #f59e0b !important; background: #fef3c7 !important; }
 
-  /* KaTeX: keep colors */
+  /* KaTeX */
   .katex { font-size: 10.5pt; }
   .katex-display { margin: 6pt 0; }
 
   /* Page breaks */
   h2, h3 { break-after: avoid; }
-  .qlist-chapter { break-before: auto; }
 }
 
 @media(max-width:600px) {

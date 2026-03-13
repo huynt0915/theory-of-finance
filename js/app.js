@@ -332,33 +332,38 @@ function switchTheory(key) {
 }
 
 // ── EXPORT PDF ───────────────────────────────────────────────────────────
-function exportPDF() {
-  const activePage = document.querySelector('.page.active');
-  const pageId = activePage ? activePage.id.replace('page-', '') : '';
-
+function exportPDF(pageId) {
   const titles = {
-    quiz:       'Finance Quiz — UEH',
-    theory:     'Lý thuyết Tài chính — UEH',
-    cheatsheet: 'Cheat Sheet — Lý thuyết Tài chính',
-    questions:  'Danh sách câu hỏi — Lý thuyết Tài chính',
+    theory:    'Lý thuyết Tài chính — UEH Master',
+    questions: 'Danh sách câu hỏi — Lý thuyết Tài chính',
   };
 
   // Expand all question items before printing
+  const qBodies = document.querySelectorAll('.qlist-item-body');
   if (pageId === 'questions') {
-    document.querySelectorAll('.qlist-item-body').forEach(b => b.classList.add('open'));
+    qBodies.forEach(b => b.classList.add('open'));
   }
+
+  // Expand all theory panels before printing
+  const theoryPanels = document.querySelectorAll('.theory-content');
+  if (pageId === 'theory') {
+    theoryPanels.forEach(p => p.classList.add('print-show'));
+  }
+
+  // Mark which page to print
+  document.body.dataset.printPage = pageId;
 
   const originalTitle = document.title;
   document.title = titles[pageId] || 'Finance Quiz — UEH';
   window.print();
   document.title = originalTitle;
+  delete document.body.dataset.printPage;
 
   // Collapse back after print dialog closes
-  if (pageId === 'questions') {
-    setTimeout(() => {
-      document.querySelectorAll('.qlist-item-body').forEach(b => b.classList.remove('open'));
-    }, 1000);
-  }
+  setTimeout(() => {
+    qBodies.forEach(b => b.classList.remove('open'));
+    theoryPanels.forEach(p => p.classList.remove('print-show'));
+  }, 500);
 }
 
 // ── NAVIGATION ───────────────────────────────────────────────────────────
