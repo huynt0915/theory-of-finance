@@ -13,6 +13,7 @@ let userAnswers = [];
 function init() {
   buildTopicChips();
   buildTheoryTabs();
+  buildQuestionList();
 }
 
 function buildTopicChips() {
@@ -201,6 +202,125 @@ function showResult() {
 function restartQuiz() {
   hide('quiz-result');
   startQuiz();
+}
+
+// ── QUESTIONS LIST ───────────────────────────────────────────────────────
+let qlistActiveFilter = 'ALL';
+
+function buildQuestionList() {
+  // Filter chips
+  const filtersEl = document.getElementById('qlist-filters');
+  const allChip = document.createElement('div');
+  allChip.className = 'qlist-chip active';
+  allChip.textContent = 'Tất cả';
+  allChip.dataset.key = 'ALL';
+  allChip.onclick = () => setQlistFilter('ALL', allChip);
+  filtersEl.appendChild(allChip);
+
+  Object.entries(TOPICS).forEach(([key, label]) => {
+    const chip = document.createElement('div');
+    chip.className = 'qlist-chip';
+    chip.textContent = label.split(' — ')[0]; // e.g. "C2"
+    chip.dataset.key = key;
+    chip.onclick = () => setQlistFilter(key, chip);
+    filtersEl.appendChild(chip);
+  });
+
+  renderQuestionList();
+}
+
+function setQlistFilter(key, chipEl) {
+  qlistActiveFilter = key;
+  document.querySelectorAll('.qlist-chip').forEach(c => c.classList.remove('active'));
+  chipEl.classList.add('active');
+  document.getElementById('qlist-search').value = '';
+  renderQuestionList();
+}
+
+function filterQuestions() {
+  renderQuestionList();
+}
+
+function renderQuestionList() {
+  const search = document.getElementById('qlist-search').value.toLowerCase().trim();
+  const body = document.getElementById('qlist-body');
+  body.innerHTML = '';
+
+  const filtered = QUESTIONS.filter(q => {
+    const matchChapter = qlistActiveFilter === 'ALL' || q.chapter === qlistActiveFilter;
+    const matchSearch = !search
+      || q.text.toLowerCase().includes(search)
+      || q.options.some(o => o.toLowerCase().includes(search))
+      || q.explanation.toLowerCase().includes(search);
+    return matchChapter && matchSearch;
+  });
+
+  document.getElementById('qlist-count').textContent = `${filtered.length} câu`;
+
+  if (filtered.length === 0) {
+    body.innerHTML = '<div class="card" style="text-align:center;color:var(--muted);padding:32px">Không tìm thấy câu nào phù hợp.</div>';
+    return;
+  }
+
+  // Group by chapter
+  const grouped = {};
+  filtered.forEach(q => {
+    if (!grouped[q.chapter]) grouped[q.chapter] = [];
+    grouped[q.chapter].push(q);
+  });
+
+  Object.entries(grouped).forEach(([chapter, qs]) => {
+    const section = document.createElement('div');
+    section.className = 'qlist-chapter';
+    section.innerHTML = `
+      <div class="qlist-chapter-header">
+        <span>${TOPICS[chapter] || chapter}</span>
+        <span class="ch-count">${qs.length} câu</span>
+      </div>`;
+
+    qs.forEach((q, idx) => {
+      const item = document.createElement('div');
+      item.className = 'qlist-item';
+      const labels = ['A', 'B', 'C', 'D'];
+      const optionsHtml = q.options.map((opt, i) =>
+        `<div class="qlist-option${i === q.answer ? ' is-answer' : ''}">
+          <b>${labels[i]}.</b> ${opt}${i === q.answer ? ' ✅' : ''}
+        </div>`
+      ).join('');
+
+      item.innerHTML = `
+        <div class="qlist-item-header" onclick="toggleQItem(this)">
+          <span class="qlist-item-num">Q${q.id}</span>
+          <span class="qlist-item-text">${q.text}</span>
+          <span class="qlist-item-toggle">▼ Xem</span>
+        </div>
+        <div class="qlist-item-body">
+          ${optionsHtml}
+          <div class="qlist-explanation"><b>💡 Giải thích:</b> ${q.explanation}</div>
+        </div>`;
+      section.appendChild(item);
+    });
+
+    body.appendChild(section);
+  });
+
+  // Re-render KaTeX for new content
+  if (window.renderMathInElement) {
+    renderMathInElement(body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$',  right: '$',  display: false },
+      ],
+      throwOnError: false,
+    });
+  }
+}
+
+function toggleQItem(headerEl) {
+  const body = headerEl.nextElementSibling;
+  const toggle = headerEl.querySelector('.qlist-item-toggle');
+  const isOpen = body.classList.toggle('open');
+  toggle.textContent = isOpen ? '▲ Ẩn' : '▼ Xem';
 }
 
 // ── THEORY ───────────────────────────────────────────────────────────────

@@ -26,6 +26,7 @@
     <div class="nav-tab active"  onclick="showPage('quiz', this)">🧪 Quiz</div>
     <div class="nav-tab"         onclick="showPage('theory', this)">📚 Lý thuyết</div>
     <div class="nav-tab"         onclick="showPage('cheatsheet', this)">⚡ Cheat Sheet</div>
+    <div class="nav-tab"         onclick="showPage('questions', this)">📋 Câu hỏi</div>
   </div>
 </nav>
 
@@ -219,6 +220,16 @@
   </div>
 
 </div><!-- /page-cheatsheet -->
+
+<!-- ════════════════════════ QUESTIONS PAGE ════════════════════════ -->
+<div id="page-questions" class="page">
+  <div class="qlist-toolbar">
+    <input id="qlist-search" type="search" placeholder="🔍 Tìm kiếm câu hỏi..." oninput="filterQuestions()">
+    <div class="qlist-filters" id="qlist-filters"></div>
+    <span class="qlist-count" id="qlist-count"></span>
+  </div>
+  <div id="qlist-body"></div>
+</div>
 
 <!-- Scripts — thứ tự quan trọng: data trước, app sau -->
 <script src="js/questions.js"></script>
