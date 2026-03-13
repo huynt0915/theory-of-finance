@@ -1,11 +1,11 @@
 // theory.js — Nội dung lý thuyết theo chương (LaTeX via KaTeX)
-// Thêm chương mới: thêm 1 key vào THEORY_DATA với title + content (HTML)
-// Dùng $...$ cho inline, $$...$$ cho display math
+// QUAN TRỌNG: dùng String.raw`...` để backslash trong LaTeX không bị JS xử lý
+// Thêm chương: thêm key vào THEORY_DATA với title + content
 
 const THEORY_DATA = {
   'C2': {
     title: 'C2 — Hệ thống Tài chính',
-    content: `
+    content: String.raw`
     <h3>Chức năng thị trường tài chính</h3>
     <p>Chuyển vốn từ <b>lenders-savers</b> (tiết kiệm) sang <b>borrowers-spenders</b> (đầu tư).
     Tăng hiệu quả kinh tế, tạo thanh khoản, giảm chi phí giao dịch.</p>
@@ -14,7 +14,7 @@ const THEORY_DATA = {
     <table>
       <tr><th>Tiêu chí</th><th>Loại 1</th><th>Loại 2</th></tr>
       <tr><td>Phát hành</td><td><b>Sơ cấp</b> — IPO, phát hành mới</td><td><b>Thứ cấp</b> — giao dịch lại (NYSE)</td></tr>
-      <tr><td>Kỳ hạn</td><td><b>Tiền tệ</b> — kỳ hạn $&lt;1$ năm (T-bills)</td><td><b>Vốn</b> — kỳ hạn $\geq 1$ năm (cổ phiếu, TP)</td></tr>
+      <tr><td>Kỳ hạn</td><td><b>Tiền tệ</b> — $&lt;1$ năm (T-bills)</td><td><b>Vốn</b> — $\geq 1$ năm (cổ phiếu, TP)</td></tr>
       <tr><td>Tổ chức</td><td><b>Tập trung</b> — sàn giao dịch</td><td><b>OTC</b> — qua dealer (NASDAQ)</td></tr>
       <tr><td>Tài trợ</td><td><b>Trực tiếp</b> — mua CK</td><td><b>Gián tiếp</b> — qua TGTC</td></tr>
     </table>
@@ -27,20 +27,21 @@ const THEORY_DATA = {
     </table>
 
     <h3>Tại sao trung gian tài chính tồn tại?</h3>
-    <p><b>(1) Chi phí giao dịch thấp</b> — economies of scale. <b>(2) Risk sharing</b> — asset transformation.
+    <p><b>(1) Chi phí giao dịch thấp</b> — economies of scale.
+    <b>(2) Risk sharing</b> — asset transformation.
     <b>(3) Xử lý thông tin bất cân xứng</b> — screening + monitoring.</p>`,
   },
 
   'C9': {
     title: 'C9 — Ngân hàng & Quản trị',
-    content: `
+    content: String.raw`
     <h3>Bảng CĐKT ngân hàng</h3>
     <table>
       <tr><th>Tài sản (Uses)</th><th>Nợ + Vốn (Sources)</th></tr>
       <tr><td>Dự trữ $R = RR + ER$</td><td>Tiền gửi không kỳ hạn</td></tr>
       <tr><td>Chứng khoán</td><td>Tiền gửi tiết kiệm / CDs</td></tr>
       <tr><td>Cho vay</td><td>Vay Fed funds / Vay chiết khấu</td></tr>
-      <tr><td>Tài sản cố định</td><td>Vốn chủ sở hữu $= TS - N\text{ợ}$</td></tr>
+      <tr><td>Tài sản cố định</td><td>Vốn chủ sở hữu $=$ Tổng TS $-$ Tổng Nợ</td></tr>
     </table>
 
     <h3>4 vấn đề quản trị</h3>
@@ -54,30 +55,32 @@ const THEORY_DATA = {
 
     <h3>Công thức hiệu quả ngân hàng</h3>
     <p>
-      $$ROA = \frac{\text{Lợi nhuận ròng}}{\text{Tổng tài sản}} \qquad \text{(benchmark: } 0.5\text{–}1.5\%\text{)}$$
-      $$ROE = \frac{\text{Lợi nhuận ròng}}{\text{Vốn chủ sở hữu}} \qquad \text{(benchmark: } 10\text{–}20\%\text{)}$$
-      $$EM = \frac{\text{Tổng tài sản}}{\text{Vốn chủ sở hữu}} \qquad \text{(Equity Multiplier — đòn bẩy)}$$
+      $$ROA = \frac{\text{Lợi nhuận ròng}}{\text{Tổng tài sản}} \qquad (0.5\text{–}1.5\%)$$
+      $$ROE = \frac{\text{Lợi nhuận ròng}}{\text{Vốn chủ sở hữu}} \qquad (10\text{–}20\%)$$
+      $$EM = \frac{\text{Tổng tài sản}}{\text{Vốn chủ sở hữu}} \quad \text{(Equity Multiplier)}$$
       $$\boxed{ROE = ROA \times EM}$$
     </p>
-    <p style="color:var(--danger);font-size:.85rem">⚠️ $EM$ cao → $ROE$ cao nhưng rủi ro phá sản cao hơn.
-    NH A ($ROA=1.5\%$, $EM=10$): $ROE=15\%$ &nbsp;|&nbsp; NH B ($ROA=0.8\%$, $EM=18$): $ROE=14.4\%$
-    — NH A an toàn hơn dù $ROE$ cao hơn.</p>
+    <p style="color:var(--danger);font-size:.85rem">
+      ⚠️ $EM$ cao → $ROE$ cao nhưng rủi ro phá sản cao.<br>
+      NH A ($ROA=1.5\%$, $EM=10$): $ROE=15\%$ &nbsp;|&nbsp;
+      NH B ($ROA=0.8\%$, $EM=18$): $ROE=14.4\%$ — NH A an toàn hơn.
+    </p>
 
     <h3>Net Interest Margin (NIM)</h3>
-    <p>$$NIM = \frac{\text{Thu lãi} - \text{Chi lãi}}{\text{Tài sản sinh lãi}} \qquad \text{(benchmark: } 2\text{–}4\%\text{)}$$</p>
-    <p>Rủi ro "borrow short, lend long": khi $i\uparrow$ → chi phí huy động tăng ngay, thu từ cho vay cố định → $NIM\downarrow$</p>`,
+    <p>$$NIM = \frac{\text{Thu lãi} - \text{Chi lãi}}{\text{Tài sản sinh lãi}} \qquad (2\text{–}4\%)$$</p>
+    <p>Rủi ro "borrow short, lend long": khi $i$ tăng → chi phí huy động tăng ngay, thu từ cho vay cố định → $NIM$ giảm.</p>`,
   },
 
   'C15': {
     title: 'C15 — Quá trình Cung tiền',
-    content: `
+    content: String.raw`
     <h3>Công thức cốt lõi</h3>
     <p>
       $$MB = C + R = MB_n + BR$$
       $$m = \frac{1 + c}{rr + e + c} \qquad m_{\text{simple}} = \frac{1}{rr} \quad (c = e = 0)$$
       $$\boxed{M = m \times MB}$$
     </p>
-    <p style="font-size:.85rem">Trong đó: $c = C/D$ (tỷ lệ tiền mặt), $e = ER/D$ (tỷ lệ dự trữ vượt mức), $rr$ = tỷ lệ dự trữ bắt buộc</p>
+    <p style="font-size:.85rem">Trong đó: $c = C/D$ (tỷ lệ tiền mặt), $e = ER/D$ (tỷ lệ dự trữ vượt mức), $rr$ = tỷ lệ dự trữ bắt buộc.</p>
 
     <h3>Ba chủ thể trong cung tiền</h3>
     <table>
@@ -90,54 +93,55 @@ const THEORY_DATA = {
     <h3>Tác động lên số nhân $m$</h3>
     <table>
       <tr><th>Biến thay đổi</th><th>$m$</th><th>$M$</th><th>$MB$</th><th>Ghi chú</th></tr>
-      <tr><td>$rr\uparrow$</td><td>↓</td><td>↓</td><td>—</td><td>Fed tăng DTBB</td></tr>
-      <tr><td>$e\uparrow$</td><td>↓</td><td>↓</td><td>—</td><td>NH thận trọng sau khủng hoảng</td></tr>
-      <tr><td>$c\uparrow$</td><td>↓</td><td>↓</td><td>—</td><td>⚠️ $MB$ KHÔNG ĐỔI!</td></tr>
-      <tr><td>$MB_n\uparrow$ (OMO mua)</td><td>—</td><td>↑</td><td>↑</td><td>$m \times MB\uparrow$</td></tr>
-      <tr><td>$BR\uparrow$ (vay chiết khấu)</td><td>—</td><td>↑</td><td>↑</td><td>$MB = MB_n + BR$</td></tr>
+      <tr><td>$rr$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>Fed tăng DTBB</td></tr>
+      <tr><td>$e$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>NH thận trọng sau khủng hoảng</td></tr>
+      <tr><td>$c$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>⚠️ $MB$ KHÔNG ĐỔI!</td></tr>
+      <tr><td>$MB_n$ tăng (OMO mua)</td><td>—</td><td>↑</td><td>↑</td><td>$m \times MB$ tăng</td></tr>
+      <tr><td>$BR$ tăng (vay chiết khấu)</td><td>—</td><td>↑</td><td>↑</td><td>$MB = MB_n + BR$</td></tr>
     </table>
 
     <h3>Ví dụ tính toán</h3>
     <p>Cho $c=0.3$, $rr=0.1$, $e=0.02$, $MB = \$1{,}000$ tỷ:</p>
-    <p>$$m = \frac{1+0.3}{0.1+0.02+0.3} = \frac{1.3}{0.42} \approx 3.10$$</p>
-    <p>$$M = 3.10 \times 1{,}000 = \$3{,}100 \text{ tỷ}$$</p>
-    <p style="font-size:.85rem;color:var(--muted)">So sánh: $m_{\text{simple}} = 1/0.1 = 10$ → thực tế thấp hơn nhiều do $c$ và $e > 0$</p>`,
+    <p>
+      $$m = \frac{1+0.3}{0.1+0.02+0.3} = \frac{1.3}{0.42} \approx 3.10$$
+      $$M = 3.10 \times 1{,}000 = \$3{,}100 \text{ tỷ}$$
+    </p>
+    <p style="font-size:.85rem;color:var(--muted)">So sánh: $m_{\text{simple}} = 1/0.1 = 10$ — thực tế thấp hơn nhiều do $c$ và $e > 0$.</p>`,
   },
 
   'C16': {
     title: 'C16 — Công cụ CSTT',
-    content: `
+    content: String.raw`
     <h3>Thị trường dự trữ</h3>
     <div class="reserve-diagram">
       <div class="rd-axis-y">$i_{ff}$</div>
       <div class="rd-body">
-        <div class="rd-ceiling">$i_d$ (trần — Discount rate)</div>
-        <div class="rd-mid">$i_{ff}^*$ ← cân bằng</div>
-        <div class="rd-floor">$i_{or}$ (sàn — IOR)</div>
+        <div class="rd-ceiling">$i_d$ — Trần (Discount rate): Rs nằm ngang tại đây</div>
+        <div class="rd-mid">$i_{ff}^*$ ← Điểm cân bằng (Rs cắt Rd ở đoạn dốc)</div>
+        <div class="rd-floor">$i_{or}$ — Sàn (IOR): $i_{ff}$ không thể xuống dưới</div>
       </div>
-      <div class="rd-axis-x">$R$ (Dự trữ) →</div>
-      <div class="rd-note">$Rs$ thẳng đứng tại $NBR$, nằm ngang tại $i_d$ (trần)<br>$Rd$ dốc xuống, nằm ngang tại $i_{or}$ (sàn)</div>
+      <div class="rd-axis-x">$R$ (Dự trữ) →&nbsp; $NBR$ = điểm Rs thẳng đứng</div>
     </div>
 
-    <h3>Công cụ truyền thống — Tác động lên $i_{ff}$ và $M$</h3>
+    <h3>Công cụ truyền thống — Tác động</h3>
     <table>
       <tr><th>Hành động</th><th>Dịch chuyển</th><th>$i_{ff}$</th><th>$M$</th></tr>
-      <tr><td>Fed <b>MUA</b> OMO</td><td>$Rs$ → phải</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Fed <b>BÁN</b> OMO</td><td>$Rs$ → trái</td><td>↑</td><td>↓</td></tr>
-      <tr><td>Giảm $i_d$ (BR=0)</td><td>Trần hạ nhưng không ràng buộc</td><td><b>= không đổi!</b></td><td>=</td></tr>
-      <tr><td>Giảm $i_d$ (BR>0)</td><td>$Rs$ → phải (BR↑)</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Giảm $rr$</td><td>$Rd$ → trái</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Tăng $rr$</td><td>$Rd$ → phải</td><td>↑</td><td>↓</td></tr>
+      <tr><td>Fed <b>MUA</b> OMO</td><td>$Rs$ dịch phải</td><td>↓</td><td>↑</td></tr>
+      <tr><td>Fed <b>BÁN</b> OMO</td><td>$Rs$ dịch trái</td><td>↑</td><td>↓</td></tr>
+      <tr><td>Giảm $i_d$ (khi $BR=0$)</td><td>Trần hạ, không ràng buộc</td><td><b>= không đổi!</b></td><td>=</td></tr>
+      <tr><td>Giảm $i_d$ (khi $BR>0$)</td><td>$Rs$ dịch phải ($BR$ tăng)</td><td>↓</td><td>↑</td></tr>
+      <tr><td>Giảm $rr$</td><td>$Rd$ dịch trái</td><td>↓</td><td>↑</td></tr>
+      <tr><td>Tăng $rr$</td><td>$Rd$ dịch phải</td><td>↑</td><td>↓</td></tr>
       <tr><td>Tăng $i_{or}$ (IOR)</td><td>Sàn nâng lên</td><td>↑</td><td>—</td></tr>
     </table>
 
-    <h3>OMO vs Công cụ khác</h3>
+    <h3>So sánh 4 công cụ</h3>
     <table>
       <tr><th>Công cụ</th><th>Ưu điểm</th><th>Nhược điểm</th></tr>
       <tr><td><b>OMO</b></td><td>Linh hoạt, đảo ngược được, Fed kiểm soát 100%</td><td>Cần TT CK phát triển</td></tr>
-      <tr><td><b>Discount</b></td><td>LOLR, hỗ trợ NH khủng hoảng</td><td>Phụ thuộc NH vay; moral hazard</td></tr>
-      <tr><td><b>Reserve Req</b></td><td>Tác động mạnh</td><td>Không linh hoạt, gây biến động lớn</td></tr>
-      <tr><td><b>IOR</b></td><td>Thiết lập sàn $i_{ff}$ chính xác (floor system)</td><td>—</td></tr>
+      <tr><td><b>Discount ($i_d$)</b></td><td>LOLR, hỗ trợ NH khủng hoảng</td><td>Phụ thuộc NH vay; moral hazard</td></tr>
+      <tr><td><b>Reserve Req ($rr$)</b></td><td>Tác động mạnh</td><td>Không linh hoạt, gây biến động lớn</td></tr>
+      <tr><td><b>IOR ($i_{or}$)</b></td><td>Thiết lập sàn $i_{ff}$ chính xác</td><td>—</td></tr>
     </table>
 
     <h3>Công cụ phi truyền thống (khi $i_{ff} \approx 0$, ZLB)</h3>
@@ -150,7 +154,7 @@ const THEORY_DATA = {
 
   'C17': {
     title: 'C17 — Chiến lược CSTT',
-    content: `
+    content: String.raw`
     <h3>Taylor Rule</h3>
     <p>$$\boxed{i_{ff} = \pi + r^* + 0.5(\pi - \pi^*) + 0.5(Y - Y^*)}$$</p>
     <table>
@@ -166,32 +170,35 @@ const THEORY_DATA = {
     <p>$$i_{ff} = 4 + 2 + 0.5(4-2) + 0.5(2) = 4 + 2 + 1 + 1 = 8\%$$</p>
 
     <h3>Taylor Principle</h3>
-    <p>Khi $\pi\uparrow 1\text{pp}$:</p>
-    <p>$$\Delta i_{ff} = \underbrace{1}_{\text{từ } \pi} + \underbrace{0.5 \times 1}_{\text{từ } 0.5(\pi-\pi^*)} = 1.5\text{ pp}$$</p>
-    <p>$$\Rightarrow \Delta r = \Delta i - \Delta\pi = 1.5 - 1 = +0.5\text{ pp} \quad \checkmark \text{ CSTT thắt chặt thực sự}$$</p>
+    <p>Khi $\pi$ tăng $1\text{pp}$, lãi suất danh nghĩa phải tăng $1.5\text{pp}$:</p>
+    <p>$$\Delta i_{ff} = 1 + 0.5 \times 1 = 1.5\text{ pp}$$</p>
+    <p>$$\Rightarrow \Delta r = \Delta i_{ff} - \Delta\pi = 1.5 - 1 = +0.5\text{ pp} \quad \checkmark$$</p>
     <p style="font-size:.85rem;color:var(--danger)">⚠️ Nếu $\Delta i_{ff} = 1\text{pp}$ thì $\Delta r = 0$ → CSTT không đủ thắt chặt → lạm phát không kiềm được.</p>
 
     <h3>So sánh Mandate</h3>
     <table>
       <tr><th>Tiêu chí</th><th>Hierarchical (ECB)</th><th>Dual (Fed)</th></tr>
-      <tr><td>Ưu tiên</td><td>$\pi$ trước, việc làm sau</td><td>$\pi$ và việc làm ngang nhau</td></tr>
+      <tr><td>Ưu tiên</td><td>Ổn định giá tuyệt đối</td><td>Ổn định giá và việc làm ngang nhau</td></tr>
       <tr><td>Phản ứng suy thoái</td><td>Chậm hơn nếu $\pi$ chưa thấp</td><td>Nới lỏng sớm hơn</td></tr>
       <tr><td>Ví dụ</td><td>ECB, Bundesbank</td><td>Federal Reserve</td></tr>
     </table>
 
     <h3>Time-Inconsistency</h3>
     <p>NHTW hứa $\pi$ thấp → kỳ vọng thấp → bị cám dỗ mở rộng tiền tệ bất ngờ → $\pi$ tăng → mất uy tín.</p>
-    <p><b>Giải pháp:</b> Neo danh nghĩa + Độc lập NHTW + Minh bạch/trách nhiệm giải trình.</p>`,
+    <p><b>Giải pháp:</b> Neo danh nghĩa + Độc lập NHTW + Minh bạch/trách nhiệm giải trình.</p>
+
+    <h3>Lạm phát mục tiêu — 5 yếu tố</h3>
+    <p>(1) Công bố mục tiêu $\pi$ số cụ thể; (2) Ổn định giá là ưu tiên; (3) Sử dụng <b>nhiều</b> chỉ số thông tin (không chỉ $M2$); (4) Minh bạch; (5) Trách nhiệm giải trình.</p>`,
   },
 
   'C18': {
     title: 'C18 — Tài chính Quốc tế',
-    content: `
+    content: String.raw`
     <h3>Can thiệp ngoại hối</h3>
     <table>
       <tr><th>Loại</th><th>$MB$</th><th>$M$</th><th>Tỷ giá nội tệ</th><th>Hiệu quả</th></tr>
-      <tr><td><b>Không vô hiệu hóa</b><br>(Unsterilized)</td><td>Thay đổi</td><td>Thay đổi</td><td>Mất giá (nếu mua ngoại tệ)</td><td><b>Mạnh</b></td></tr>
-      <tr><td><b>Vô hiệu hóa</b><br>(Sterilized)</td><td>= (OMO bù)</td><td>=</td><td>Mất giá (yếu, ngắn hạn)</td><td><b>Yếu</b></td></tr>
+      <tr><td><b>Không vô hiệu hóa</b> (Unsterilized)</td><td>Thay đổi</td><td>Thay đổi</td><td>Mất giá (nếu mua ngoại tệ)</td><td><b>Mạnh</b></td></tr>
+      <tr><td><b>Vô hiệu hóa</b> (Sterilized)</td><td>= (OMO bù)</td><td>=</td><td>Mất giá (yếu, ngắn hạn)</td><td><b>Yếu</b></td></tr>
     </table>
 
     <h3>Cán cân thanh toán (BOP)</h3>
@@ -225,46 +232,46 @@ const THEORY_DATA = {
 
   'C26': {
     title: 'C26 — Cơ chế Truyền dẫn',
-    content: `
-    <h3>6 kênh truyền dẫn CSTT (M ↑)</h3>
+    content: String.raw`
+    <h3>6 kênh truyền dẫn CSTT ($M$ tăng)</h3>
     <table>
       <tr><th>Kênh</th><th>Chuỗi tác động</th></tr>
-      <tr><td><b>Lãi suất</b></td><td>$M\uparrow \to r_{\text{thực}}\downarrow \to I\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Tỷ giá</b></td><td>$M\uparrow \to i\downarrow \to$ Vốn ra $\to E\uparrow \to NX\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Tobin's q</b></td><td>$M\uparrow \to i\downarrow \to P_{CK}\uparrow \to q\uparrow \to I\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Wealth effect</b></td><td>$M\uparrow \to P_{\text{tài sản}}\uparrow \to W\uparrow \to C\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Bank lending</b></td><td>$M\uparrow \to D\uparrow \to \text{Cho vay}\uparrow \to I, C\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Balance sheet</b></td><td>$M\uparrow \to NW\uparrow \to AS\downarrow, MH\downarrow \to \text{Cho vay}\uparrow \to Y\uparrow$</td></tr>
-      <tr><td><b>Kỳ vọng</b></td><td>Thông báo $M\uparrow$ → kỳ vọng thay đổi ngay → $I, C\uparrow$ (trước khi thực thi)</td></tr>
+      <tr><td><b>Lãi suất</b></td><td>$M$ tăng $\to r_{\text{thực}}$ giảm $\to I$ tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Tỷ giá</b></td><td>$M$ tăng $\to i$ giảm $\to$ Vốn ra $\to E$ tăng $\to NX$ tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Tobin's $q$</b></td><td>$M$ tăng $\to i$ giảm $\to P_{CK}$ tăng $\to q$ tăng $\to I$ tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Wealth effect</b></td><td>$M$ tăng $\to P_{\text{tài sản}}$ tăng $\to W$ tăng $\to C$ tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Bank lending</b></td><td>$M$ tăng $\to D$ tăng $\to$ Cho vay tăng $\to I, C$ tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Balance sheet</b></td><td>$M$ tăng $\to NW$ tăng $\to AS, MH$ giảm $\to$ Cho vay tăng $\to Y$ tăng</td></tr>
+      <tr><td><b>Kỳ vọng</b></td><td>Thông báo $M$ tăng → kỳ vọng thay đổi ngay → $I, C$ tăng (trước khi thực thi)</td></tr>
     </table>
 
-    <h3>Tobin's q</h3>
+    <h3>Tobin's $q$</h3>
     <p>$$q = \frac{\text{Giá thị trường doanh nghiệp}}{\text{Chi phí thay thế vốn}}$$</p>
     <table>
-      <tr><th>Giá trị $q$</th><th>Hàm ý</th><th>Quyết định</th></tr>
-      <tr><td>$q > 1$</td><td>CK đắt hơn xây mới</td><td>Đầu tư mới có lợi → $I\uparrow$</td></tr>
-      <tr><td>$q < 1$</td><td>Mua DN cũ rẻ hơn xây mới</td><td>Không đầu tư mới → $I\downarrow$</td></tr>
+      <tr><th>Giá trị</th><th>Hàm ý</th><th>Quyết định</th></tr>
+      <tr><td>$q > 1$</td><td>CK đắt hơn xây mới</td><td>Đầu tư mới có lợi → $I$ tăng</td></tr>
+      <tr><td>$q < 1$</td><td>Mua DN cũ rẻ hơn xây mới</td><td>Không đầu tư mới → $I$ giảm</td></tr>
     </table>
 
-    <h3>Lãi suất thực (Fisher)</h3>
+    <h3>Lãi suất thực (Fisher Equation)</h3>
     <p>$$r = i - \pi^e$$</p>
     <p>Kênh lãi suất dùng $r_{\text{thực}}$ (không phải $i_{\text{danh nghĩa}}$).
-    Khi $\pi^e < 0$ (giảm phát): $r = i - \pi^e > i$ → đầu tư giảm mạnh.</p>
+    Khi $\pi^e < 0$ (giảm phát): $r > i$ → đầu tư giảm mạnh.</p>
 
     <h3>4 bài học điều hành CSTT (Mishkin)</h3>
     <table>
       <tr><th>#</th><th>Bài học</th><th>Ứng dụng</th></tr>
       <tr><td>1</td><td>Không chỉ nhìn $i$ ngắn hạn danh nghĩa</td><td>Xem $r_{\text{thực}}$, $i$ dài hạn, credit spread</td></tr>
       <tr><td>2</td><td>Giá tài sản khác cũng quan trọng</td><td>Theo dõi tỷ giá, giá CK, BĐS</td></tr>
-      <tr><td>3</td><td>CSTT hiệu quả ngay cả khi $i_{ff}=0$</td><td>QE, Forward Guidance, kênh tỷ giá</td></tr>
+      <tr><td>3</td><td>CSTT hiệu quả ngay cả khi $i_{ff} = 0$</td><td>QE, Forward Guidance, kênh tỷ giá</td></tr>
       <tr><td>4</td><td>Tránh giảm phát bằng mọi giá</td><td>Mục tiêu $\pi^* > 0$ (thường $2\%$), hành động sớm</td></tr>
     </table>
 
     <h3>Tại sao giảm phát ($\pi < 0$) nguy hiểm?</h3>
     <p>
-      (1) $r = i - \pi^e \uparrow$ khi $\pi^e < 0$ → $I\downarrow$ &nbsp;
-      (2) Gánh nợ thực tăng → $NW\downarrow$ → tín dụng co (Debt deflation — Fisher 1933)<br>
-      (3) Kỳ vọng giảm phát → hoãn tiêu dùng → $AD\downarrow$ (tự củng cố) &nbsp;
+      (1) $r = i - \pi^e$ tăng khi $\pi^e < 0$ → $I$ giảm &nbsp;
+      (2) Gánh nợ thực tăng → $NW$ giảm (Debt deflation — Fisher 1933)<br>
+      (3) Kỳ vọng giảm phát → hoãn tiêu dùng → $AD$ giảm (tự củng cố) &nbsp;
       (4) ZLB: $i$ không thể âm → CSTT truyền thống mất tác dụng
     </p>`,
   },
