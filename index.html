@@ -1,175 +1,58 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lý thuyết Tài chính — Quiz UEH</title>
-<style>
-  :root {
-    --primary: #1a56db;
-    --primary-dark: #1e40af;
-    --success: #057a55;
-    --danger: #c81e1e;
-    --warning: #e3a008;
-    --bg: #f9fafb;
-    --card: #ffffff;
-    --border: #e5e7eb;
-    --text: #111827;
-    --muted: #6b7280;
-    --radius: 12px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
-  /* NAV */
-  nav { background: var(--primary); color: white; padding: 0 24px; display: flex; align-items: center; gap: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
-  nav .logo { font-weight: 700; font-size: 1.1rem; padding: 16px 0; margin-right: 32px; white-space: nowrap; }
-  nav .logo span { opacity: .7; font-weight: 400; font-size: .85rem; }
-  .nav-tabs { display: flex; gap: 0; }
-  .nav-tab { padding: 18px 20px; cursor: pointer; opacity: .75; font-size: .9rem; border-bottom: 3px solid transparent; transition: all .2s; white-space: nowrap; }
-  .nav-tab:hover { opacity: 1; background: rgba(255,255,255,.1); }
-  .nav-tab.active { opacity: 1; border-bottom-color: white; font-weight: 600; }
-
-  /* PAGES */
-  .page { display: none; max-width: 860px; margin: 0 auto; padding: 32px 16px; }
-  .page.active { display: block; }
-
-  /* CARDS */
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
-  .card h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--primary-dark); }
-
-  /* QUIZ SETUP */
-  .setup-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
-  .chip { padding: 8px 14px; border: 2px solid var(--border); border-radius: 20px; cursor: pointer; font-size: .85rem; text-align: center; transition: all .15s; user-select: none; }
-  .chip.selected { border-color: var(--primary); background: #eff6ff; color: var(--primary); font-weight: 600; }
-  .chip:hover:not(.selected) { border-color: #93c5fd; }
-
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer; font-size: .95rem; font-weight: 600; transition: all .15s; }
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-primary:hover { background: var(--primary-dark); }
-  .btn-primary:disabled { background: #93c5fd; cursor: not-allowed; }
-  .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); }
-  .btn-outline:hover { background: #eff6ff; }
-  .btn-success { background: var(--success); color: white; }
-  .btn-sm { padding: 6px 14px; font-size: .85rem; }
-
-  /* QUIZ PLAY */
-  .progress-bar { height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 24px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; transition: width .3s; }
-  .q-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .q-num { font-size: .85rem; color: var(--muted); }
-  .q-chapter { font-size: .8rem; background: #eff6ff; color: var(--primary); padding: 3px 10px; border-radius: 12px; font-weight: 600; }
-  .q-text { font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; font-weight: 500; }
-  .q-formula { font-family: 'Courier New', monospace; background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: .95rem; }
-
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option { padding: 14px 18px; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all .15s; line-height: 1.5; }
-  .option:hover:not(.disabled) { border-color: #93c5fd; background: #f0f9ff; }
-  .option.correct { border-color: var(--success); background: #f0fdf4; color: #065f46; font-weight: 600; }
-  .option.wrong { border-color: var(--danger); background: #fef2f2; color: #991b1b; }
-  .option.disabled { cursor: default; }
-  .option .opt-label { font-weight: 700; margin-right: 8px; }
-
-  .explanation { margin-top: 20px; padding: 16px; background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; font-size: .9rem; line-height: 1.6; display: none; }
-  .explanation.show { display: block; }
-  .explanation strong { color: #92400e; }
-
-  .q-actions { margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end; }
-
-  /* RESULT */
-  .result-big { text-align: center; padding: 32px; }
-  .result-score { font-size: 4rem; font-weight: 800; color: var(--primary); }
-  .result-label { font-size: 1.2rem; color: var(--muted); margin-bottom: 24px; }
-  .result-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 24px 0; }
-  .stat-box { padding: 16px; border-radius: 10px; text-align: center; }
-  .stat-box .val { font-size: 2rem; font-weight: 800; }
-  .stat-box .lbl { font-size: .8rem; color: var(--muted); margin-top: 4px; }
-  .stat-correct { background: #f0fdf4; color: var(--success); }
-  .stat-wrong { background: #fef2f2; color: var(--danger); }
-  .stat-skip { background: #fffbeb; color: var(--warning); }
-
-  .wrong-list { margin-top: 24px; }
-  .wrong-item { padding: 16px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; font-size: .9rem; }
-  .wrong-item .wi-q { font-weight: 600; margin-bottom: 8px; }
-  .wrong-item .wi-correct { color: var(--success); font-size: .85rem; }
-  .wrong-item .wi-yours { color: var(--danger); font-size: .85rem; }
-
-  /* THEORY */
-  .theory-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .theory-tab { padding: 7px 16px; border-radius: 20px; border: 2px solid var(--border); cursor: pointer; font-size: .85rem; transition: all .15s; }
-  .theory-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
-  .theory-content { display: none; }
-  .theory-content.active { display: block; }
-  .theory-content h3 { color: var(--primary-dark); font-size: 1rem; margin: 20px 0 8px; border-left: 4px solid var(--primary); padding-left: 10px; }
-  .theory-content h3:first-child { margin-top: 0; }
-  .theory-content p { font-size: .9rem; line-height: 1.7; margin-bottom: 8px; }
-  .formula-box { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: .9rem; line-height: 1.8; margin: 12px 0; }
-  .formula-box .cmt { color: #94a3b8; }
-  table { width: 100%; border-collapse: collapse; font-size: .85rem; margin: 12px 0; }
-  th { background: #f3f4f6; padding: 8px 12px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
-  td { padding: 8px 12px; border: 1px solid var(--border); line-height: 1.5; }
-  tr:hover td { background: #fafafa; }
-  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-weight: 600; margin-right: 4px; }
-  .tag-up { background: #dcfce7; color: #15803d; }
-  .tag-down { background: #fee2e2; color: #b91c1c; }
-  .tag-same { background: #f3f4f6; color: #6b7280; }
-
-  /* CHEATSHEET */
-  .cheat-section { margin-bottom: 32px; }
-  .cheat-section h2 { font-size: 1rem; font-weight: 700; color: white; background: var(--primary-dark); padding: 10px 16px; border-radius: 8px 8px 0 0; }
-  .cheat-body { border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 16px; }
-
-  /* RESPONSIVE */
-  @media(max-width:600px) {
-    nav { padding: 0 12px; }
-    .nav-tab { padding: 16px 12px; font-size: .8rem; }
-    .result-grid { grid-template-columns: repeat(3,1fr); }
-    .result-score { font-size: 3rem; }
-  }
-
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-weight: 700; background: #dbeafe; color: var(--primary); }
-  .divider { height: 1px; background: var(--border); margin: 16px 0; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lý thuyết Tài chính — Quiz UEH</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav>
   <div class="logo">📊 Finance Quiz <span>UEH Master</span></div>
   <div class="nav-tabs">
-    <div class="nav-tab active" onclick="showPage('quiz')">🧪 Quiz</div>
-    <div class="nav-tab" onclick="showPage('theory')">📚 Lý thuyết</div>
-    <div class="nav-tab" onclick="showPage('cheatsheet')">⚡ Cheat Sheet</div>
+    <div class="nav-tab active"  onclick="showPage('quiz', this)">🧪 Quiz</div>
+    <div class="nav-tab"         onclick="showPage('theory', this)">📚 Lý thuyết</div>
+    <div class="nav-tab"         onclick="showPage('cheatsheet', this)">⚡ Cheat Sheet</div>
   </div>
 </nav>
 
-<!-- ======================== QUIZ PAGE ======================== -->
+<!-- ════════════════════════ QUIZ PAGE ════════════════════════ -->
 <div id="page-quiz" class="page active">
 
-  <!-- SETUP -->
+  <!-- Setup -->
   <div id="quiz-setup">
     <div class="card">
       <h2>🎯 Chọn chủ đề</h2>
       <div class="setup-grid" id="topic-chips"></div>
-      <div style="margin-top:8px">
-        <span style="font-size:.85rem;color:var(--muted)">Đã chọn: </span>
-        <span id="selected-count" style="font-weight:700;color:var(--primary)">0</span>
-        <span style="font-size:.85rem;color:var(--muted)"> câu hỏi</span>
+      <div style="margin-top:8px;display:flex;align-items:center;gap:16px">
+        <span style="font-size:.85rem;color:var(--muted)">Đã chọn:
+          <b id="selected-count" style="color:var(--primary)">0</b> câu
+        </span>
+        <button class="btn btn-outline btn-sm" onclick="selectAll()">Chọn tất cả</button>
       </div>
     </div>
+
     <div class="card">
       <h2>⚙️ Cài đặt</h2>
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
-        <label style="font-size:.9rem">Số câu: <select id="q-count" style="margin-left:8px;padding:6px 10px;border-radius:6px;border:1px solid var(--border)">
-          <option value="10">10</option><option value="20" selected>20</option><option value="30">30</option><option value="0">Tất cả</option>
-        </select></label>
+        <label style="font-size:.9rem">Số câu:
+          <select id="q-count" style="margin-left:8px;padding:6px 10px;border-radius:6px;border:1px solid var(--border)">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+            <option value="0">Tất cả</option>
+          </select>
+        </label>
         <label style="font-size:.9rem"><input type="checkbox" id="shuffle-opt" checked style="margin-right:6px">Xáo trộn câu hỏi</label>
         <label style="font-size:.9rem"><input type="checkbox" id="shuffle-ans" checked style="margin-right:6px">Xáo trộn đáp án</label>
       </div>
     </div>
+
     <button class="btn btn-primary" id="start-btn" onclick="startQuiz()" disabled>▶ Bắt đầu Quiz</button>
   </div>
 
-  <!-- PLAY -->
+  <!-- Play -->
   <div id="quiz-play" style="display:none">
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="card">
@@ -182,48 +65,48 @@
       <div class="explanation" id="q-explanation"></div>
       <div class="q-actions">
         <button class="btn btn-outline btn-sm" id="btn-explain" onclick="showExplanation()" style="display:none">💡 Xem giải thích</button>
-        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none">Câu tiếp →</button>
+        <button class="btn btn-primary"        id="btn-next"    onclick="nextQuestion()"    style="display:none">Câu tiếp →</button>
       </div>
     </div>
   </div>
 
-  <!-- RESULT -->
+  <!-- Result -->
   <div id="quiz-result" style="display:none">
     <div class="card result-big">
       <div class="result-score" id="res-score"></div>
       <div class="result-label" id="res-label"></div>
       <div class="result-grid">
         <div class="stat-box stat-correct"><div class="val" id="res-correct"></div><div class="lbl">✅ Đúng</div></div>
-        <div class="stat-box stat-wrong"><div class="val" id="res-wrong"></div><div class="lbl">❌ Sai</div></div>
-        <div class="stat-box stat-skip"><div class="val" id="res-skip"></div><div class="lbl">⏭ Bỏ qua</div></div>
+        <div class="stat-box stat-wrong">  <div class="val" id="res-wrong"></div>  <div class="lbl">❌ Sai</div></div>
+        <div class="stat-box stat-skip">   <div class="val" id="res-skip"></div>   <div class="lbl">⏭ Bỏ qua</div></div>
       </div>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="restartQuiz()">🔄 Làm lại</button>
-        <button class="btn btn-outline" onclick="document.getElementById('quiz-setup').style.display='block';document.getElementById('quiz-result').style.display='none'">⚙️ Đổi chủ đề</button>
+        <button class="btn btn-outline" onclick="show('quiz-setup');hide('quiz-result')">⚙️ Đổi chủ đề</button>
       </div>
     </div>
     <div class="wrong-list" id="wrong-list"></div>
   </div>
 </div>
 
-<!-- ======================== THEORY PAGE ======================== -->
+<!-- ════════════════════════ THEORY PAGE ════════════════════════ -->
 <div id="page-theory" class="page">
-  <div class="theory-nav" id="theory-nav"></div>
+  <div class="theory-nav"  id="theory-nav"></div>
   <div id="theory-panels"></div>
 </div>
 
-<!-- ======================== CHEAT SHEET PAGE ======================== -->
+<!-- ════════════════════════ CHEAT SHEET PAGE ════════════════════════ -->
 <div id="page-cheatsheet" class="page">
 
   <div class="cheat-section">
     <h2>📐 5 Công thức cốt lõi</h2>
     <div class="cheat-body">
       <div class="formula-box">
-MB = C + R = MBn + BR               <span class="cmt"># Cơ sở tiền</span>
-m  = (1 + c) / (rr + e + c)         <span class="cmt"># Số nhân tiền đầy đủ</span>
-M  = m × MB                          <span class="cmt"># Cung tiền</span>
-i_ff = π + r* + 0.5(π−π*) + 0.5·gap <span class="cmt"># Taylor Rule</span>
-r  = i − πᵉ                          <span class="cmt"># Lãi suất thực (Fisher)</span></div>
+MB = C + R = MBn + BR                <span class="cmt"># Cơ sở tiền</span>
+m  = (1 + c) / (rr + e + c)          <span class="cmt"># Số nhân tiền đầy đủ</span>
+M  = m × MB                           <span class="cmt"># Cung tiền</span>
+i_ff = π + r* + 0.5(π−π*) + 0.5·gap  <span class="cmt"># Taylor Rule</span>
+r  = i − πᵉ                           <span class="cmt"># Lãi suất thực (Fisher)</span></div>
       <p style="font-size:.85rem;color:var(--muted)">Ghi nhớ: c↑ e↑ rr↑ → m↓ → M↓ &nbsp;|&nbsp; MB↑ (OMO mua) → M↑</p>
     </div>
   </div>
@@ -233,15 +116,15 @@ r  = i − πᵉ                          <span class="cmt"># Lãi suất thực
     <div class="cheat-body">
       <table>
         <tr><th>Tình huống</th><th>NBR</th><th>BR</th><th>iff</th><th>M</th></tr>
-        <tr><td>Fed <b>MUA</b> OMO</td><td class="tag tag-up">↑</td><td>—</td><td class="tag tag-down">↓</td><td class="tag tag-up">↑</td></tr>
-        <tr><td>Fed <b>BÁN</b> OMO</td><td class="tag tag-down">↓</td><td>—</td><td class="tag tag-up">↑</td><td class="tag tag-down">↓</td></tr>
-        <tr><td>Giảm lãi suất chiết khấu (BR=0)</td><td>—</td><td>—</td><td class="tag tag-same">= (không đổi!)</td><td>—</td></tr>
-        <tr><td>Giảm lãi suất chiết khấu (BR>0)</td><td>—</td><td class="tag tag-up">↑</td><td class="tag tag-down">↓</td><td class="tag tag-up">↑</td></tr>
-        <tr><td>Tăng lãi suất chiết khấu (BR>0)</td><td>—</td><td class="tag tag-down">↓</td><td class="tag tag-up">↑</td><td class="tag tag-down">↓</td></tr>
-        <tr><td>Giảm rr (dự trữ bắt buộc)</td><td>—</td><td>—</td><td class="tag tag-down">↓</td><td class="tag tag-up">↑</td></tr>
-        <tr><td>Tăng rr</td><td>—</td><td>—</td><td class="tag tag-up">↑</td><td class="tag tag-down">↓</td></tr>
-        <tr><td>Tăng IOR (lãi suất dự trữ)</td><td>—</td><td>—</td><td class="tag tag-up">↑ (sàn ↑)</td><td>—</td></tr>
-        <tr><td>Tiền gửi ↑ (kinh tế bùng nổ)</td><td>—</td><td>—</td><td class="tag tag-up">↑</td><td>—</td></tr>
+        <tr><td>Fed <b>MUA</b> OMO</td>                          <td class="tag tag-up">↑</td>   <td>—</td>                        <td class="tag tag-down">↓</td>           <td class="tag tag-up">↑</td></tr>
+        <tr><td>Fed <b>BÁN</b> OMO</td>                          <td class="tag tag-down">↓</td> <td>—</td>                        <td class="tag tag-up">↑</td>             <td class="tag tag-down">↓</td></tr>
+        <tr><td>Giảm lãi suất chiết khấu (BR=0)</td>             <td>—</td>                      <td>—</td>                        <td class="tag tag-same">= (không đổi!)</td><td>—</td></tr>
+        <tr><td>Giảm lãi suất chiết khấu (BR>0)</td>             <td>—</td>                      <td class="tag tag-up">↑</td>     <td class="tag tag-down">↓</td>           <td class="tag tag-up">↑</td></tr>
+        <tr><td>Tăng lãi suất chiết khấu (BR>0)</td>             <td>—</td>                      <td class="tag tag-down">↓</td>   <td class="tag tag-up">↑</td>             <td class="tag tag-down">↓</td></tr>
+        <tr><td>Giảm rr (dự trữ bắt buộc)</td>                   <td>—</td>                      <td>—</td>                        <td class="tag tag-down">↓</td>           <td class="tag tag-up">↑</td></tr>
+        <tr><td>Tăng rr</td>                                      <td>—</td>                      <td>—</td>                        <td class="tag tag-up">↑</td>             <td class="tag tag-down">↓</td></tr>
+        <tr><td>Tăng IOR (lãi suất dự trữ)</td>                  <td>—</td>                      <td>—</td>                        <td class="tag tag-up">↑ (sàn ↑)</td>     <td>—</td></tr>
+        <tr><td>Tiền gửi ↑ (kinh tế bùng nổ)</td>                <td>—</td>                      <td>—</td>                        <td class="tag tag-up">↑</td>             <td>—</td></tr>
       </table>
     </div>
   </div>
@@ -251,11 +134,11 @@ r  = i − πᵉ                          <span class="cmt"># Lãi suất thực
     <div class="cheat-body">
       <table>
         <tr><th>Biến thay đổi</th><th>m</th><th>M</th><th>MB</th><th>Ghi chú</th></tr>
-        <tr><td>rr ↑</td><td class="tag tag-down">↓</td><td class="tag tag-down">↓</td><td>—</td><td>Fed tăng DTBB</td></tr>
-        <tr><td>e ↑ (NH thận trọng)</td><td class="tag tag-down">↓</td><td class="tag tag-down">↓</td><td>—</td><td>Sau khủng hoảng</td></tr>
-        <tr><td>c ↑ (dân giữ tiền mặt)</td><td class="tag tag-down">↓</td><td class="tag tag-down">↓</td><td>—</td><td>⚠️ MB không đổi!</td></tr>
-        <tr><td>MBn ↑ (OMO mua)</td><td>—</td><td class="tag tag-up">↑</td><td class="tag tag-up">↑</td><td>m × MB ↑</td></tr>
-        <tr><td>BR ↑ (vay chiết khấu)</td><td>—</td><td class="tag tag-up">↑</td><td class="tag tag-up">↑</td><td>MB = MBn + BR</td></tr>
+        <tr><td>rr ↑</td>                    <td class="tag tag-down">↓</td> <td class="tag tag-down">↓</td> <td>—</td>                    <td>Fed tăng DTBB</td></tr>
+        <tr><td>e ↑ (NH thận trọng)</td>     <td class="tag tag-down">↓</td> <td class="tag tag-down">↓</td> <td>—</td>                    <td>Sau khủng hoảng</td></tr>
+        <tr><td>c ↑ (dân giữ tiền mặt)</td>  <td class="tag tag-down">↓</td> <td class="tag tag-down">↓</td> <td>—</td>                    <td>⚠️ MB không đổi!</td></tr>
+        <tr><td>MBn ↑ (OMO mua)</td>         <td>—</td>                      <td class="tag tag-up">↑</td>   <td class="tag tag-up">↑</td>  <td>m × MB ↑</td></tr>
+        <tr><td>BR ↑ (vay chiết khấu)</td>   <td>—</td>                      <td class="tag tag-up">↑</td>   <td class="tag tag-up">↑</td>  <td>MB = MBn + BR</td></tr>
       </table>
       <p style="font-size:.85rem;color:var(--danger);margin-top:8px">⚠️ Bẫy: Rút tiền mặt → c↑ nhưng MB KHÔNG ĐỔI (C↑, R↓ bù trừ). Chỉ M giảm vì m giảm.</p>
     </div>
@@ -266,10 +149,10 @@ r  = i − πᵉ                          <span class="cmt"># Lãi suất thực
     <div class="cheat-body">
       <table>
         <tr><th>Hành động</th><th>MB</th><th>M</th><th>Tỷ giá nội tệ</th></tr>
-        <tr><td>Mua ngoại tệ, <b>không</b> vô hiệu hóa</td><td class="tag tag-up">↑</td><td class="tag tag-up">↑</td><td class="tag tag-down">Mất giá</td></tr>
-        <tr><td>Bán ngoại tệ, <b>không</b> vô hiệu hóa</td><td class="tag tag-down">↓</td><td class="tag tag-down">↓</td><td class="tag tag-up">Tăng giá</td></tr>
-        <tr><td>Mua ngoại tệ, <b>có</b> vô hiệu hóa</td><td class="tag tag-same">= (bù OMO)</td><td class="tag tag-same">=</td><td class="tag tag-down">Mất giá (yếu)</td></tr>
-        <tr><td>Bán ngoại tệ, <b>có</b> vô hiệu hóa</td><td class="tag tag-same">= (bù OMO)</td><td class="tag tag-same">=</td><td class="tag tag-up">Tăng giá (yếu)</td></tr>
+        <tr><td>Mua ngoại tệ, <b>không</b> vô hiệu hóa</td> <td class="tag tag-up">↑</td>        <td class="tag tag-up">↑</td>        <td class="tag tag-down">Mất giá</td></tr>
+        <tr><td>Bán ngoại tệ, <b>không</b> vô hiệu hóa</td> <td class="tag tag-down">↓</td>      <td class="tag tag-down">↓</td>      <td class="tag tag-up">Tăng giá</td></tr>
+        <tr><td>Mua ngoại tệ, <b>có</b> vô hiệu hóa</td>    <td class="tag tag-same">= (bù OMO)</td><td class="tag tag-same">=</td>  <td class="tag tag-down">Mất giá (yếu)</td></tr>
+        <tr><td>Bán ngoại tệ, <b>có</b> vô hiệu hóa</td>    <td class="tag tag-same">= (bù OMO)</td><td class="tag tag-same">=</td>  <td class="tag tag-up">Tăng giá (yếu)</td></tr>
       </table>
     </div>
   </div>
@@ -279,13 +162,13 @@ r  = i − πᵉ                          <span class="cmt"># Lãi suất thực
     <div class="cheat-body">
       <table>
         <tr><th>Kênh</th><th>Chuỗi tác động</th></tr>
-        <tr><td><b>Lãi suất</b></td><td>M↑ → i_thực↓ → I↑ → Y↑</td></tr>
-        <tr><td><b>Tỷ giá</b></td><td>M↑ → i↓ → Vốn ra → Nội tệ yếu → NX↑ → Y↑</td></tr>
-        <tr><td><b>Tobin's q</b></td><td>M↑ → i↓ → Giá CK↑ → q↑ → I↑ → Y↑</td></tr>
-        <tr><td><b>Wealth effect</b></td><td>M↑ → Giá tài sản↑ → Của cải↑ → C↑ → Y↑</td></tr>
-        <tr><td><b>Bank lending</b></td><td>M↑ → Tiền gửi↑ → Cho vay↑ → I,C↑ → Y↑</td></tr>
-        <tr><td><b>Balance sheet</b></td><td>M↑ → NW↑ → AS↓,MH↓ → Cho vay↑ → Y↑</td></tr>
-        <tr><td><b>Kỳ vọng</b></td><td>Thông báo M↑ → Kỳ vọng thay đổi ngay → I,C↑</td></tr>
+        <tr><td><b>Lãi suất</b></td>    <td>M↑ → i_thực↓ → I↑ → Y↑</td></tr>
+        <tr><td><b>Tỷ giá</b></td>      <td>M↑ → i↓ → Vốn ra → Nội tệ yếu → NX↑ → Y↑</td></tr>
+        <tr><td><b>Tobin's q</b></td>   <td>M↑ → i↓ → Giá CK↑ → q↑ → I↑ → Y↑</td></tr>
+        <tr><td><b>Wealth</b></td>      <td>M↑ → Giá tài sản↑ → Của cải↑ → C↑ → Y↑</td></tr>
+        <tr><td><b>Bank lending</b></td><td>M↑ → Tiền gửi↑ → Cho vay↑ → I, C↑ → Y↑</td></tr>
+        <tr><td><b>Balance sheet</b></td><td>M↑ → NW↑ → AS↓, MH↓ → Cho vay↑ → Y↑</td></tr>
+        <tr><td><b>Kỳ vọng</b></td>     <td>Thông báo M↑ → Kỳ vọng thay đổi ngay → I, C↑</td></tr>
       </table>
     </div>
   </div>
@@ -295,435 +178,18 @@ r  = i − πᵉ                          <span class="cmt"># Lãi suất thực
     <div class="cheat-body">
       <table>
         <tr><th>Chọn 2/3</th><th>Mất gì</th><th>Ví dụ</th></tr>
-        <tr><td>Tỷ giá cố định + Tự do vốn</td><td>CSTT độc lập</td><td>Hong Kong</td></tr>
-        <tr><td>Tỷ giá cố định + CSTT độc lập</td><td>Tự do vốn</td><td>Trung Quốc (kiểm soát vốn)</td></tr>
-        <tr><td>Tự do vốn + CSTT độc lập</td><td>Tỷ giá cố định</td><td>Mỹ, EU, Nhật</td></tr>
+        <tr><td>Tỷ giá cố định + Tự do vốn</td>      <td>CSTT độc lập</td> <td>Hong Kong</td></tr>
+        <tr><td>Tỷ giá cố định + CSTT độc lập</td>   <td>Tự do vốn</td>    <td>Trung Quốc (kiểm soát vốn)</td></tr>
+        <tr><td>Tự do vốn + CSTT độc lập</td>         <td>Tỷ giá cố định</td><td>Mỹ, EU, Nhật</td></tr>
       </table>
     </div>
   </div>
 
-</div>
+</div><!-- /page-cheatsheet -->
 
-<script>
-// ===================== DATA =====================
-const TOPICS = {
-  'C2': 'C2 — Hệ thống tài chính',
-  'C9': 'C9 — Ngân hàng & Quản trị',
-  'C15': 'C15 — Cung tiền',
-  'C16': 'C16 — Công cụ CSTT',
-  'C17': 'C17 — Chiến lược CSTT',
-  'C18': 'C18 — Tài chính quốc tế',
-  'C26': 'C26 — Truyền dẫn CSTT',
-};
-
-const QUESTIONS = [
-  // ---- C2 ----
-  {id:1,chapter:'C2',text:'Thị trường tài chính SƠ CẤP khác thị trường THỨ CẤP ở chỗ:',options:['Thị trường sơ cấp giao dịch chứng khoán đã phát hành; thứ cấp phát hành mới','Thị trường sơ cấp phát hành chứng khoán MỚI (huy động vốn); thứ cấp giao dịch lại chứng khoán cũ','Thị trường sơ cấp chỉ dành cho chính phủ; thứ cấp dành cho doanh nghiệp','Thị trường sơ cấp có tính thanh khoản cao hơn'],answer:1,explanation:'Sơ cấp (primary market): IPO, phát hành trái phiếu mới → vốn chảy vào tổ chức phát hành. Thứ cấp (secondary market): NYSE, NASDAQ → giao dịch lại, vốn chảy giữa nhà đầu tư, không vào tổ chức phát hành.'},
-  {id:2,chapter:'C2',text:'Vấn đề "Adverse Selection" trong thị trường tài chính xảy ra KHI NÀO và có HỆ QUẢ gì?',options:['Sau khi vay — người vay dùng tiền vào việc rủi ro hơn cam kết','Trước khi vay — người có rủi ro cao có xu hướng tìm vay nhiều hơn → chất lượng bình quân người vay thấp','Khi ngân hàng không giám sát đủ — người vay lười trả nợ','Khi lãi suất tăng — người vay tốt rút lui khỏi thị trường'],answer:1,explanation:'Adverse selection = VẤN ĐỀ TRƯỚC giao dịch. Thông tin bất cân xứng: người vay biết rõ rủi ro của mình, ngân hàng không biết → người rủi ro cao sẵn sàng vay lãi cao hơn → danh mục cho vay có chất lượng xấu hơn trung bình. Giải pháp: sàng lọc (screening), yêu cầu tài sản đảm bảo.'},
-  {id:3,chapter:'C2',text:'Tài trợ GIÁN TIẾP (indirect finance) khác tài trợ TRỰC TIẾP ở điểm nào?',options:['Tài trợ gián tiếp nhanh hơn và rẻ hơn vì qua ít bước hơn','Tài trợ gián tiếp đi qua trung gian tài chính (ngân hàng); trực tiếp: người tiết kiệm mua trực tiếp chứng khoán của người vay','Tài trợ trực tiếp chỉ dành cho chính phủ','Tài trợ gián tiếp chỉ xảy ra trên thị trường thứ cấp'],answer:1,explanation:'Gián tiếp: tiết kiệm → NH → cho vay DN. NH đóng vai trò trung gian, chuyển hóa tài sản (asset transformation). Phổ biến hơn ở hầu hết quốc gia, đặc biệt đang phát triển. Trực tiếp: tiết kiệm mua cổ phiếu/trái phiếu DN trực tiếp — đặc trưng Mỹ.'},
-  {id:4,chapter:'C2',text:'Trung gian tài chính tồn tại chủ yếu vì 3 lý do. Lý do NÀO KHÔNG đúng?',options:['Giảm chi phí giao dịch nhờ kinh tế quy mô','Chia sẻ rủi ro qua đa dạng hóa danh mục','Xử lý thông tin bất cân xứng tốt hơn cá nhân','Đảm bảo lợi nhuận cao hơn đầu tư trực tiếp'],answer:3,explanation:'3 lý do đúng: (1) Chi phí giao dịch thấp nhờ economies of scale; (2) Risk sharing qua asset transformation; (3) Giải quyết thông tin bất cân xứng qua screening và monitoring. "Đảm bảo lợi nhuận cao hơn" là SAI — trung gian tài chính không đảm bảo lợi nhuận cho khách hàng.'},
-  {id:5,chapter:'C2',text:'Moral Hazard trong quan hệ tín dụng là:',options:['Ngân hàng cho vay lãi suất quá cao','Người vay dùng tiền vào các hoạt động rủi ro hơn so với mục đích đã cam kết (SAU khi vay)','Người vay giấu thông tin xấu trước khi vay','Ngân hàng không đủ vốn để cho vay'],answer:1,explanation:'Moral Hazard = VẤN ĐỀ SAU giao dịch. Sau khi nhận tiền, người vay có động cơ đầu tư rủi ro hơn (vì nếu thành công hưởng lợi; thất bại → ngân hàng chịu). Giải pháp: giám sát (monitoring), covenant (điều khoản hạn chế), tài sản đảm bảo.'},
-  // ---- C9 ----
-  {id:6,chapter:'C9',text:'Ngân hàng "borrow short, lend long" chịu rủi ro gì?',options:['Rủi ro tín dụng — khách hàng không trả được nợ','Rủi ro lãi suất — lãi suất tăng làm tăng chi phí huy động trong khi thu nhập từ cho vay dài hạn cố định','Rủi ro thị trường — giá cổ phiếu giảm','Rủi ro pháp lý — vi phạm quy định'],answer:1,explanation:'Borrow short: huy động tiền gửi ngắn hạn (lãi thả nổi). Lend long: cho vay dài hạn (thường lãi cố định). Khi lãi suất tăng: chi phí huy động tăng ngay, nhưng thu nhập từ cho vay dài hạn không tăng → NIM (net interest margin) giảm → lợi nhuận giảm. Đây là rủi ro lãi suất cơ bản của ngân hàng.'},
-  {id:7,chapter:'C9',text:'ROE = ROA × EM. Ngân hàng A: ROA=1.5%, EM=10. Ngân hàng B: ROA=0.8%, EM=18. ROE của A và B lần lượt là:',options:['A: 15%, B: 14.4% — Ngân hàng A tốt hơn về cả lợi nhuận lẫn an toàn','A: 14.4%, B: 15% — Ngân hàng B có ROE cao hơn','A: 10%, B: 18% — EM quyết định ROE','A: 1.5%, B: 0.8% — ROA quyết định ROE'],answer:0,explanation:'A: ROE = 1.5% × 10 = 15%. B: ROE = 0.8% × 18 = 14.4%. ROE gần bằng nhau, nhưng NH A an toàn hơn (EM=10 < 18 → đòn bẩy thấp hơn, rủi ro thấp hơn). NH B đạt ROE tương đương nhờ đòn bẩy cao (rủi ro phá sản cao hơn). Bài học: ROE cao chưa chắc tốt nếu do EM cao (leverage cao).'},
-  {id:8,chapter:'C9',text:'Ngân hàng thiếu hụt thanh khoản đột ngột. Cách nào CÓ CHI PHÍ CAO NHẤT?',options:['Vay Fed funds từ ngân hàng khác','Bán chứng khoán có sẵn','Vay chiết khấu tại Fed (discount window)','Thu hồi hoặc bán các khoản cho vay'],answer:3,explanation:'Thu hồi/bán cho vay có chi phí cao nhất vì: (1) Mất mối quan hệ khách hàng dài hạn; (2) Phải bán với chiết khấu lớn (thị trường khoản vay kém thanh khoản); (3) Mất thu nhập lãi tương lai. Vay Fed funds nhanh, chi phí thấp. Bán CK: chi phí vừa. Discount window: có "stigma" nhưng thấp hơn bán cho vay.'},
-  {id:9,chapter:'C9',text:'Hoạt động ngoại bảng (off-balance-sheet) nào tạo ra rủi ro TIỀM ẨN lớn nhất?',options:['Cho thuê tài chính','Giao dịch phái sinh (derivatives) để đầu cơ','Dịch vụ thanh toán','Tư vấn tài chính'],answer:1,explanation:'Phái sinh đầu cơ: đòn bẩy cực cao, tổn thất có thể vượt xa giá trị ghi sổ. Không xuất hiện trên bảng CĐKT nhưng rủi ro thực rất lớn. Bài học từ Barings Bank (1995), Société Générale (2008): tổn thất phái sinh đã phá sản/gây thiệt hại tỷ đô. Cam kết cho vay và LC: rủi ro có giới hạn hơn.'},
-  {id:10,chapter:'C9',text:'Yêu cầu vốn tối thiểu (capital requirements) theo Basel được thiết kế để:',options:['Tăng lợi nhuận cho ngân hàng','Giảm chi phí huy động vốn','Đảm bảo ngân hàng có đủ "bộ đệm" hấp thụ tổn thất, bảo vệ người gửi tiền','Cho phép ngân hàng tăng đòn bẩy tối đa'],answer:2,explanation:'Capital requirements = yêu cầu tỷ lệ vốn chủ sở hữu tối thiểu / tài sản có trọng số rủi ro. Mục đích: nếu tổn thất xảy ra, vốn hấp thụ trước khi ảnh hưởng đến người gửi tiền. Nhược điểm: ROE giảm vì EM = TS/Vốn bị giới hạn → NH có động cơ "optimize" để lách quy định (regulatory arbitrage).'},
-  // ---- C15 ----
-  {id:11,chapter:'C15',text:'Với c=0.2, rr=0.1, e=0.05, số nhân tiền m bằng bao nhiêu?',options:['m = 10 (1/rr)','m = 5','m ≈ 3.43','m ≈ 2.0'],answer:2,explanation:'m = (1+c)/(rr+e+c) = (1+0.2)/(0.1+0.05+0.2) = 1.2/0.35 ≈ 3.43. So sánh: m đơn giản = 1/rr = 10 >> 3.43. c và e làm số nhân giảm đáng kể vì "rò rỉ" tiền ra khỏi hệ thống ngân hàng.'},
-  {id:12,chapter:'C15',text:'Người dân rút $100 triệu tiền mặt từ ngân hàng. Tác động lên MB và M là:',options:['MB giảm $100M; M giảm nhiều hơn $100M','MB không đổi; M giảm (vì c↑ → m↓)','MB tăng; M không đổi','MB giảm $100M; M giảm đúng $100M'],answer:1,explanation:'MB = C + R. Rút $100M mặt: C↑$100M, R↓$100M → MB = C+R không đổi. NHƯNG c = C/D tăng → m = (1+c)/(rr+e+c) giảm → M = m×MB giảm. Đây là bẫy kinh điển: rút tiền mặt KHÔNG thay đổi MB nhưng LÀM GIẢM M.'},
-  {id:13,chapter:'C15',text:'Khủng hoảng tài chính 1929-1933: Fed tăng MB nhưng M vẫn giảm 1/3. Giải thích:',options:['Fed không thực sự tăng MB','Tăng rr làm m giảm nhiều hơn MB tăng','c tăng (dân hoảng loạn rút tiền mặt) VÀ e tăng (NH sợ mất thanh khoản giữ ER) → m giảm mạnh hơn MB tăng','Fed sai lầm giảm MB thay vì tăng'],answer:2,explanation:'Cuộc Đại Suy thoái: bank runs → c↑ mạnh; NH sợ → e↑ mạnh → m giảm cực mạnh. Dù Fed bơm MB, M = m×MB vẫn giảm vì m giảm nhanh hơn MB tăng. Friedman & Schwartz (1963): đây là sai lầm CSTT lớn nhất lịch sử Mỹ. Fed đã không bơm đủ MB để bù đắp m giảm.'},
-  {id:14,chapter:'C15',text:'Ai trong 3 chủ thể có ảnh hưởng TRỰC TIẾP nhất đến MB?',options:['Ngân hàng thương mại (qua quyết định dự trữ)','Công chúng (qua tỷ lệ nắm giữ tiền mặt)','Fed (NHTW) qua OMO, cho vay chiết khấu','Bộ Tài chính qua thu chi ngân sách'],answer:2,explanation:'Fed kiểm soát trực tiếp MB = C + R thông qua: (1) OMO — mua/bán CK CP; (2) Cho vay chiết khấu (BR). Ngân hàng TM kiểm soát e (gián tiếp ảnh hưởng m). Công chúng kiểm soát c (gián tiếp ảnh hưởng m). Chỉ Fed có công cụ để thay đổi MB trực tiếp.'},
-  {id:15,chapter:'C15',text:'Fed bơm $200 tỷ qua OMO mua, với c=0.3, rr=0.1, e=0.02. Cung tiền M tăng bao nhiêu?',options:['$200 tỷ','$2,000 tỷ (1/rr × MB)','≈ $578 tỷ','≈ $1,400 tỷ'],answer:2,explanation:'m = (1+0.3)/(0.1+0.02+0.3) = 1.3/0.42 ≈ 3.095 ≈ 2.89. ΔM = m × ΔMB ≈ 2.89 × $200 ≈ $578 tỷ. (Số nhân đơn giản 1/0.1=10 cho $2,000 tỷ — quá cao vì bỏ qua c và e). Thực tế số nhân thấp hơn nhiều so với lý thuyết đơn giản.'},
-  // ---- C16 ----
-  {id:16,chapter:'C16',text:'Fed giảm lãi suất chiết khấu nhưng KHÔNG có ngân hàng nào đang vay chiết khấu (BR=0). Lãi suất liên ngân hàng (iff) sẽ:',options:['Giảm ngay lập tức','Tăng vì ngân hàng cần bù đắp chi phí','Không đổi — trần lãi suất hạ xuống nhưng không ràng buộc điểm cân bằng','Giảm sau độ trễ 3-6 tháng'],answer:2,explanation:'Khi BR=0: Rs cắt Rd ở đoạn thẳng đứng (tại mức NBR). Giảm lãi suất chiết khấu chỉ làm trần (đoạn nằm ngang trên Rs) dịch xuống — nhưng điểm cân bằng iff đang nằm trên đoạn thẳng đứng, không bị ràng buộc bởi trần → iff không đổi. Chỉ khi lãi suất chiết khấu mới < iff thì NH mới bắt đầu vay.'},
-  {id:17,chapter:'C16',text:'OMO (nghiệp vụ thị trường mở) được coi là công cụ tốt nhất vì:',options:['Tác động mạnh nhất đến nền kinh tế','Fed kiểm soát 100%, linh hoạt, có thể đảo ngược nhanh, tác động ngay lên dự trữ NH','Không cần sự chấp thuận của Quốc hội','Không gây lạm phát'],answer:1,explanation:'Ưu điểm của OMO: (1) Fed quyết định chủ động — không phụ thuộc NH có muốn vay không; (2) Linh hoạt — bất kỳ quy mô nào; (3) Có thể đảo ngược nhanh (bán lại/mua lại); (4) Tác động tức thì lên NBR → iff. So với Discount: phụ thuộc NH vay. So với RR: kém linh hoạt, gây biến động.'},
-  {id:18,chapter:'C16',text:'Quantitative Easing (QE) khác OMO thông thường ở điểm chính nào?',options:['QE chỉ dành cho thời bình, OMO cho khủng hoảng','QE mua CK ngắn hạn; OMO mua CK dài hạn','QE mua tài sản quy mô lớn gồm CK DÀI HẠN và MBS khi iff ≈ 0 (ZLB); OMO thông thường mua CK ngắn hạn','QE do Bộ Tài chính thực hiện, OMO do Fed'],answer:2,explanation:'OMO thông thường: CK ngắn hạn, quy mô vừa, điều chỉnh iff. QE: (1) Tài sản dài hạn (Treasury 10Y, MBS); (2) Quy mô khổng lồ (nghìn tỷ $); (3) Mục tiêu: giảm lãi suất DÀI HẠN khi iff đã = 0 (Zero Lower Bound); (4) Tác động qua Tobin\'s q và wealth effect. QE1 (2008): Fed mua $1.7T MBS và CK CP.'},
-  {id:19,chapter:'C16',text:'Tăng tỷ lệ dự trữ bắt buộc (rr) có tác động KÉP là:',options:['Chỉ tăng iff, không ảnh hưởng M','Giảm iff và tăng M','Tăng iff (Rd dịch phải) VÀ giảm M (m giảm) — thắt chặt kép','Tăng iff nhưng tăng M vì NH vay thêm từ Fed'],answer:2,explanation:'rr↑ có tác động kép: (1) Thị trường dự trữ: NH cần giữ nhiều RR hơn → Rd dịch phải → iff↑; (2) Số nhân tiền: m = (1+c)/(rr+e+c), rr↑ → m↓ → M = m×MB↓. Đây là lý do RR ít dùng: tác động quá mạnh và khó kiểm soát chính xác.'},
-  {id:20,chapter:'C16',text:'IOR (Interest on Reserves) đóng vai trò gì trên thị trường dự trữ?',options:['Trần (ceiling) của iff','Sàn (floor) của iff — iff không thể giảm xuống dưới IOR','Mức cân bằng của iff','Không ảnh hưởng iff vì IOR là lãi suất nội bộ của Fed'],answer:1,explanation:'IOR = lãi suất Fed trả cho dự trữ NH gửi tại Fed. NH không bao giờ cho vay liên NH với lãi suất thấp hơn IOR (vì gửi tại Fed chắc hơn). → IOR = SÀN của iff. Sau 2008, Fed dùng IOR để kiểm soát iff: muốn tăng iff → tăng IOR; muốn giảm iff → giảm IOR. Đây là "floor system".'},
-  // ---- C17 ----
-  {id:21,chapter:'C17',text:'Vấn đề "time-inconsistency" của NHTW là gì?',options:['NHTW thay đổi mục tiêu quá thường xuyên','NHTW có động cơ mở rộng tiền tệ bất ngờ sau khi đã hứa giữ lạm phát thấp — phá vỡ cam kết để đạt lợi ích ngắn hạn','NHTW không thể dự báo lạm phát chính xác','NHTW mất quá nhiều thời gian ra quyết định'],answer:1,explanation:'Time-inconsistency: NHTW hứa LP thấp → kỳ vọng LP thấp → Sau đó NHTW cám dỗ mở rộng tiền tệ (để Y↑ ngắn hạn) → LP tăng → mất uy tín. Vòng lặp: kỳ vọng LP cao → thực tế LP cao. Giải pháp: Neo danh nghĩa (cam kết ràng buộc) + Độc lập NHTW + Minh bạch/trách nhiệm giải trình.'},
-  {id:22,chapter:'C17',text:'Lạm phát mục tiêu (Inflation Targeting) KHÔNG bao gồm yếu tố nào sau đây?',options:['Công bố mục tiêu LP số cụ thể (VD: 2% ± 1%)','Cam kết ổn định giá là ưu tiên hàng đầu','Sử dụng DUY NHẤT M2 làm chỉ báo trung gian','Minh bạch thông qua báo cáo lạm phát định kỳ'],answer:2,explanation:'5 yếu tố của IT: (1) Công bố mục tiêu LP số cụ thể; (2) Ổn định giá là ưu tiên thể chế; (3) SỬ DỤNG NHIỀU CHỈ SỐ THÔNG TIN (không chỉ M2 — vì mối quan hệ M-LP không ổn định); (4) Minh bạch; (5) Trách nhiệm giải trình. Điểm C SAI: IT không dùng duy nhất M2.'},
-  {id:23,chapter:'C17',text:'Taylor Rule: π=4%, π*=2%, r*=2%, output gap=+2%. Lãi suất mục tiêu i_ff là:',options:['6%','7%','8%','9%'],answer:2,explanation:'i_ff = π + r* + 0.5(π−π*) + 0.5(gap) = 4 + 2 + 0.5(4−2) + 0.5(2) = 4+2+1+1 = 8%. Diễn giải: LP vượt mục tiêu 2pp → cộng thêm 1pp; Sản lượng vượt tiềm năng 2% → cộng thêm 1pp. Fed cần tăng lãi suất để hạ nhiệt kinh tế.'},
-  {id:24,chapter:'C17',text:'"Hierarchical mandate" của ECB khác "dual mandate" của Fed ở điểm cốt lõi nào?',options:['ECB có thể in tiền nhiều hơn Fed','Fed ưu tiên ổn định giá tuyệt đối; ECB cân bằng LP và việc làm','ECB coi ổn định giá là ưu tiên TUYỆT ĐỐI; Fed cân bằng cả LP lẫn việc làm (ngang nhau)','Cả hai đều có mandate như nhau, chỉ khác tên gọi'],answer:2,explanation:'ECB (Hierarchical): ổn định giá > tất cả → chậm nới lỏng khi suy thoái nếu LP chưa về mục tiêu. Fed (Dual): LP và việc làm ngang nhau → nới lỏng mạnh hơn/sớm hơn khi thất nghiệp tăng. Bằng chứng: 2008-2009, Fed cắt lãi suất nhanh và mạnh hơn ECB nhiều.'},
-  {id:25,chapter:'C17',text:'Lạm phát tăng 1pp theo Taylor Rule, lãi suất danh nghĩa cần tăng bao nhiêu để lãi suất THỰC tăng?',options:['Tăng 0.5pp','Tăng đúng 1pp (lãi suất thực không đổi)','Tăng 1.5pp (lãi suất thực tăng 0.5pp) — "Taylor Principle"','Tăng 2pp'],answer:2,explanation:'"Taylor Principle": khi LP tăng 1pp, i_ff tăng 1.5pp (1pp từ hạng π + 0.5pp từ hạng 0.5×(π−π*)) → lãi suất thực r = i − π tăng 0.5pp. NẾU i chỉ tăng 1pp → r không đổi → CSTT không đủ thắt chặt → LP không kiềm được. Đây là điều kiện cần thiết để CSTT ổn định lạm phát.'},
-  // ---- C18 ----
-  {id:26,chapter:'C18',text:'Can thiệp ngoại hối CÓ VÔ HIỆU HÓA (sterilized) khác KHÔNG VÔ HIỆU HÓA (unsterilized) như thế nào?',options:['Sterilized nhanh hơn về tác động lên tỷ giá','Unsterilized: can thiệp + OMO bù đắp → MB không đổi; Sterilized: can thiệp không kèm OMO → MB thay đổi','Unsterilized: MB không đổi; Sterilized: MB thay đổi','Sterilized: MB thay đổi; Unsterilized: MB không đổi — tác động mạnh hơn lên cung tiền'],answer:3,explanation:'ĐÚNG: Unsterilized = không bù đắp → MB thay đổi → M thay đổi → tác động MẠNH lên tỷ giá và kinh tế. Sterilized = kèm OMO bù đắp → MB không đổi → M không đổi → tác động YẾU (chỉ qua kênh trực tiếp). Đáp án C đúng: Sterilized MB không đổi; Unsterilized MB thay đổi.'},
-  {id:27,chapter:'C18',text:'Bộ ba bất khả thi (Impossible Trinity): một quốc gia KHÔNG THỂ đồng thời có:',options:['Lạm phát thấp, tăng trưởng cao và thất nghiệp thấp','Tỷ giá cố định, tự do dòng vốn và CSTT độc lập','Tăng trưởng xuất khẩu, nhập khẩu thấp và dự trữ ngoại hối lớn','Độc lập tài khóa, độc lập tiền tệ và thặng dư ngân sách'],answer:1,explanation:'Mundell-Fleming: Impossible Trinity gồm 3 mục tiêu: (1) Tỷ giá cố định, (2) Tự do dòng vốn, (3) CSTT độc lập. Chỉ chọn được 2/3. Ví dụ: HK = (1)+(2), mất (3). TQ = (1)+(3), kiểm soát vốn để mất (2). Mỹ = (2)+(3), tỷ giá thả nổi = mất (1).'},
-  {id:28,chapter:'C18',text:'Thâm hụt tài khoản vãng lai (CA < 0). Theo đồng nhất thức BOP, điều gì PHẢI xảy ra?',options:['Dự trữ ngoại hối tăng tự động','Tài khoản tài chính FA > 0 (nhập ròng vốn — vốn từ nước ngoài vào)','Đồng nội tệ phải phá giá ngay lập tức','Cung tiền nội địa giảm tự động'],answer:1,explanation:'CA + FA = 0 (bỏ qua sai số). CA < 0 → FA phải > 0 (nhập ròng vốn). Nghĩa là: nhập khẩu > xuất khẩu về hàng hóa/dịch vụ → cần vốn nước ngoài vào để tài trợ. Mỹ: thâm hụt CA lớn nhất thế giới → FA > 0 (TQ, Nhật... mua trái phiếu Mỹ). Nếu FA không đủ → dự trữ ngoại hối giảm.'},
-  {id:29,chapter:'C18',text:'Tỷ giá mục tiêu (exchange rate targeting) có nhược điểm LỚN NHẤT là:',options:['Quá phức tạp để thực hiện','Mất CSTT độc lập — phải đi theo CSTT của nước neo','Gây lạm phát cao','Làm tăng thất nghiệp'],answer:1,explanation:'Khi neo tỷ giá vào USD: nước neo PHẢI giữ lãi suất tương đương Mỹ để tránh dòng vốn rời đi. Mỹ tăng lãi suất → nước neo phải tăng theo (dù kinh tế không cần) → mất tự chủ CSTT. Thêm: dễ bị tấn công đầu cơ khi thị trường nghi ngờ cam kết (bài học: Thái Lan 1997, Anh 1992).'},
-  {id:30,chapter:'C18',text:'Nước A có CA thặng dư lớn. Theo kinh tế học, điều này ĐÚNG khi:',options:['Nước A tiêu dùng nhiều hơn sản xuất','Nước A tiết kiệm > đầu tư nội địa — tích lũy tài sản nước ngoài ròng','Nước A có lạm phát cao hơn các đối tác','Đồng tiền nước A đang yếu'],answer:1,explanation:'CA thặng dư = xuất khẩu ròng > 0 = tiết kiệm quốc gia > đầu tư nội địa. Phần tiết kiệm dư thừa chảy ra nước ngoài dưới dạng FA < 0 (mua tài sản nước ngoài). VD: Đức, Nhật, TQ — tỷ lệ tiết kiệm cao → CA thặng dư lớn → tích lũy tài sản nước ngoài (trái phiếu, FDI).'},
-  // ---- C26 ----
-  {id:31,chapter:'C26',text:'CSTT mở rộng (M ↑). Chuỗi tác động qua kênh TỶ GIÁ đến Y là:',options:['M↑ → i↑ → Vốn vào → Nội tệ mạnh → NX↑ → Y↑','M↑ → i↓ → Vốn ra → Nội tệ yếu (E↑) → Xuất khẩu rẻ hơn → NX↑ → Y↑','M↑ → i↓ → Tỷ giá không đổi → NX không đổi → Y↑ chỉ qua đầu tư','M↑ → Tỷ giá tăng → Nhập khẩu rẻ hơn → C↑ → Y↑'],answer:1,explanation:'Kênh tỷ giá: M↑ → i↓ → tài sản nội địa kém hấp dẫn → vốn chảy ra → cầu nội tệ giảm → nội tệ mất giá (E↑, phải dùng nhiều nội tệ hơn) → hàng xuất khẩu rẻ hơn tương đối → XK↑, NK↓ → NX↑ → Y↑. Kênh này quan trọng với nền kinh tế mở nhỏ (VN, Singapore) hơn là Mỹ.'},
-  {id:32,chapter:'C26',text:'Tobin\'s q = 0.7. Điều này hàm ý doanh nghiệp nên:',options:['Đầu tư mới vì cổ phiếu đang đắt','Mua lại doanh nghiệp hiện có vì rẻ hơn xây mới — I mới không có lợi','Phát hành thêm cổ phiếu để huy động vốn','Tăng cổ tức vì q cao'],answer:1,explanation:'q = Giá thị trường DN / Chi phí thay thế vốn. q=0.7 < 1: mua DN trên thị trường chứng khoán ($0.7) rẻ hơn xây mới ($1) → không có động cơ đầu tư mới → I↓. q>1: đầu tư mới có lợi. Tobin\'s q kết nối thị trường chứng khoán với đầu tư thực — đây là kênh quan trọng của CSTT.'},
-  {id:33,chapter:'C26',text:'"Financial Accelerator" (Bernanke-Gertler) mô tả cơ chế nào?',options:['CSTT mở rộng luôn khuếch đại tác động lên GDP','Khi tài sản DN giảm giá → net worth↓ → adverse selection↑ → tín dụng siết → I↓ → Y↓ → tài sản tiếp tục giảm (vòng xoáy tự khuếch đại)','NHTW khuếch đại tín hiệu OMO qua hệ thống ngân hàng','Lạm phát tăng tốc theo cấp số nhân'],answer:1,explanation:'Financial Accelerator: cú sốc ban đầu (M↓ hoặc giá TS↓) → net worth DN↓ → adverse selection↑ và moral hazard↑ → NH siết tín dụng → I↓ → Y↓ → giá TS tiếp tục↓ → net worth↓ thêm... Vòng xoáy tự khuếch đại. Giải thích tại sao suy thoái sau khủng hoảng tài chính sâu và kéo dài hơn (2008-2009 vs 2001).'},
-  {id:34,chapter:'C26',text:'Tại sao CSTT mở rộng có thể KHÔNG HIỆU QUẢ khi lãi suất = 0% (Zero Lower Bound)?',options:['Fed không thể mua thêm trái phiếu','Kênh lãi suất bị tắc (i không thể âm) → không khuyến khích thêm đầu tư qua kênh này; NH giữ ER thay vì cho vay','CSTT mở rộng luôn gây lạm phát quá cao','Số nhân tiền âm khi i = 0'],answer:1,explanation:'ZLB (Zero Lower Bound): i không thể giảm dưới 0 (tiền mặt cho lợi tức = 0 → không ai mua trái phiếu lãi âm lớn). → Kênh lãi suất truyền thống bị tắc. Thêm: NH giữ ER lớn (thay vì cho vay) vì e↑ → m↓ → dù MB↑ nhiều, M tăng ít. Giải pháp: QE (kênh giá tài sản), Forward Guidance (kênh kỳ vọng), kênh tỷ giá.'},
-  {id:35,chapter:'C26',text:'Bốn bài học quan trọng về điều hành CSTT theo Mishkin (C26) gồm:',options:['Tập trung duy nhất vào lạm phát; bỏ qua lãi suất dài hạn; không dùng QE; chờ tín hiệu rõ ràng mới hành động','Không chỉ nhìn lãi suất ngắn hạn danh nghĩa; theo dõi giá tài sản khác; CSTT vẫn hiệu quả ở ZLB (qua kênh khác); Tránh giảm phát bằng mọi giá','Tăng lãi suất ngay khi lạm phát nhích lên; giảm lãi suất chậm; không dùng forward guidance; ưu tiên ổn định tỷ giá','Chỉ dùng OMO; không dùng discount window; tăng rr khi lạm phát cao; giảm rr khi suy thoái'],answer:1,explanation:'4 bài học (Mishkin C26): (1) Không chỉ nhìn i ngắn hạn danh nghĩa — xem i thực, i dài hạn, spread; (2) Các giá tài sản khác quan trọng (tỷ giá, CK, BĐS); (3) CSTT vẫn hiệu quả khi iff=0 — QE, Forward Guidance, kênh tỷ giá; (4) Tránh giảm phát — mục tiêu LP dương (+2%), hành động nhanh và mạnh.'},
-  // --- Câu tổng hợp ---
-  {id:36,chapter:'C16',text:'CSTT MỞ RỘNG: Fed mua OMO → NBR↑ → Rs dịch phải → iff ______. Đây là CSTT ______.',options:['↑; thắt chặt','↓; thắt chặt','↓; mở rộng','↑; mở rộng'],answer:2,explanation:'OMO mua → tăng dự trữ cho NH → Rs dịch PHẢI → tại điểm cân bằng mới, iff giảm → chi phí vốn rẻ hơn → tín dụng mở rộng → CSTT MỞ RỘNG (expansionary). Nhớ: Rs dịch phải = iff giảm.'},
-  {id:37,chapter:'C15',text:'Fed thực hiện OMO mua $100 tỷ. Đây là thay đổi của loại dự trữ nào?',options:['Dự trữ bắt buộc (RR) tăng $100 tỷ','Dự trữ không vay (NBR) tăng $100 tỷ','Dự trữ vay (BR) tăng $100 tỷ','Tổng dự trữ không đổi'],answer:1,explanation:'OMO mua: Fed mua CK từ NH → trả bằng cách tăng dự trữ NH tại Fed → đây là dự trữ KHÔNG VAY (NBR = Non-Borrowed Reserves). BR (Borrowed Reserves) chỉ thay đổi khi NH vay từ Fed qua discount window. MB = C + R = C + NBR + BR.'},
-  {id:38,chapter:'C17',text:'Một NHTW cam kết mục tiêu lạm phát 2% nhưng sau đó mở rộng tiền tệ để hạ thất nghiệp. Đây là ví dụ về:',options:['Chính sách phản chu kỳ hợp lý','Time-inconsistency — phá vỡ cam kết vì lợi ích ngắn hạn','Lạm phát mục tiêu thành công','Dual mandate hoạt động hiệu quả'],answer:1,explanation:'Time-inconsistency điển hình: hứa LP=2% → kỳ vọng thấp → sau đó "lén" mở rộng tiền tệ vì muốn Y↑ ngắn hạn → LP tăng → mất uy tín → kỳ vọng LP cao hơn lần sau. Đây là lý do NHTW cần độc lập và neo danh nghĩa ràng buộc — không phải vì NHTW xấu, mà vì incentive cấu trúc.'},
-  {id:39,chapter:'C18',text:'Đồng USD tăng giá mạnh so với EUR. Tác động lên nền kinh tế Mỹ:',options:['Xuất khẩu Mỹ tăng; nhập khẩu vào Mỹ giảm','Xuất khẩu Mỹ giảm (đắt hơn tương đối); nhập khẩu vào Mỹ tăng (rẻ hơn) → NX↓ → Y↓','Không ảnh hưởng vì Mỹ có thị trường nội địa lớn','Lạm phát Mỹ tăng vì hàng nhập khẩu đắt hơn'],answer:1,explanation:'USD mạnh (E↓ — phải dùng ít USD hơn để mua ngoại tệ): hàng Mỹ đắt hơn với người nước ngoài → XK Mỹ↓; hàng nước ngoài rẻ hơn với người Mỹ → NK↑. NX = XK − NK↓ → Y↓. Thêm: nhập khẩu rẻ hơn → lạm phát Mỹ có xu hướng↓ (không phải tăng). Trump 2018-2019 phàn nàn USD quá mạnh vì lý do này.'},
-  {id:40,chapter:'C26',text:'Kênh nào trong CSTT được kích hoạt NGAY KHI THÔNG BÁO CSTT, trước khi thực thi?',options:['Kênh lãi suất','Kênh tín dụng ngân hàng','Kênh kỳ vọng (expectations channel)','Kênh balance sheet'],answer:2,explanation:'Kênh kỳ vọng: thị trường phản ứng ngay khi Fed thông báo (trước cả khi OMO được thực hiện). Giá CK, tỷ giá, lãi suất dài hạn điều chỉnh ngay dựa trên kỳ vọng về CSTT tương lai. Forward Guidance hoạt động hoàn toàn qua kênh này — cam kết giữ i thấp lâu dài → lãi suất dài hạn giảm ngay hôm nay.'},
-];
-
-const THEORY_DATA = {
-  'C2': {
-    title: 'C2 — Hệ thống Tài chính',
-    content: `
-    <h3>Chức năng thị trường tài chính</h3>
-    <p>Chuyển vốn từ <b>lenders-savers</b> (tiết kiệm) sang <b>borrowers-spenders</b> (đầu tư). Tăng hiệu quả kinh tế, tạo thanh khoản, giảm chi phí giao dịch.</p>
-    <h3>Phân loại thị trường</h3>
-    <table>
-      <tr><th>Tiêu chí</th><th>Loại 1</th><th>Loại 2</th></tr>
-      <tr><td>Phát hành</td><td><b>Sơ cấp</b> — IPO, phát hành mới</td><td><b>Thứ cấp</b> — giao dịch lại (NYSE)</td></tr>
-      <tr><td>Kỳ hạn</td><td><b>Tiền tệ</b> — &lt;1 năm (T-bills)</td><td><b>Vốn</b> — ≥1 năm (cổ phiếu, TP)</td></tr>
-      <tr><td>Tổ chức</td><td><b>Tập trung</b> — sàn giao dịch</td><td><b>OTC</b> — qua dealer (NASDAQ)</td></tr>
-      <tr><td>Tài trợ</td><td><b>Trực tiếp</b> — mua CK</td><td><b>Gián tiếp</b> — qua TGTC</td></tr>
-    </table>
-    <h3>Thông tin bất cân xứng</h3>
-    <table>
-      <tr><th>Vấn đề</th><th>Thời điểm</th><th>Định nghĩa</th><th>Giải pháp</th></tr>
-      <tr><td><b>Adverse Selection</b></td><td>TRƯỚC giao dịch</td><td>Người rủi ro cao tìm vay nhiều hơn</td><td>Sàng lọc, tài sản đảm bảo</td></tr>
-      <tr><td><b>Moral Hazard</b></td><td>SAU giao dịch</td><td>Người vay dùng tiền vào việc rủi ro hơn cam kết</td><td>Giám sát, covenant</td></tr>
-    </table>
-    <h3>Tại sao trung gian tài chính tồn tại?</h3>
-    <p><b>(1) Chi phí giao dịch thấp</b> — economies of scale. <b>(2) Risk sharing</b> — asset transformation. <b>(3) Xử lý thông tin bất cân xứng</b> — screening + monitoring.</p>`
-  },
-  'C9': {
-    title: 'C9 — Ngân hàng & Quản trị',
-    content: `
-    <h3>Bảng CĐKT ngân hàng</h3>
-    <div class="formula-box">TÀI SẢN (Uses)         NỢ + VỐN (Sources)
-Dự trữ R=RR+ER       Tiền gửi không kỳ hạn
-Chứng khoán          Tiền gửi tiết kiệm/CDs
-Cho vay              Vay Fed funds / Vay chiết khấu
-Tài sản cố định      Vốn chủ sở hữu (= TS - Nợ)</div>
-    <h3>4 vấn đề quản trị</h3>
-    <table>
-      <tr><th>Vấn đề</th><th>Mục tiêu</th><th>Rủi ro nếu không quản lý</th></tr>
-      <tr><td><b>Thanh khoản</b></td><td>Đủ R đáp ứng rút tiền</td><td>Bank run, phá sản</td></tr>
-      <tr><td><b>Tài sản</b></td><td>Max lợi nhuận, min rủi ro</td><td>Nợ xấu, mất vốn</td></tr>
-      <tr><td><b>Nợ</b></td><td>Huy động chi phí thấp</td><td>Chi phí cao, ăn mòn lợi nhuận</td></tr>
-      <tr><td><b>Vốn</b></td><td>Đủ an toàn, tối ưu ROE</td><td>Phá sản hoặc ROE thấp</td></tr>
-    </table>
-    <h3>Công thức hiệu quả</h3>
-    <div class="formula-box">ROA = Lợi nhuận / Tổng tài sản   (benchmark: 0.5–1.5%)
-ROE = Lợi nhuận / Vốn CSH       (benchmark: 10–20%)
-EM  = Tổng TS / Vốn CSH         (đòn bẩy)
-ROE = ROA × EM   ← quan trọng!</div>
-    <p style="color:var(--danger);font-size:.85rem">⚠️ EM cao → ROE cao nhưng RỦI RO PHÁ SẢN cao. NH A (ROA=1.5%, EM=10) an toàn hơn NH B (ROA=0.8%, EM=18) dù ROE gần bằng nhau.</p>`
-  },
-  'C15': {
-    title: 'C15 — Quá trình Cung tiền',
-    content: `
-    <h3>Công thức cốt lõi</h3>
-    <div class="formula-box">MB = C + R = MBn + BR       # Cơ sở tiền
-m  = (1+c) / (rr+e+c)       # Số nhân tiền đầy đủ
-M  = m × MB                  # Cung tiền
-m_simple = 1/rr              # Số nhân đơn giản (c=e=0)</div>
-    <h3>Ba chủ thể trong cung tiền</h3>
-    <table>
-      <tr><th>Chủ thể</th><th>Kiểm soát</th><th>Biến số</th></tr>
-      <tr><td><b>Fed (NHTW)</b></td><td>Trực tiếp</td><td>MB, rr — qua OMO, Discount, RR</td></tr>
-      <tr><td><b>Ngân hàng TM</b></td><td>Gián tiếp</td><td>e (ER/D) — giữ bao nhiêu ER</td></tr>
-      <tr><td><b>Công chúng</b></td><td>Gián tiếp</td><td>c (C/D) — tiền mặt vs gửi NH</td></tr>
-    </table>
-    <h3>Tác động lên số nhân m</h3>
-    <table>
-      <tr><th>Biến thay đổi</th><th>m</th><th>M</th><th>Ghi chú</th></tr>
-      <tr><td>rr ↑</td><td>↓</td><td>↓</td><td></td></tr>
-      <tr><td>e ↑</td><td>↓</td><td>↓</td><td>NH thận trọng sau khủng hoảng</td></tr>
-      <tr><td>c ↑</td><td>↓</td><td>↓</td><td>⚠️ MB KHÔNG ĐỔI!</td></tr>
-      <tr><td>MB ↑ (OMO mua)</td><td>—</td><td>↑</td><td>m không đổi</td></tr>
-    </table>`
-  },
-  'C16': {
-    title: 'C16 — Công cụ CSTT',
-    content: `
-    <h3>Thị trường dự trữ — Sơ đồ</h3>
-    <div class="formula-box">    iff
-     |
-  id |--------→  Trần (Discount rate) — Rs nằm ngang tại đây
-     |      /|
-iff* |..../ |   ← Điểm cân bằng
-     |   /  |
-  ior|--/---|   Sàn (IOR) — iff không thể xuống dưới
-     |      R (Dự trữ)
-         Rs cắt Rd ở đoạn dốc = cân bằng thông thường</div>
-    <h3>Bốn công cụ truyền thống</h3>
-    <table>
-      <tr><th>Công cụ</th><th>Cơ chế</th><th>Ưu điểm</th><th>Nhược điểm</th></tr>
-      <tr><td><b>OMO</b></td><td>Mua/bán CK CP</td><td>Linh hoạt, đảo ngược được, 100% Fed kiểm soát</td><td>Cần thị trường CK phát triển</td></tr>
-      <tr><td><b>Discount</b></td><td>Cho vay tại lãi suất id</td><td>LOLR, hỗ trợ NH</td><td>Phụ thuộc NH muốn vay; moral hazard</td></tr>
-      <tr><td><b>Reserve Req</b></td><td>Thay đổi rr</td><td>Tác động mạnh</td><td>Không linh hoạt, gây biến động</td></tr>
-      <tr><td><b>IOR</b></td><td>Trả lãi trên R</td><td>Thiết lập sàn iff chính xác</td><td></td></tr>
-    </table>
-    <h3>Công cụ phi truyền thống (khi iff ≈ 0)</h3>
-    <table>
-      <tr><th>Công cụ</th><th>Cơ chế</th></tr>
-      <tr><td><b>QE</b></td><td>Mua TS quy mô lớn (CK dài hạn, MBS) → giảm lãi suất dài hạn</td></tr>
-      <tr><td><b>Forward Guidance</b></td><td>Cam kết giữ lãi suất thấp lâu dài → ảnh hưởng kỳ vọng ngay hôm nay</td></tr>
-    </table>`
-  },
-  'C17': {
-    title: 'C17 — Chiến lược CSTT',
-    content: `
-    <h3>Taylor Rule</h3>
-    <div class="formula-box">i_ff = π + r* + 0.5(π − π*) + 0.5(Y_gap)
-
-π   = lạm phát hiện tại
-π*  = mục tiêu lạm phát (thường 2%)
-r*  = lãi suất thực cân bằng (thường 2%)
-gap = Y_thực − Y_tiềm_năng (% — dương = quá nóng)</div>
-    <p style="font-size:.85rem"><b>Taylor Principle:</b> Khi π↑1pp → i_ff phải tăng 1.5pp (không phải 1pp) → lãi suất thực mới tăng 0.5pp → CSTT mới đủ thắt chặt.</p>
-    <h3>So sánh Mandate</h3>
-    <table>
-      <tr><th>Tiêu chí</th><th>Hierarchical (ECB)</th><th>Dual (Fed)</th></tr>
-      <tr><td>Ưu tiên</td><td>LP trước, việc làm sau</td><td>LP và việc làm ngang nhau</td></tr>
-      <tr><td>Phản ứng suy thoái</td><td>Chậm hơn nếu LP chưa thấp</td><td>Nới lỏng sớm hơn</td></tr>
-    </table>
-    <h3>Lạm phát mục tiêu (Inflation Targeting)</h3>
-    <p>5 yếu tố: (1) Công bố mục tiêu LP số cụ thể; (2) Ổn định giá là ưu tiên; (3) Sử dụng <b>nhiều</b> chỉ số thông tin; (4) Minh bạch; (5) Trách nhiệm giải trình.</p>
-    <h3>Time-Inconsistency</h3>
-    <p>NHTW hứa LP thấp → kỳ vọng thấp → bị cám dỗ mở rộng tiền tệ bất ngờ → LP tăng → mất uy tín. <b>Giải pháp:</b> Neo danh nghĩa + Độc lập NHTW + Minh bạch.</p>`
-  },
-  'C18': {
-    title: 'C18 — Tài chính Quốc tế',
-    content: `
-    <h3>Can thiệp ngoại hối</h3>
-    <table>
-      <tr><th>Loại</th><th>MB</th><th>Hiệu quả</th></tr>
-      <tr><td><b>Không vô hiệu hóa</b></td><td>Thay đổi</td><td>Mạnh (qua MB + trực tiếp)</td></tr>
-      <tr><td><b>Vô hiệu hóa</b></td><td>Không đổi (OMO bù)</td><td>Yếu (chỉ trực tiếp)</td></tr>
-    </table>
-    <h3>Bộ ba bất khả thi</h3>
-    <div class="formula-box">Chỉ chọn được 2/3:
-(1) Tỷ giá cố định
-(2) Tự do dòng vốn
-(3) CSTT độc lập
-
-HK = (1)+(2): mất (3)
-TQ = (1)+(3): mất (2) — kiểm soát vốn
-Mỹ = (2)+(3): mất (1) — tỷ giá thả nổi</div>
-    <h3>Cán cân thanh toán (BOP)</h3>
-    <p><b>CA + FA = 0</b>. CA < 0 (thâm hụt) → FA > 0 (cần vốn vào). CA > 0 (thặng dư) → FA < 0 (tích lũy tài sản nước ngoài).</p>
-    <h3>Tỷ giá mục tiêu — Nhược điểm lớn nhất</h3>
-    <p>Mất CSTT độc lập. Dễ bị tấn công đầu cơ khi thị trường nghi ngờ. Bài học: Thái Lan 1997, Anh 1992 (Black Wednesday).</p>`
-  },
-  'C26': {
-    title: 'C26 — Cơ chế Truyền dẫn',
-    content: `
-    <h3>6 kênh truyền dẫn CSTT (M ↑)</h3>
-    <table>
-      <tr><th>Kênh</th><th>Chuỗi</th></tr>
-      <tr><td><b>Lãi suất</b></td><td>M↑ → i_thực↓ → I↑ → Y↑</td></tr>
-      <tr><td><b>Tỷ giá</b></td><td>M↑ → i↓ → Vốn ra → E↑ → NX↑ → Y↑</td></tr>
-      <tr><td><b>Tobin's q</b></td><td>M↑ → i↓ → P_CK↑ → q↑ → I↑ → Y↑</td></tr>
-      <tr><td><b>Wealth effect</b></td><td>M↑ → P_tài sản↑ → Wealth↑ → C↑ → Y↑</td></tr>
-      <tr><td><b>Bank lending</b></td><td>M↑ → Tiền gửi↑ → Cho vay↑ → I,C↑ → Y↑</td></tr>
-      <tr><td><b>Balance sheet</b></td><td>M↑ → NW↑ → AS↓,MH↓ → Cho vay↑ → Y↑</td></tr>
-    </table>
-    <h3>Tobin's q</h3>
-    <div class="formula-box">q = Giá thị trường DN / Chi phí thay thế vốn
-q > 1 → đầu tư mới có lợi (CK đắt hơn xây mới)
-q < 1 → mua DN cũ rẻ hơn đầu tư mới → I↓</div>
-    <h3>4 bài học điều hành CSTT</h3>
-    <p>(1) Không chỉ nhìn i ngắn hạn danh nghĩa — xem i thực, i dài hạn. (2) Giá tài sản khác cũng quan trọng (tỷ giá, CK, BĐS). (3) CSTT hiệu quả ngay cả khi iff=0 — QE, Forward Guidance. (4) Tránh giảm phát bằng mọi giá — mục tiêu LP dương (+2%).</p>
-    <h3>Giảm phát nguy hiểm vì</h3>
-    <p>(1) r_thực↑ → I↓; (2) Gánh nợ thực tăng → NW↓ → tín dụng co; (3) Hoãn tiêu dùng → AD↓; (4) ZLB → CSTT mất tác dụng. → Debt deflation spiral (Fisher 1933).</p>`
-  }
-};
-
-// ===================== STATE =====================
-let selectedTopics = new Set();
-let quizQuestions = [];
-let currentIdx = 0;
-let answered = false;
-let score = { correct: 0, wrong: 0, skip: 0 };
-let wrongAnswers = [];
-let userAnswers = [];
-
-// ===================== INIT =====================
-function init() {
-  // Build topic chips
-  const chipContainer = document.getElementById('topic-chips');
-  Object.entries(TOPICS).forEach(([key, label]) => {
-    const chip = document.createElement('div');
-    chip.className = 'chip';
-    chip.textContent = label;
-    chip.onclick = () => toggleTopic(key, chip);
-    chipContainer.appendChild(chip);
-  });
-
-  // Build theory tabs
-  const nav = document.getElementById('theory-nav');
-  const panels = document.getElementById('theory-panels');
-  let first = true;
-  Object.entries(THEORY_DATA).forEach(([key, data]) => {
-    const tab = document.createElement('div');
-    tab.className = 'theory-tab' + (first ? ' active' : '');
-    tab.textContent = data.title;
-    tab.onclick = () => switchTheory(key);
-    tab.dataset.key = key;
-    nav.appendChild(tab);
-
-    const panel = document.createElement('div');
-    panel.className = 'theory-content card' + (first ? ' active' : '');
-    panel.id = 'theory-' + key;
-    panel.innerHTML = `<h2>${data.title}</h2>${data.content}`;
-    panels.appendChild(panel);
-    first = false;
-  });
-}
-
-function toggleTopic(key, chip) {
-  if (selectedTopics.has(key)) { selectedTopics.delete(key); chip.classList.remove('selected'); }
-  else { selectedTopics.add(key); chip.classList.add('selected'); }
-  updateCount();
-}
-
-function updateCount() {
-  const filtered = QUESTIONS.filter(q => selectedTopics.has(q.chapter));
-  const cnt = document.getElementById('q-count').value;
-  const total = cnt == 0 ? filtered.length : Math.min(parseInt(cnt), filtered.length);
-  document.getElementById('selected-count').textContent = total;
-  document.getElementById('start-btn').disabled = selectedTopics.size === 0;
-}
-
-function startQuiz() {
-  const filtered = QUESTIONS.filter(q => selectedTopics.has(q.chapter));
-  const cnt = document.getElementById('q-count').value;
-  const doShuffle = document.getElementById('shuffle-opt').checked;
-  let pool = doShuffle ? shuffle([...filtered]) : [...filtered];
-  if (cnt > 0) pool = pool.slice(0, parseInt(cnt));
-  quizQuestions = pool;
-  currentIdx = 0;
-  score = { correct: 0, wrong: 0, skip: 0 };
-  wrongAnswers = [];
-  userAnswers = new Array(pool.length).fill(null);
-
-  document.getElementById('quiz-setup').style.display = 'none';
-  document.getElementById('quiz-result').style.display = 'none';
-  document.getElementById('quiz-play').style.display = 'block';
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const q = quizQuestions[currentIdx];
-  const total = quizQuestions.length;
-  const pct = ((currentIdx) / total * 100).toFixed(0);
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('q-num').textContent = `Câu ${currentIdx + 1}/${total}`;
-  document.getElementById('q-chapter').textContent = TOPICS[q.chapter] || q.chapter;
-  document.getElementById('q-text').textContent = q.text;
-  document.getElementById('q-explanation').className = 'explanation';
-  document.getElementById('q-explanation').innerHTML = '<strong>💡 Giải thích:</strong> ' + q.explanation;
-  document.getElementById('btn-explain').style.display = 'none';
-  document.getElementById('btn-next').style.display = 'none';
-  answered = false;
-
-  const doShuffleAns = document.getElementById('shuffle-ans').checked;
-  const optsEl = document.getElementById('q-options');
-  optsEl.innerHTML = '';
-  const indices = doShuffleAns ? shuffle([0,1,2,3]) : [0,1,2,3];
-  indices.forEach(i => {
-    const opt = document.createElement('div');
-    opt.className = 'option';
-    opt.dataset.idx = i;
-    const label = ['A','B','C','D'][indices.indexOf(i)];
-    opt.innerHTML = `<span class="opt-label">${label}.</span>${q.options[i]}`;
-    opt.onclick = () => selectAnswer(i, opt, q);
-    optsEl.appendChild(opt);
-  });
-}
-
-function selectAnswer(idx, el, q) {
-  if (answered) return;
-  answered = true;
-  const isCorrect = idx === q.answer;
-  document.querySelectorAll('.option').forEach(o => {
-    o.classList.add('disabled');
-    if (parseInt(o.dataset.idx) === q.answer) o.classList.add('correct');
-    else if (parseInt(o.dataset.idx) === idx && !isCorrect) o.classList.add('wrong');
-  });
-  if (isCorrect) score.correct++;
-  else {
-    score.wrong++;
-    wrongAnswers.push({ q, userIdx: idx });
-  }
-  userAnswers[currentIdx] = idx;
-  document.getElementById('btn-explain').style.display = 'inline-flex';
-  document.getElementById('btn-next').style.display = 'inline-flex';
-  document.getElementById('btn-next').textContent = currentIdx < quizQuestions.length - 1 ? 'Câu tiếp →' : '📊 Xem kết quả';
-}
-
-function showExplanation() {
-  document.getElementById('q-explanation').classList.add('show');
-  document.getElementById('btn-explain').style.display = 'none';
-}
-
-function nextQuestion() {
-  if (currentIdx < quizQuestions.length - 1) {
-    currentIdx++;
-    renderQuestion();
-  } else {
-    showResult();
-  }
-}
-
-function showResult() {
-  document.getElementById('quiz-play').style.display = 'none';
-  document.getElementById('quiz-result').style.display = 'block';
-  const total = quizQuestions.length;
-  const pct = Math.round(score.correct / total * 100);
-  document.getElementById('res-score').textContent = pct + '%';
-  const labels = {90:'🏆 Xuất sắc!', 75:'🎉 Tốt!', 60:'💪 Khá!', 0:'📚 Cần ôn thêm'};
-  const label = Object.entries(labels).reverse().find(([k]) => pct >= k)[1];
-  document.getElementById('res-label').textContent = `${score.correct}/${total} câu đúng — ${label}`;
-  document.getElementById('res-correct').textContent = score.correct;
-  document.getElementById('res-wrong').textContent = score.wrong;
-  document.getElementById('res-skip').textContent = total - score.correct - score.wrong;
-
-  const wl = document.getElementById('wrong-list');
-  wl.innerHTML = wrongAnswers.length ? '<h3 style="margin-bottom:12px">❌ Câu làm sai — Xem lại</h3>' : '';
-  wrongAnswers.forEach(({q, userIdx}) => {
-    wl.innerHTML += `<div class="wrong-item">
-      <div class="wi-q">${q.text}</div>
-      <div class="wi-correct">✅ Đáp án đúng: ${q.options[q.answer]}</div>
-      <div class="wi-yours">❌ Bạn chọn: ${q.options[userIdx]}</div>
-      <div style="margin-top:8px;font-size:.82rem;color:#6b7280"><b>Giải thích:</b> ${q.explanation}</div>
-    </div>`;
-  });
-}
-
-function restartQuiz() {
-  document.getElementById('quiz-result').style.display = 'none';
-  startQuiz();
-}
-
-function switchTheory(key) {
-  document.querySelectorAll('.theory-tab').forEach(t => t.classList.toggle('active', t.dataset.key === key));
-  document.querySelectorAll('.theory-content').forEach(p => p.classList.toggle('active', p.id === 'theory-' + key));
-}
-
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-document.getElementById('q-count').addEventListener('change', updateCount);
-init();
-</script>
+<!-- Scripts — thứ tự quan trọng: data trước, app sau -->
+<script src="js/questions.js"></script>
+<script src="js/theory.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
