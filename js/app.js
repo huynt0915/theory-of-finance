@@ -331,6 +331,36 @@ function switchTheory(key) {
     p.classList.toggle('active', p.id === 'theory-' + key));
 }
 
+// ── EXPORT PDF ───────────────────────────────────────────────────────────
+function exportPDF() {
+  const activePage = document.querySelector('.page.active');
+  const pageId = activePage ? activePage.id.replace('page-', '') : '';
+
+  const titles = {
+    quiz:       'Finance Quiz — UEH',
+    theory:     'Lý thuyết Tài chính — UEH',
+    cheatsheet: 'Cheat Sheet — Lý thuyết Tài chính',
+    questions:  'Danh sách câu hỏi — Lý thuyết Tài chính',
+  };
+
+  // Expand all question items before printing
+  if (pageId === 'questions') {
+    document.querySelectorAll('.qlist-item-body').forEach(b => b.classList.add('open'));
+  }
+
+  const originalTitle = document.title;
+  document.title = titles[pageId] || 'Finance Quiz — UEH';
+  window.print();
+  document.title = originalTitle;
+
+  // Collapse back after print dialog closes
+  if (pageId === 'questions') {
+    setTimeout(() => {
+      document.querySelectorAll('.qlist-item-body').forEach(b => b.classList.remove('open'));
+    }, 1000);
+  }
+}
+
 // ── NAVIGATION ───────────────────────────────────────────────────────────
 function showPage(name, el) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
