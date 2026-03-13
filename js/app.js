@@ -332,115 +332,63 @@ function switchTheory(key) {
 }
 
 // ── EXPORT PDF ───────────────────────────────────────────────────────────
+// Approach: inject a #print-overlay into DOM, print, then remove.
+// No popup/blob needed — works on all mobile browsers.
 function exportPDF(pageId) {
-  const titles = {
-    theory:    'Lý thuyết Tài chính — UEH Master',
-    questions: 'Danh sách câu hỏi — Lý thuyết Tài chính',
-  };
-
-  let bodyHtml = '';
+  // 1. Build inner content from already-rendered DOM (KaTeX already applied)
+  let contentHtml = '';
 
   if (pageId === 'theory') {
-    // Collect all rendered theory panels (KaTeX already rendered in DOM)
-    const panels = document.querySelectorAll('.theory-content');
-    panels.forEach(p => { bodyHtml += p.outerHTML; });
+    document.querySelectorAll('.theory-content').forEach(p => {
+      contentHtml += p.outerHTML;
+    });
 
   } else if (pageId === 'questions') {
-    // Build questions HTML with all answers expanded
-    const chapters = document.querySelectorAll('#qlist-body .qlist-chapter');
-    chapters.forEach(ch => {
+    document.querySelectorAll('#qlist-body .qlist-chapter').forEach(ch => {
       const header = ch.querySelector('.qlist-chapter-header').outerHTML;
       let items = '';
       ch.querySelectorAll('.qlist-item').forEach(item => {
-        const qHeader = item.querySelector('.qlist-item-header').cloneNode(true);
-        qHeader.querySelector('.qlist-item-toggle')?.remove();
-        const qBody = item.querySelector('.qlist-item-body').cloneNode(true);
-        qBody.style.display = 'block';
-        items += `<div class="qlist-item" style="border:1px solid #e5e7eb;margin-bottom:8px;border-radius:0">
-          ${qHeader.outerHTML}${qBody.outerHTML}
-        </div>`;
+        // Clone header, strip toggle button
+        const hClone = item.querySelector('.qlist-item-header').cloneNode(true);
+        hClone.querySelector('.qlist-item-toggle')?.remove();
+        // Clone body, force visible
+        const bClone = item.querySelector('.qlist-item-body').cloneNode(true);
+        bClone.style.cssText = 'display:block';
+        items += `<div class="po-item">${hClone.outerHTML}${bClone.outerHTML}</div>`;
       });
-      bodyHtml += `<div style="margin-bottom:24px">${header}${items}</div>`;
+      contentHtml += `<div class="po-chapter">${header}${items}</div>`;
     });
   }
 
-  // Inline KaTeX CSS + minimal layout CSS
-  const katexCss = 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css';
-  const printDoc = `<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>${titles[pageId]}</title>
-  <link rel="stylesheet" href="${katexCss}">
-  <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 860px; margin: 0 auto; padding: 24px 16px; color: #111827; font-size: 14px; }
-    h2 { font-size: 1.1rem; font-weight: 700; color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 6px; margin: 24px 0 10px; }
-    h3 { font-size: .95rem; font-weight: 700; color: #1e40af; border-left: 3px solid #1e40af; padding-left: 8px; margin: 16px 0 8px; }
-    table { border-collapse: collapse; width: 100%; margin: 8px 0 14px; font-size: .88rem; }
-    th { background: #eff6ff; color: #1e40af; font-weight: 600; }
-    th, td { border: 1px solid #d1d5db; padding: 7px 10px; line-height: 1.5; }
-    tr:nth-child(even) td { background: #f9fafb; }
-    p { margin: 6px 0 10px; line-height: 1.7; }
-    .theory-content { margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #e5e7eb; }
-    /* tags */
-    .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:.82rem; font-weight:600; }
-    .tag-up   { background:#dcfce7; color:#15803d; }
-    .tag-down { background:#fee2e2; color:#b91c1c; }
-    .tag-same { background:#f3f4f6; color:#374151; }
-    /* reserve diagram */
-    .reserve-diagram { background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:14px 18px; margin:10px 0; font-size:.85rem; }
-    .rd-ceiling { color:#dc2626; border-top:1px dashed #dc2626; padding:4px 0; }
-    .rd-mid     { color:#16a34a; padding:6px 0; }
-    .rd-floor   { color:#2563eb; border-bottom:1px dashed #2563eb; padding:4px 0; }
-    .rd-body    { border-left:2px solid #94a3b8; padding-left:12px; margin:4px 0 4px 8px; }
-    .rd-axis-y,.rd-axis-x { font-size:.78rem; color:#64748b; }
-    .rd-note    { font-size:.78rem; color:#64748b; margin-top:8px; }
-    /* trinity */
-    .trinity-diagram { border:1px solid #e5e7eb; border-radius:8px; padding:16px; margin:10px 0; text-align:center; }
-    .trinity-node { background:#1e40af; color:white; border-radius:6px; padding:7px 14px; font-size:.85rem; font-weight:600; display:inline-block; margin:4px; }
-    .trinity-row  { display:flex; align-items:center; justify-content:center; gap:12px; margin:8px 0; }
-    .trinity-center { background:#fef3c7; color:#92400e; border:2px solid #f59e0b; border-radius:50%; width:60px; height:60px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:.78rem; }
-    .trinity-examples { display:flex; flex-direction:column; gap:4px; text-align:left; margin-top:8px; }
-    .trinity-eg { font-size:.8rem; color:#374151; padding:4px 8px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:4px; }
-    /* questions */
-    .qlist-chapter-header { background:#1e40af; color:white; padding:8px 14px; font-size:.95rem; font-weight:700; display:flex; justify-content:space-between; border-radius:6px 6px 0 0; }
-    .qlist-item-header { display:flex; gap:10px; padding:10px 14px; align-items:flex-start; }
-    .qlist-item-num { background:#dbeafe; color:#1e40af; border-radius:4px; padding:2px 6px; font-size:.75rem; font-weight:700; white-space:nowrap; }
-    .qlist-item-text { font-size:.9rem; font-weight:600; line-height:1.5; flex:1; }
-    .qlist-item-body { padding:0 14px 12px; border-top:1px solid #f3f4f6; }
-    .qlist-option { padding:6px 10px; border:1px solid #e5e7eb; border-radius:5px; font-size:.85rem; margin-top:5px; }
-    .qlist-option.is-answer { background:#f0fdf4; border-color:#15803d; color:#065f46; font-weight:600; }
-    .qlist-explanation { margin-top:8px; padding:8px 12px; background:#fefce8; border:1px solid #fde68a; border-radius:6px; font-size:.82rem; color:#78350f; line-height:1.6; }
-    /* print */
-    @media print {
-      body { padding: 0; }
-      .theory-content { page-break-inside: avoid; }
-      .qlist-item { page-break-inside: avoid; }
-      h2, h3 { page-break-after: avoid; }
-    }
-    .print-hint { background:#eff6ff; border:1px solid #93c5fd; border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:.85rem; color:#1e40af; }
-  </style>
-</head>
-<body>
-  <div class="print-hint">
-    💡 <b>Lưu PDF:</b> Dùng menu trình duyệt → <b>In / Print</b> → chọn <b>Lưu dưới dạng PDF</b> &nbsp;|&nbsp;
-    iOS Safari: nút <b>Chia sẻ ↑</b> → <b>In</b> → kéo phóng to → lưu.
-  </div>
-  ${bodyHtml}
-  <script>
-    // Auto-trigger print after a short delay (desktop only)
-    if (!/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-      setTimeout(() => window.print(), 600);
-    }
-  </script>
-</body>
-</html>`;
+  // 2. Remove any existing overlay
+  document.getElementById('print-overlay')?.remove();
 
-  const blob = new Blob([printDoc], { type: 'text/html;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  window.open(url, '_blank');
-  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  // 3. Create overlay with self-contained styles
+  const overlay = document.createElement('div');
+  overlay.id = 'print-overlay';
+  overlay.innerHTML = `
+    <div class="po-wrap">
+      <div class="po-hint">
+        💡 Dùng menu trình duyệt → <b>In / Print</b> → <b>Lưu dưới dạng PDF</b>
+        &nbsp;|&nbsp; iOS: nút <b>Chia sẻ ↑</b> → <b>In</b>
+        <button onclick="closePrintOverlay()" style="float:right;background:#1e40af;color:white;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:.85rem">✕ Đóng</button>
+      </div>
+      ${contentHtml}
+    </div>`;
+  document.body.appendChild(overlay);
+
+  // 4. Print
+  const title = pageId === 'theory'
+    ? 'Lý thuyết Tài chính — UEH Master'
+    : 'Danh sách câu hỏi — Lý thuyết Tài chính';
+  const prev = document.title;
+  document.title = title;
+  window.print();
+  document.title = prev;
+}
+
+function closePrintOverlay() {
+  document.getElementById('print-overlay')?.remove();
 }
 
 // ── NAVIGATION ───────────────────────────────────────────────────────────

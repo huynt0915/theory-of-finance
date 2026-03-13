@@ -191,62 +191,69 @@ tr:hover td { background: #fafafa; }
 .page-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
 .page-toolbar .theory-nav { flex: 1; margin-bottom: 0; }
 
-/* ── PRINT / PDF — handled in exportPDF() generated page ── */
+/* ── PRINT OVERLAY ── */
+#print-overlay {
+  display: none; /* hidden on screen */
+  position: fixed; inset: 0; z-index: 9999;
+  background: white; overflow-y: auto; padding: 20px;
+}
+/* Show overlay on screen when it exists (JS adds it) */
+#print-overlay { display: block; }
+
+.po-wrap { max-width: 860px; margin: 0 auto; font-family: 'Segoe UI', system-ui, sans-serif; color: #111827; }
+.po-hint { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; font-size: .85rem; color: #1e40af; line-height: 1.6; }
+
+/* Theory panels in overlay */
+.po-wrap .theory-content { display: block; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #e5e7eb; }
+.po-wrap h2 { font-size: 1.05rem; font-weight: 700; color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 5px; margin: 20px 0 10px; }
+.po-wrap h3 { font-size: .92rem; font-weight: 700; color: #1e40af; border-left: 3px solid #1e40af; padding-left: 8px; margin: 14px 0 6px; }
+
+/* Questions in overlay */
+.po-chapter { margin-bottom: 20px; }
+.po-item { border: 1px solid #e5e7eb; margin-bottom: 6px; }
+.po-item .qlist-item-header { cursor: default; }
+.po-item .qlist-item-toggle { display: none; }
+.po-item .qlist-item-body { display: block !important; }
+
+/* ── PRINT MEDIA — only overlay content ── */
 @media print {
-  /* Hide ALL UI chrome */
-  nav, .page-toolbar, .qlist-toolbar, .btn-pdf,
-  .theory-nav, .qlist-item-toggle,
-  #quiz-setup, #quiz-play, #quiz-result { display: none !important; }
+  /* Hide everything except overlay */
+  body > *:not(#print-overlay) { display: none !important; }
+  #print-overlay {
+    position: static !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .po-hint { display: none !important; }
 
-  body { background: white; color: black; font-size: 11pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
-  /* Hide ALL pages by default, then show only the target */
-  .page { display: none !important; }
-  body[data-print-page="theory"]    #page-theory    { display: block !important; }
-  body[data-print-page="questions"] #page-questions { display: block !important; }
-
-  /* ── THEORY print ── */
-  #page-theory { max-width: 100%; }
-  .theory-content { display: none; break-inside: avoid; margin-bottom: 20pt; }
-  .theory-content.print-show { display: block !important; }
-  .theory-content h2 { font-size: 13pt; font-weight: 700; color: #1e40af; border-bottom: 1.5pt solid #1e40af; padding-bottom: 4pt; margin-bottom: 8pt; }
-  .theory-content h3 { font-size: 11pt; font-weight: 700; color: #1e40af; margin: 10pt 0 4pt; border-left: 3pt solid #1e40af; padding-left: 6pt; }
-
-  /* ── QUESTIONS print ── */
-  .qlist-chapter-header { background: #1e40af !important; color: white !important; padding: 6pt 10pt; font-size: 11pt; }
-  .qlist-item { border: 1pt solid #e5e7eb; break-inside: avoid; margin-bottom: 6pt; }
-  .qlist-item-header { padding: 6pt 10pt; cursor: default; }
-  .qlist-item-num { background: #dbeafe !important; color: #1e40af !important; font-size: 8pt; }
-  .qlist-item-text { font-size: 10pt; font-weight: 600; }
-  .qlist-item-body.open { display: block !important; }
-  .qlist-option { font-size: 9.5pt; padding: 4pt 8pt; }
-  .qlist-option.is-answer { background: #f0fdf4 !important; border-color: #15803d !important; }
-  .qlist-explanation { font-size: 9pt; padding: 6pt 10pt; background: #fefce8 !important; }
+  /* Typography */
+  body { font-size: 11pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .po-wrap h2 { font-size: 12pt; color: #1e40af !important; }
+  .po-wrap h3 { font-size: 10.5pt; color: #1e40af !important; }
 
   /* Tables */
-  table { font-size: 9.5pt; border-collapse: collapse; width: 100%; }
-  th { background: #f3f4f6 !important; color: black !important; }
+  table { font-size: 9pt; border-collapse: collapse; width: 100%; }
   th, td { border: 0.5pt solid #d1d5db; padding: 4pt 8pt; }
+  th { background: #eff6ff !important; color: #1e40af !important; }
 
   /* Tags */
   .tag-up   { background: #dcfce7 !important; color: #15803d !important; }
   .tag-down { background: #fee2e2 !important; color: #b91c1c !important; }
   .tag-same { background: #f3f4f6 !important; color: #374151 !important; }
 
-  /* Reserve diagram & Trinity */
-  .reserve-diagram { border: 1pt solid #cbd5e1; background: #f8fafc !important; color: black !important; }
-  .rd-ceiling { color: #dc2626 !important; border-top-color: #dc2626 !important; }
-  .rd-floor   { color: #2563eb !important; border-bottom-color: #2563eb !important; }
+  /* Questions */
+  .qlist-chapter-header { background: #1e40af !important; color: white !important; }
+  .qlist-option.is-answer { background: #f0fdf4 !important; border-color: #15803d !important; }
+  .qlist-explanation { background: #fefce8 !important; }
+  .po-item { page-break-inside: avoid; }
+
+  /* Reserve/Trinity diagrams */
+  .reserve-diagram { background: #f8fafc !important; color: black !important; }
   .trinity-node { background: #1e40af !important; }
-  .trinity-center { border-color: #f59e0b !important; background: #fef3c7 !important; }
-
-  /* KaTeX */
-  .katex { font-size: 10.5pt; }
-  .katex-display { margin: 6pt 0; }
-
-  /* Page breaks */
-  h2, h3 { break-after: avoid; }
+  .trinity-center { background: #fef3c7 !important; }
 }
+
+
 
 @media(max-width:600px) {
   .nav-top { padding: 0 14px; }
