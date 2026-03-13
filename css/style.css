@@ -113,6 +113,26 @@ tr:hover td { background: #fafafa; }
 .cheat-section h2 { font-size: 1rem; font-weight: 700; color: white; background: var(--primary-dark); padding: 10px 16px; border-radius: 8px 8px 0 0; }
 .cheat-body { border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 16px; }
 
+/* RESERVE MARKET DIAGRAM */
+.reserve-diagram { background: #1e293b; border-radius: 10px; padding: 16px 20px; margin: 12px 0; color: #e2e8f0; font-size: .85rem; }
+.rd-axis-y { font-size: .8rem; color: #94a3b8; margin-bottom: 4px; }
+.rd-body { border-left: 2px solid #94a3b8; padding-left: 12px; margin: 4px 0 4px 8px; }
+.rd-ceiling { color: #f87171; padding: 4px 0; border-top: 1px dashed #f87171; }
+.rd-mid     { color: #86efac; padding: 6px 0; }
+.rd-floor   { color: #60a5fa; padding: 4px 0; border-bottom: 1px dashed #60a5fa; }
+.rd-axis-x { font-size: .8rem; color: #94a3b8; margin-top: 4px; }
+.rd-note   { font-size: .78rem; color: #64748b; margin-top: 8px; line-height: 1.5; }
+
+/* IMPOSSIBLE TRINITY DIAGRAM */
+.trinity-diagram { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin: 12px 0; text-align: center; }
+.trinity-node { background: var(--primary); color: white; border-radius: 8px; padding: 8px 16px; font-size: .85rem; font-weight: 600; display: inline-block; }
+.trinity-node.top { margin-bottom: 12px; }
+.trinity-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; }
+.trinity-node.left, .trinity-node.right { background: var(--primary-dark); }
+.trinity-center { background: #fef3c7; color: #92400e; border-radius: 50%; width: 64px; height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: .8rem; border: 2px solid #f59e0b; }
+.trinity-examples { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+.trinity-eg { font-size: .8rem; color: var(--muted); padding: 4px 8px; background: white; border-radius: 6px; border: 1px solid var(--border); }
+
 /* MATH CARDS */
 .math-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 8px 0; }
 .math-card { background: #1e293b; border-radius: 10px; padding: 16px 20px; }
