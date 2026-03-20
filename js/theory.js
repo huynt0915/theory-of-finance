@@ -93,11 +93,11 @@ const THEORY_DATA = {
     <h3>Tác động lên số nhân $m$</h3>
     <table>
       <tr><th>Biến thay đổi</th><th>$m$</th><th>$M$</th><th>$MB$</th><th>Ghi chú</th></tr>
-      <tr><td>$rr$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>Fed tăng DTBB</td></tr>
-      <tr><td>$e$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>NH thận trọng sau khủng hoảng</td></tr>
-      <tr><td>$c$ tăng</td><td>↓</td><td>↓</td><td>—</td><td>⚠️ $MB$ KHÔNG ĐỔI!</td></tr>
-      <tr><td>$MB_n$ tăng (OMO mua)</td><td>—</td><td>↑</td><td>↑</td><td>$m \times MB$ tăng</td></tr>
-      <tr><td>$BR$ tăng (vay chiết khấu)</td><td>—</td><td>↑</td><td>↑</td><td>$MB = MB_n + BR$</td></tr>
+      <tr><td>$rr$ tăng</td><td class="tag-down">↓</td><td class="tag-down">↓</td><td>—</td><td>Fed tăng DTBB</td></tr>
+      <tr><td>$e$ tăng</td><td class="tag-down">↓</td><td class="tag-down">↓</td><td>—</td><td>NH thận trọng sau khủng hoảng</td></tr>
+      <tr><td>$c$ tăng</td><td class="tag-down">↓</td><td class="tag-down">↓</td><td>—</td><td>⚠️ $MB$ KHÔNG ĐỔI!</td></tr>
+      <tr><td>$MB_n$ tăng (OMO mua)</td><td>—</td><td class="tag-up">↑</td><td class="tag-up">↑</td><td>$m \times MB$ tăng</td></tr>
+      <tr><td>$BR$ tăng (vay chiết khấu)</td><td>—</td><td class="tag-up">↑</td><td class="tag-up">↑</td><td>$MB = MB_n + BR$</td></tr>
     </table>
 
     <h3>Ví dụ tính toán</h3>
@@ -126,13 +126,13 @@ const THEORY_DATA = {
     <h3>Công cụ truyền thống — Tác động</h3>
     <table>
       <tr><th>Hành động</th><th>Dịch chuyển</th><th>$i_{ff}$</th><th>$M$</th></tr>
-      <tr><td>Fed <b>MUA</b> OMO</td><td>$Rs$ dịch phải</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Fed <b>BÁN</b> OMO</td><td>$Rs$ dịch trái</td><td>↑</td><td>↓</td></tr>
-      <tr><td>Giảm $i_d$ (khi $BR=0$)</td><td>Trần hạ, không ràng buộc</td><td><b>= không đổi!</b></td><td>=</td></tr>
-      <tr><td>Giảm $i_d$ (khi $BR>0$)</td><td>$Rs$ dịch phải ($BR$ tăng)</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Giảm $rr$</td><td>$Rd$ dịch trái</td><td>↓</td><td>↑</td></tr>
-      <tr><td>Tăng $rr$</td><td>$Rd$ dịch phải</td><td>↑</td><td>↓</td></tr>
-      <tr><td>Tăng $i_{or}$ (IOR)</td><td>Sàn nâng lên</td><td>↑</td><td>—</td></tr>
+      <tr><td>Fed <b>MUA</b> OMO</td><td>$Rs$ dịch phải</td><td class="tag-down">↓</td><td class="tag-up">↑</td></tr>
+      <tr><td>Fed <b>BÁN</b> OMO</td><td>$Rs$ dịch trái</td><td class="tag-up">↑</td><td class="tag-down">↓</td></tr>
+      <tr><td>Giảm $i_d$ (khi $BR=0$)</td><td>Trần hạ, không ràng buộc</td><td class="tag-same">= không đổi!</td><td class="tag-same">=</td></tr>
+      <tr><td>Giảm $i_d$ (khi $BR>0$)</td><td>$Rs$ dịch phải ($BR$ tăng)</td><td class="tag-down">↓</td><td class="tag-up">↑</td></tr>
+      <tr><td>Giảm $rr$</td><td>$Rd$ dịch trái</td><td class="tag-down">↓</td><td class="tag-up">↑</td></tr>
+      <tr><td>Tăng $rr$</td><td>$Rd$ dịch phải</td><td class="tag-up">↑</td><td class="tag-down">↓</td></tr>
+      <tr><td>Tăng $i_{or}$ (IOR)</td><td>Sàn nâng lên</td><td class="tag-up">↑</td><td>—</td></tr>
     </table>
 
     <h3>So sánh 4 công cụ</h3>
@@ -197,8 +197,8 @@ const THEORY_DATA = {
     <h3>Can thiệp ngoại hối</h3>
     <table>
       <tr><th>Loại</th><th>$MB$</th><th>$M$</th><th>Tỷ giá nội tệ</th><th>Hiệu quả</th></tr>
-      <tr><td><b>Không vô hiệu hóa</b> (Unsterilized)</td><td>Thay đổi</td><td>Thay đổi</td><td>Mất giá (nếu mua ngoại tệ)</td><td><b>Mạnh</b></td></tr>
-      <tr><td><b>Vô hiệu hóa</b> (Sterilized)</td><td>= (OMO bù)</td><td>=</td><td>Mất giá (yếu, ngắn hạn)</td><td><b>Yếu</b></td></tr>
+      <tr><td><b>Không vô hiệu hóa</b> (Unsterilized)</td><td class="tag-up">Thay đổi</td><td class="tag-up">Thay đổi</td><td class="tag-down">Mất giá (nếu mua NT)</td><td><b>Mạnh</b></td></tr>
+      <tr><td><b>Vô hiệu hóa</b> (Sterilized)</td><td class="tag-same">= (OMO bù)</td><td class="tag-same">=</td><td class="tag-down">Mất giá (yếu)</td><td><b>Yếu</b></td></tr>
     </table>
 
     <h3>Cán cân thanh toán (BOP)</h3>
