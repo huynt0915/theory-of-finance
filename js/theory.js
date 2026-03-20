@@ -166,7 +166,7 @@ const THEORY_DATA = {
       <tr><td>$Y - Y^*$</td><td>Output gap (dương = nền kinh tế quá nóng)</td><td>$\%$</td></tr>
     </table>
 
-    <h3>Ví dụ: $\pi=4\%$, $\pi^*=2\%$, $r^*=2\%$, gap $=+2\%$</h3>
+    <h3>Ví dụ: $\pi=4\%$, $\pi^*=2\%$, $r^*=2\%$, output gap $(Y-Y^*)=+2\%$</h3>
     <p>$$i_{ff} = 4 + 2 + 0.5(4-2) + 0.5(2) = 4 + 2 + 1 + 1 = 8\%$$</p>
 
     <h3>Taylor Principle</h3>
