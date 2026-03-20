@@ -109,13 +109,25 @@ nav .logo span { opacity: .7; font-weight: 400; font-size: .85rem; }
 .formula-box { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: .9rem; line-height: 1.8; margin: 12px 0; }
 .formula-box .cmt { color: #94a3b8; }
 
-table { width: 100%; border-collapse: collapse; font-size: .85rem; margin: 12px 0; }
-th { background: #f3f4f6; padding: 8px 12px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
-td { padding: 8px 12px; border: 1px solid var(--border); line-height: 1.5; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; margin: 12px 0; table-layout: auto; }
+th { background: #f3f4f6; padding: 8px 10px; text-align: left; font-weight: 600; border: 1px solid var(--border); white-space: nowrap; }
+td { padding: 8px 10px; border: 1px solid var(--border); line-height: 1.5; }
 tr:hover td { background: #fafafa; }
 
+/* Indicator cells (↑ ↓ = tags as td content) — keep narrow + centered */
+td.tag-up, td.tag-down, td.tag-same {
+  text-align: center;
+  white-space: nowrap;
+  width: 1%;
+  font-weight: 600;
+}
+td.tag-up   { background: #dcfce7; color: #15803d; }
+td.tag-down { background: #fee2e2; color: #b91c1c; }
+td.tag-same { background: #f3f4f6; color: #6b7280; }
+
+/* Inline tags (used inside td text) */
 .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .75rem; font-weight: 600; margin-right: 4px; }
-.tag-up { background: #dcfce7; color: #15803d; }
+.tag-up  { background: #dcfce7; color: #15803d; }
 .tag-down { background: #fee2e2; color: #b91c1c; }
 .tag-same { background: #f3f4f6; color: #6b7280; }
 
