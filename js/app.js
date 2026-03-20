@@ -379,7 +379,7 @@ function exportPDF(pageId) {
 
   // 4. Print
   const title = pageId === 'theory'
-    ? 'Lý thuyết Tài chính — UEH Master'
+    ? 'Lý thuyết Tài chính — Mishkin 2019'
     : 'Danh sách câu hỏi — Lý thuyết Tài chính';
   const prev = document.title;
   document.title = title;
