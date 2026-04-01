@@ -183,10 +183,10 @@ const QUESTIONS = [
   },
   {
     id: 15, chapter: 'C15',
-    text: 'Fed bơm $200 tỷ qua OMO mua, với c=0.3, rr=0.1, e=0.02. Cung tiền M tăng xấp xỉ bao nhiêu?',
+    text: 'Fed bơm $200 tỷ qua OMO mua, với c=0.3, rr=0.1, e=0.05. Cung tiền M tăng xấp xỉ bao nhiêu?',
     options: ['$200 tỷ', '$2,000 tỷ (1/rr × MB)', '≈ $578 tỷ', '≈ $1,400 tỷ'],
     answer: 2,
-    explanation: 'm = (1+0.3)/(0.1+0.02+0.3) = 1.3/0.42 ≈ 3.095 ≈ 2.89. ΔM ≈ 2.89 × $200 ≈ $578 tỷ. (Số nhân đơn giản 1/0.1=10 cho $2,000 tỷ — quá cao vì bỏ qua c và e).',
+    explanation: 'm = (1+0.3)/(0.1+0.05+0.3) = 1.3/0.45 ≈ 2.89. ΔM ≈ 2.89 × $200 ≈ $578 tỷ. (Số nhân đơn giản 1/0.1=10 cho $2,000 tỷ — quá cao vì bỏ qua c và e).',
   },
 
   // ── C16 ─────────────────────────────────────────────────────────────────
