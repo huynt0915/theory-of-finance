@@ -143,7 +143,7 @@ const QUESTIONS = [
     text: 'Với c=0.2, rr=0.1, e=0.05, số nhân tiền m bằng bao nhiêu?',
     options: ['m = 10 (1/rr)', 'm = 5', 'm ≈ 3.43', 'm ≈ 2.0'],
     answer: 2,
-    explanation: 'm = (1+c)/(rr+e+c) = (1+0.2)/(0.1+0.05+0.2) = 1.2/0.35 ≈ 3.43. So sánh: m đơn giản = 1/rr = 10 >> 3.43. c và e làm số nhân giảm đáng kể vì "rò rỉ" tiền ra khỏi hệ thống NH.',
+    explanation: '✅ Đúng (C): Công thức số nhân tiền đầy đủ: m = (1+c)/(rr+e+c), trong đó c = tỷ lệ tiền mặt/tiền gửi (công chúng quyết định), rr = tỷ lệ dự trữ bắt buộc (Fed quyết định), e = tỷ lệ dự trữ vượt mức/tiền gửi (ngân hàng quyết định). Tính: m = (1+0.2)/(0.1+0.05+0.2) = 1.2/0.35 ≈ 3.43. 💡 So sánh với số nhân đơn giản: m = 1/rr = 1/0.1 = 10 — gấp gần 3 lần! Số nhân đơn giản giả định không ai giữ tiền mặt (c=0) và ngân hàng không giữ dự trữ vượt mức (e=0) — không thực tế. c và e "rò rỉ" tiền ra khỏi chu trình nhân tiền, làm số nhân giảm mạnh. ❌ A: 1/rr=10 chỉ đúng trong mô hình lý tưởng. ❌ B & D: không khớp với công thức.',
   },
   {
     id: 12, chapter: 'C15',
@@ -155,7 +155,7 @@ const QUESTIONS = [
       'MB giảm $100M; M giảm đúng $100M',
     ],
     answer: 1,
-    explanation: 'MB = C + R. Rút $100M mặt: C↑$100M, R↓$100M → MB = C+R không đổi. NHƯNG c = C/D tăng → m giảm → M = m×MB giảm. Bẫy kinh điển: rút tiền mặt KHÔNG thay đổi MB nhưng LÀM GIẢM M.',
+    explanation: '✅ Đúng (B): Đây là bẫy tư duy kinh điển — cần phân biệt rõ MB và M. MB (Monetary Base / tiền cơ sở) = C (tiền mặt lưu hành) + R (dự trữ ngân hàng). Khi người dân rút $100M mặt từ ngân hàng: C tăng $100M, R giảm $100M → MB = C + R KHÔNG ĐỔI (hai chiều triệt tiêu nhau). NHƯNG: c = C/D tăng (nhiều tiền mặt hơn so với tiền gửi) → số nhân m = (1+c)/(rr+e+c) giảm → M = m × MB giảm, dù MB không đổi. 💡 Kết luận: cùng một lượng MB nhưng nếu c cao (dân ưa giữ tiền mặt), cung tiền M sẽ thấp hơn. Đây là lý do hành vi công chúng ảnh hưởng đến cung tiền dù Fed không thay đổi chính sách. ❌ A: MB không thay đổi (không phải giảm). ❌ C: MB không tăng. ❌ D: M giảm nhiều hơn $100M do hiệu ứng số nhân.',
   },
   {
     id: 13, chapter: 'C15',
@@ -167,7 +167,7 @@ const QUESTIONS = [
       'Fed sai lầm giảm MB thay vì tăng',
     ],
     answer: 2,
-    explanation: 'Bank runs → c↑ mạnh; NH sợ → e↑ mạnh → m giảm cực mạnh. Dù Fed bơm MB, M = m×MB vẫn giảm vì m giảm nhanh hơn. Friedman & Schwartz (1963): đây là sai lầm CSTT lớn nhất lịch sử Mỹ.',
+    explanation: '✅ Đúng (C): Đây là bài học lịch sử quan trọng nhất về CSTT. Khủng hoảng 1929-33: hàng nghìn ngân hàng phá sản, người dân hoảng loạn rút tiền mặt (bank runs) → c tăng vọt. Các ngân hàng còn sống sợ mất thanh khoản → tích trữ dự trữ vượt mức → e tăng mạnh. Hệ quả: m = (1+c)/(rr+e+c) giảm cực mạnh vì cả tử số nhỏ hơn lẫn mẫu số lớn hơn. Dù Fed có tăng MB, M = m × MB vẫn giảm 1/3 vì m giảm nhanh hơn tốc độ bơm MB. 💡 Milton Friedman & Anna Schwartz trong "A Monetary History of the United States" (1963) gọi đây là "Great Contraction" — sai lầm CSTT nghiêm trọng nhất lịch sử Mỹ. Fed đã để cung tiền sụp đổ thay vì bơm đủ để bù đắp. Bài học này định hình phản ứng của Bernanke (Fed) năm 2008 — bơm tiền mạnh tay để ngăn deflation. ❌ B: rr là công cụ Fed kiểm soát, không tự thay đổi gây ra khủng hoảng. ❌ A & D: không đúng với sự kiện lịch sử.',
   },
   {
     id: 14, chapter: 'C15',
@@ -179,14 +179,14 @@ const QUESTIONS = [
       'Bộ Tài chính qua thu chi ngân sách',
     ],
     answer: 2,
-    explanation: 'Fed kiểm soát trực tiếp MB = C + R thông qua: (1) OMO — mua/bán CK CP; (2) Cho vay chiết khấu (BR). NH TM kiểm soát e (gián tiếp ảnh hưởng m). Công chúng kiểm soát c (gián tiếp ảnh hưởng m).',
+    explanation: '✅ Đúng (C): Trong mô hình 3 chủ thể của Mishkin, mỗi bên kiểm soát một phần khác nhau: Fed (NHTW) kiểm soát TRỰC TIẾP MB = C + R qua: (1) OMO (Open Market Operations) — mua/bán trái phiếu CP, công cụ chủ lực và linh hoạt nhất; (2) Discount lending — cho ngân hàng vay qua discount window, ảnh hưởng đến BR. Ngân hàng thương mại quyết định e (tỷ lệ dự trữ vượt mức) — ảnh hưởng GIÁN TIẾP đến số nhân m. Công chúng quyết định c (tỷ lệ tiền mặt/tiền gửi) — ảnh hưởng GIÁN TIẾP đến m. 💡 Vì NH TM và công chúng cùng ảnh hưởng đến m, Fed không kiểm soát hoàn toàn M = m × MB — đây là lý do CSTT đôi khi có kết quả ngoài dự kiến. ❌ D: Bộ Tài chính ảnh hưởng gián tiếp qua thâm hụt ngân sách và phát hành trái phiếu, không kiểm soát MB trực tiếp.',
   },
   {
     id: 15, chapter: 'C15',
     text: 'Fed bơm $200 tỷ qua OMO mua, với c=0.3, rr=0.1, e=0.05. Cung tiền M tăng xấp xỉ bao nhiêu?',
     options: ['$200 tỷ', '$2,000 tỷ (1/rr × MB)', '≈ $578 tỷ', '≈ $1,400 tỷ'],
     answer: 2,
-    explanation: 'm = (1+0.3)/(0.1+0.05+0.3) = 1.3/0.45 ≈ 2.89. ΔM ≈ 2.89 × $200 ≈ $578 tỷ. (Số nhân đơn giản 1/0.1=10 cho $2,000 tỷ — quá cao vì bỏ qua c và e).',
+    explanation: '✅ Đúng (C): Từng bước tính: Bước 1 — tính số nhân m: m = (1+c)/(rr+e+c) = (1+0.3)/(0.1+0.05+0.3) = 1.3/0.45 ≈ 2.89. Bước 2 — tính ΔM: ΔM = m × ΔMB = 2.89 × $200 tỷ ≈ $578 tỷ. 💡 So sánh các đáp án: $200 tỷ (A) = chỉ tính MB tăng, bỏ qua hiệu ứng nhân — sai. $2,000 tỷ (B) = dùng 1/rr = 10, bỏ qua c và e — quá lạc quan, không thực tế. $578 tỷ (C) = đúng, dùng công thức đầy đủ. $1,400 tỷ (D) = không khớp bất kỳ công thức nào. Lưu ý: OMO mua → Fed trả tiền bằng cách tăng dự trữ ngân hàng (NBR tăng) → MB tăng $200 tỷ → cung tiền tăng theo số nhân.',
   },
 
   // ── C16 ─────────────────────────────────────────────────────────────────
@@ -450,7 +450,7 @@ const QUESTIONS = [
       'Tổng dự trữ không đổi',
     ],
     answer: 1,
-    explanation: 'OMO mua: Fed mua CK từ NH → trả bằng cách tăng dự trữ NH tại Fed → đây là dự trữ KHÔNG VAY (NBR = Non-Borrowed Reserves). BR chỉ thay đổi khi NH vay từ Fed qua discount window.',
+    explanation: '✅ Đúng (B): Cần phân biệt 2 loại dự trữ: NBR (Non-Borrowed Reserves / Dự trữ không vay) = dự trữ ngân hàng tạo ra từ OMO và các nguồn khác không phải vay Fed. BR (Borrowed Reserves) = dự trữ ngân hàng có được bằng cách vay từ Fed qua discount window. Khi Fed thực hiện OMO mua: Fed mua trái phiếu CP từ ngân hàng → trả tiền bằng cách ghi tăng tài khoản dự trữ của ngân hàng tại Fed → đây là NBR tăng $100 tỷ. MB = NBR + BR + C. OMO chỉ tác động đến NBR, không ảnh hưởng BR (BR chỉ thay đổi khi ngân hàng chủ động vay/trả Fed). 💡 OMO là công cụ CSTT chủ lực vì Fed kiểm soát hoàn toàn — không phụ thuộc vào quyết định vay của ngân hàng. ❌ A: RR thay đổi khi tiền gửi thay đổi, không trực tiếp từ OMO. ❌ C: BR chỉ thay đổi qua discount window.',
   },
   {
     id: 38, chapter: 'C17',
@@ -548,7 +548,7 @@ const QUESTIONS = [
       'Tất cả các yếu tố trên',
     ],
     answer: 3,
-    explanation: 'Công thức số nhân tiền: $m = (1+c)/(rr+e+c)$. Cả ba yếu tố đều ảnh hưởng nghịch chiều đến m: rr↑ → m↓ (NHTW quyết định), e↑ → m↓ (ngân hàng thương mại quyết định), c↑ → m↓ (công chúng quyết định). Đây là lý do NHTW không kiểm soát hoàn toàn cung tiền M.',
+    explanation: '✅ Đúng (D): Công thức đầy đủ: m = (1+c)/(rr+e+c). Cả 3 yếu tố đều ảnh hưởng NGHỊCH CHIỀU đến m: rr↑ → mẫu số tăng → m↓ (Fed kiểm soát). e↑ → mẫu số tăng → m↓ (ngân hàng TM quyết định — giữ nhiều dự trữ vượt mức hơn). c↑ → tử số tăng nhẹ nhưng mẫu số tăng nhiều hơn → m↓ (công chúng quyết định — giữ nhiều tiền mặt hơn). 💡 Vì m phụ thuộc vào hành vi của cả 3 bên, Fed chỉ kiểm soát trực tiếp MB chứ không kiểm soát hoàn toàn M = m × MB. Điều này giải thích tại sao CSTT đôi khi "mất tác dụng" — ví dụ Fed bơm MB mạnh nhưng ngân hàng tích trữ ER (e↑) hoặc dân rút tiền mặt (c↑) → m giảm → M không tăng như kỳ vọng.',
   },
   {
     id: 46, chapter: 'C15',
@@ -560,7 +560,7 @@ const QUESTIONS = [
       'Chính phủ chi tiêu',
     ],
     answer: 1,
-    explanation: 'Tiền được tạo ra khi ngân hàng cho vay: NH nhận tiền gửi $100, giữ lại $10 (rr=10%), cho vay $90. $90 này được gửi vào NH khác → cho vay $81 → cứ thế tiếp tục. Tổng tiền tạo ra = $100 × (1/rr) = $1,000. Nhận tiền gửi chỉ là bước đầu, không tự động tạo tiền.',
+    explanation: '✅ Đúng (B): Quá trình tạo tiền (money creation) xảy ra khi ngân hàng cho vay, không phải khi nhận tiền gửi. Ví dụ với rr=10%: NH A nhận tiền gửi $1,000 → giữ $100 dự trữ bắt buộc → cho vay $900. Người vay $900 gửi vào NH B → NH B giữ $90 → cho vay $810. NH C nhận $810 → cho vay $729... Tổng tiền gửi tạo ra = $1,000 × (1/0.1) = $10,000. Tổng tiền mới tạo = $9,000. 💡 Cơ chế cốt lõi: mỗi đồng cho vay trở thành tiền gửi ở ngân hàng khác, rồi lại được cho vay tiếp — đây là "fractional reserve banking" (ngân hàng dự trữ một phần). ❌ A: Nhận tiền gửi chỉ là bước đầu — chưa tạo tiền mới. ❌ C: NHTW phát hành tiền là tạo MB (tiền cơ sở), không phải M (cung tiền rộng). ❌ D: Chi tiêu chính phủ tác động gián tiếp qua MB.',
   },
   {
     id: 47, chapter: 'C16',
@@ -584,7 +584,7 @@ const QUESTIONS = [
       'Không ảnh hưởng',
     ],
     answer: 1,
-    explanation: 'rr↑ → m = (1+c)/(rr+e+c) giảm (mẫu số tăng) → M = m × MB giảm (MB không đổi). Ví dụ: rr từ 10% → 20%, c=0.2, e=0: m từ (1.2/0.3)=4 xuống (1.2/0.4)=3 → cung tiền giảm 25%. Đây là lý do tăng DTBB là công cụ thắt chặt mạnh nhưng ít dùng.',
+    explanation: '✅ Đúng (B): Cơ chế: rr↑ → mẫu số trong m = (1+c)/(rr+e+c) tăng → m giảm → M = m × MB giảm (MB giữ nguyên). Ví dụ số: rr từ 10%→20%, c=0.2, e=0: m trước = (1.2)/(0.1+0+0.2) = 1.2/0.3 = 4. m sau = (1.2)/(0.2+0+0.2) = 1.2/0.4 = 3. Cung tiền giảm 25%. 💡 Tại sao tăng DTBB ít được dùng dù hiệu lực mạnh? (1) Thay đổi đột ngột gây sốc cho ngân hàng — buộc họ thu hẹp cho vay gấp. (2) Ngân hàng phải tái cơ cấu danh mục tài sản ngay lập tức, gây bất ổn. (3) Thiếu linh hoạt — không thể tinh chỉnh từng bước nhỏ như OMO. Fed Mỹ hầu như không thay đổi rr từ 1992 đến 2020. ❌ A & C: rr↑ làm giảm số nhân và giảm cung tiền, không phải tăng.',
   },
   {
     id: 49, chapter: 'C17',
@@ -656,7 +656,7 @@ const QUESTIONS = [
       'Chỉ tiền gửi có kỳ hạn',
     ],
     answer: 0,
-    explanation: 'Phân cấp cung tiền: M1 = tiền mặt + tiền gửi không kỳ hạn + séc du lịch. M2 = M1 + tiền gửi tiết kiệm + CDs nhỏ (<$100k) + tiền gửi thị trường tiền tệ. M2 "rộng" hơn M1, thanh khoản kém hơn nhưng bao phủ nhiều tài sản tài chính hơn.',
+    explanation: '✅ Đúng (A): Phân cấp cung tiền theo tính thanh khoản giảm dần: M1 (hẹp nhất) = Tiền mặt lưu hành + Tiền gửi không kỳ hạn (checking/demand deposits) + Séc du lịch. M2 (rộng hơn) = M1 + Tiền gửi tiết kiệm (savings deposits) + CDs nhỏ dưới $100k (small time deposits) + Tiền gửi thị trường tiền tệ (money market deposit accounts). M3 (ở một số nước) = M2 + CDs lớn + repo + eurodollar... 💡 Logic phân loại: tiêu chí là tính thanh khoản — dùng được ngay không mất giá trị. M1 dùng được ngay; M2 có thể cần thời gian hoặc chịu phạt khi rút sớm. Fed theo dõi M2 là thước đo cung tiền chính trong thực tế CSTT. ❌ B, C, D: đều mô tả không đầy đủ — bỏ qua M1 là thành phần cơ sở của M2.',
   },
   {
     id: 55, chapter: 'C15',
@@ -668,7 +668,7 @@ const QUESTIONS = [
       'Mức giá',
     ],
     answer: 1,
-    explanation: 'Phương trình số lượng tiền: M×V = P×Y. M = cung tiền, V = velocity (tốc độ lưu chuyển — số lần trung bình một đồng tiền đổi tay trong một năm), P = mức giá, Y = sản lượng thực. Nếu V ổn định và Y cố định, M↑ → P↑ (lạm phát). Đây là nền tảng của thuyết số lượng tiền.',
+    explanation: '✅ Đúng (B): Phương trình trao đổi (Equation of Exchange) của Irving Fisher: MV = PY. M = cung tiền (money supply). V = velocity of money — tốc độ lưu chuyển tiền, tức số lần trung bình một đồng tiền được dùng để mua hàng hóa/dịch vụ trong một năm. P = mức giá chung (price level). Y = sản lượng thực (real output/GDP thực). PY = GDP danh nghĩa (nominal GDP). 💡 Từ đây suy ra Thuyết số lượng tiền (Quantity Theory of Money): nếu V ổn định (giả định của các nhà tiền tệ học — monetarists) và Y tăng theo tiềm năng, thì M↑ → P↑ tỉ lệ thuận → lạm phát. Friedman: "Inflation is always and everywhere a monetary phenomenon." ❌ A: Y là sản lượng thực. ❌ C: M là cung tiền. ❌ D: P là mức giá.',
   },
   {
     id: 56, chapter: 'C15',
@@ -680,7 +680,7 @@ const QUESTIONS = [
       'Cung tiền giảm',
     ],
     answer: 0,
-    explanation: 'Từ MV = PY: nếu M không đổi mà V tăng → PY (GDP danh nghĩa) tăng. GDP danh nghĩa có thể tăng qua P↑ (lạm phát) hoặc Y↑ (tăng trưởng thực) hoặc cả hai. V tăng xảy ra khi dân chúng tiêu tiền nhanh hơn (kỳ vọng lạm phát cao, thanh khoản tốt hơn).',
+    explanation: '✅ Đúng (A): Từ MV = PY: nếu M cố định mà V tăng → tích PY phải tăng để phương trình cân bằng → GDP danh nghĩa (PY) tăng. GDP danh nghĩa tăng có thể phản ánh: P↑ (lạm phát) hoặc Y↑ (tăng trưởng thực) hoặc cả hai. V tăng có nghĩa là mỗi đồng tiền đổi tay nhiều lần hơn trong năm — xảy ra khi: kỳ vọng lạm phát cao (người ta tiêu nhanh trước khi tiền mất giá), niềm tin kinh tế cải thiện, công nghệ thanh toán nhanh hơn. 💡 Ý nghĩa chính sách: nếu V không ổn định (biến động mạnh như khủng hoảng 2008), thì dù Fed kiểm soát M, PY vẫn dao động khó đoán — đây là một trong những lý do targeting M2 không còn được dùng nhiều. ❌ B: V↑ thì PY phải tăng, không giảm. ❌ C & D: Mức giá và cung tiền không giảm từ điều kiện đã cho.',
   },
   {
     id: 57, chapter: 'C16',
@@ -728,6 +728,6 @@ const QUESTIONS = [
       'Không ảnh hưởng',
     ],
     answer: 0,
-    explanation: 'rr↓ → m = (1+c)/(rr+e+c) tăng (mẫu số giảm) → M = m × MB tăng (MB không đổi). NH có thể cho vay nhiều hơn → tạo tiền nhiều hơn. Ví dụ: rr từ 10%→5%, c=0.2, e=0: m từ (1.2/0.3)=4 lên (1.2/0.25)=4.8 → cung tiền tăng 20%. CSTT mở rộng qua kênh dự trữ bắt buộc.',
+    explanation: '✅ Đúng (A): Cơ chế đối xứng với câu Q48: rr↓ → mẫu số trong m = (1+c)/(rr+e+c) giảm → m tăng → M = m × MB tăng (MB không đổi). Ví dụ số: rr từ 10%→5%, c=0.2, e=0: m trước = 1.2/(0.1+0+0.2) = 1.2/0.3 = 4. m sau = 1.2/(0.05+0+0.2) = 1.2/0.25 = 4.8. Cung tiền tăng 20%. 💡 Cơ chế truyền dẫn: rr↓ → ngân hàng được phép giữ ít dự trữ hơn → cho vay nhiều hơn trên cùng lượng tiền gửi → quá trình nhân tiền diễn ra mạnh hơn → M tăng → lãi suất giảm → đầu tư và tiêu dùng tăng → kích thích kinh tế. Thực tế: Fed dùng công cụ này rất thận trọng — tháng 3/2020 Fed hạ rr xuống 0% để hỗ trợ kinh tế COVID. ❌ B & C: rr↓ làm tăng số nhân và tăng cung tiền, không phải ngược lại.',
   },
 ];
