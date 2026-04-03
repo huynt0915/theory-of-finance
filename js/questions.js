@@ -200,7 +200,7 @@ const QUESTIONS = [
       'Giảm sau độ trễ 3-6 tháng',
     ],
     answer: 2,
-    explanation: 'Khi BR=0: Rs cắt Rd ở đoạn thẳng đứng (tại mức NBR). Giảm lãi suất chiết khấu chỉ làm trần dịch xuống — nhưng điểm cân bằng iff đang nằm trên đoạn thẳng đứng, không bị ràng buộc bởi trần → iff không đổi.',
+    explanation: '✅ Đúng (C): Để hiểu câu này cần nắm mô hình thị trường dự trữ (reserve market). Đường cung dự trữ (Rs) có hình chữ L ngược: đoạn nằm ngang phía trên = lãi suất chiết khấu (discount rate) — là TRẦN, khi iff chạm trần NH sẽ vay discount window thay vì trả cao hơn. Đoạn thẳng đứng = tại mức NBR (khi BR=0, toàn bộ dự trữ là NBR). Khi BR=0: điểm cân bằng iff nằm trên đoạn THẲNG ĐỨNG — tức Rs và Rd cắt nhau ở đoạn không phụ thuộc discount rate. Giảm discount rate chỉ dịch chuyển PHẦN NẰM NGANG xuống thấp hơn — nhưng không ảnh hưởng điểm cân bằng vì điểm cân bằng không nằm ở đó. 💡 Bài học: discount rate chỉ có tác dụng khi iff đang bằng discount rate (BR > 0). Nếu không có ngân hàng nào vay, công cụ này "vô hiệu" với iff. ❌ A: iff không giảm vì điểm cân bằng không thay đổi. ❌ D: không có độ trễ — vấn đề là công cụ này không có tác dụng trong tình huống BR=0.',
   },
   {
     id: 17, chapter: 'C16',
@@ -212,7 +212,7 @@ const QUESTIONS = [
       'Không gây lạm phát',
     ],
     answer: 1,
-    explanation: 'Ưu điểm OMO: (1) Fed quyết định chủ động; (2) Linh hoạt — bất kỳ quy mô; (3) Có thể đảo ngược nhanh; (4) Tác động tức thì lên NBR → iff. So với Discount: phụ thuộc NH vay. So với RR: kém linh hoạt, gây biến động.',
+    explanation: '✅ Đúng (B): OMO vượt trội so với 2 công cụ còn lại nhờ 4 đặc tính: (1) Fed hoàn toàn chủ động — không phụ thuộc vào ngân hàng có muốn vay hay không (khác discount window). (2) Linh hoạt về quy mô — từ vài triệu đến hàng tỷ, điều chỉnh từng bước nhỏ. (3) Dễ đảo ngược — nếu bơm quá nhiều, bán lại ngay; nếu hút quá, mua lại. (4) Tác động tức thì — ngay khi giao dịch, NBR thay đổi → iff thay đổi. 💡 So sánh với 2 công cụ còn lại: Discount rate — phụ thuộc ngân hàng có chủ động vay không (thụ động); thay đổi mang tính "tín hiệu" nhiều hơn là kiểm soát trực tiếp. Dự trữ bắt buộc (RR) — kém linh hoạt, không thể điều chỉnh hàng ngày, thay đổi nhỏ gây biến động lớn, gây bất ổn cho kế hoạch kinh doanh của ngân hàng. ❌ A: "tác động mạnh nhất" không phải tiêu chí — RR có tác động mạnh hơn nhưng kém linh hoạt.',
   },
   {
     id: 18, chapter: 'C16',
@@ -224,7 +224,7 @@ const QUESTIONS = [
       'QE do Bộ Tài chính thực hiện, OMO do Fed',
     ],
     answer: 2,
-    explanation: 'OMO thông thường: CK ngắn hạn, quy mô vừa, điều chỉnh iff. QE: (1) Tài sản dài hạn (Treasury 10Y, MBS); (2) Quy mô khổng lồ (nghìn tỷ USD); (3) Mục tiêu: giảm lãi suất DÀI HẠN khi iff đã = 0. QE1 (2008): Fed mua 1.7T USD MBS và CK CP.',
+    explanation: '✅ Đúng (C): OMO thông thường vs QE — khác nhau về mục tiêu, tài sản, và bối cảnh: OMO thông thường: mua/bán T-Bills (ngắn hạn <1 năm), quy mô vừa phải, mục tiêu điều chỉnh iff (lãi suất ngắn hạn). QE (Quantitative Easing): triển khai khi iff đã về 0 (Zero Lower Bound — ZLB), không thể giảm thêm. Fed chuyển sang mua tài sản dài hạn: Treasury 10-30 năm, MBS (Mortgage-Backed Securities). Mục tiêu: kéo giảm lãi suất DÀI HẠN để kích thích đầu tư bất động sản, vay doanh nghiệp. Quy mô khổng lồ: QE1 (2008-2010) = 1.7 nghìn tỷ USD; QE2 (2010-2011) = 600 tỷ; QE3 (2012-2014) = 85 tỷ/tháng. 💡 QE là "unconventional monetary policy" — công cụ phi truyền thống khi kho vũ khí thông thường cạn kiệt. ❌ A & B: nói ngược hoàn toàn. ❌ D: QE do Fed thực hiện, không phải Bộ Tài chính.',
   },
   {
     id: 19, chapter: 'C16',
@@ -236,7 +236,7 @@ const QUESTIONS = [
       'Tăng iff nhưng tăng M vì NH vay thêm từ Fed',
     ],
     answer: 2,
-    explanation: 'rr↑ có tác động kép: (1) Thị trường dự trữ: NH cần giữ nhiều RR hơn → Rd dịch phải → iff↑; (2) Số nhân tiền: m = (1+c)/(rr+e+c), rr↑ → m↓ → M↓. Đây là lý do RR ít dùng: tác động quá mạnh và khó kiểm soát chính xác.',
+    explanation: '✅ Đúng (C): Tăng tỷ lệ dự trữ bắt buộc (rr) gây ra 2 tác động đồng thời — cả hai đều thắt chặt tiền tệ: Tác động 1 — Thị trường dự trữ: rr↑ → ngân hàng phải giữ nhiều dự trữ bắt buộc hơn trên cùng lượng tiền gửi → cầu dự trữ (Rd) tăng, dịch PHẢI → tại cùng mức cung, iff tăng → chi phí vay liên ngân hàng cao hơn → tín dụng thu hẹp. Tác động 2 — Số nhân tiền: m = (1+c)/(rr+e+c), rr↑ → mẫu số tăng → m giảm → M = m × MB giảm (dù MB không đổi). 💡 Đây là "tác động kép thắt chặt" — vừa tăng lãi suất ngắn hạn, vừa trực tiếp thu hẹp cung tiền. Chính vì hiệu lực quá mạnh và lan rộng, RR là công cụ ít được dùng — thay đổi nhỏ gây biến động lớn, khó hiệu chỉnh. ❌ A: RR ảnh hưởng cả iff lẫn M. ❌ B: RR tăng thì iff tăng (không giảm) và M giảm (không tăng).',
   },
   {
     id: 20, chapter: 'C16',
@@ -248,7 +248,7 @@ const QUESTIONS = [
       'Không ảnh hưởng iff vì IOR là lãi suất nội bộ của Fed',
     ],
     answer: 1,
-    explanation: 'IOR = lãi suất Fed trả cho dự trữ NH gửi tại Fed. NH không bao giờ cho vay liên NH với lãi suất thấp hơn IOR → IOR = SÀN của iff. Sau 2008, Fed dùng IOR để kiểm soát iff: muốn tăng iff → tăng IOR; muốn giảm → giảm IOR. "Floor system".',
+    explanation: '✅ Đúng (B): IOR (Interest on Reserves) là lãi suất Fed trả cho phần dự trữ ngân hàng gửi tại Fed (bao gồm cả dự trữ vượt mức từ 2008). Logic của sàn lãi suất: nếu iff < IOR, ngân hàng sẽ từ chối cho vay trên thị trường liên ngân hàng và chuyển tiền vào Fed để hưởng IOR rủi ro thấp hơn → cung dự trữ trên thị trường liên NH giảm → iff bị đẩy lên không thể xuống dưới IOR. Vì vậy IOR = SÀN (floor) của iff. 💡 Ý nghĩa thực tiễn: Trước 2008, Fed không trả IOR → "corridor system" (iff dao động giữa discount rate và 0). Sau 2008, Fed bắt đầu trả IOR → chuyển sang "floor system": tăng IOR = tăng iff, giảm IOR = giảm iff. Đây là công cụ kiểm soát lãi suất chính sách hiện đại, đặc biệt hữu ích khi hệ thống tràn ngập dự trữ sau QE. ❌ A: Trần là discount rate (lãi suất chiết khấu), không phải IOR. ❌ C: IOR là sàn, không phải điểm cân bằng.',
   },
 
   // ── C17 ─────────────────────────────────────────────────────────────────
@@ -438,7 +438,7 @@ const QUESTIONS = [
     text: 'Fed mua OMO → NBR↑ → Rs dịch phải → iff ______. Đây là CSTT ______.',
     options: ['↑; thắt chặt', '↓; thắt chặt', '↓; mở rộng', '↑; mở rộng'],
     answer: 2,
-    explanation: 'OMO mua → tăng dự trữ cho NH → Rs dịch PHẢI → iff giảm → chi phí vốn rẻ hơn → tín dụng mở rộng → CSTT MỞ RỘNG. Nhớ: Rs dịch phải = iff giảm.',
+    explanation: '✅ Đúng (C): Chuỗi nhân quả OMO mua: Fed mua trái phiếu → trả tiền bằng cách tăng dự trữ ngân hàng → NBR tăng → Rs (cung dự trữ) dịch PHẢI → tại cùng mức cầu Rd, điểm cân bằng mới có iff thấp hơn → chi phí vay liên ngân hàng rẻ hơn → ngân hàng cho vay nhiều hơn → M tăng → đây là CSTT MỞ RỘNG (expansionary). 💡 Nhớ nhanh chiều dịch chuyển: OMO mua → Rs phải → iff giảm (mở rộng). OMO bán → Rs trái → iff tăng (thắt chặt). ❌ A: iff giảm (không tăng) khi OMO mua. ❌ B: iff giảm → CSTT mở rộng, không phải thắt chặt. ❌ D: iff tăng + mở rộng là mâu thuẫn — iff giảm mới là mở rộng.',
   },
   {
     id: 37, chapter: 'C15',
@@ -536,7 +536,7 @@ const QUESTIONS = [
       'Hạn mức tín dụng',
     ],
     answer: 1,
-    explanation: 'OMO (Open Market Operations) là công cụ quan trọng nhất vì: (1) Linh hoạt — có thể thực hiện hàng ngày với quy mô tùy ý; (2) Dễ đảo ngược; (3) NHTW kiểm soát hoàn toàn; (4) Tác động trực tiếp và nhanh lên MB và i_ff. Dự trữ bắt buộc ít dùng vì ảnh hưởng quá lớn và kém linh hoạt.',
+    explanation: '✅ Đúng (B): Trong bộ 3 công cụ CSTT (OMO, discount rate, RR), OMO được xem là công cụ trung tâm và quan trọng nhất vì 4 ưu điểm vượt trội: Linh hoạt — thực hiện được hàng ngày, quy mô tùy chỉnh từ nhỏ đến rất lớn. Dễ đảo ngược — sai có thể sửa ngay trong ngày tiếp theo. Kiểm soát hoàn toàn — Fed chủ động, không phụ thuộc hành vi ngân hàng. Tác động trực tiếp và nhanh — tức thì lên dự trữ và iff. 💡 Thực tế: Ủy ban FOMC họp 8 lần/năm để quyết định mục tiêu iff, sau đó bàn giao cho New York Fed thực hiện OMO hàng ngày để duy trì iff gần mục tiêu. ❌ A: RR ít dùng vì cứng nhắc, tác động quá mạnh. ❌ C: Lãi suất tái chiết khấu là công cụ thụ động — phụ thuộc ngân hàng có muốn vay hay không.',
   },
   {
     id: 45, chapter: 'C15',
@@ -572,7 +572,7 @@ const QUESTIONS = [
       'Dự trữ ngân hàng giảm',
     ],
     answer: 1,
-    explanation: 'NHTW mua TP = bơm tiền vào hệ thống: NHTW trả tiền cho dealer → tiền chuyển vào tài khoản NH tại Fed → R↑ → RS dịch phải → i_ff↓ → NH cho vay nhiều hơn → M↑. Đây là OMO mở rộng (expansionary OMO), công cụ kích thích kinh tế.',
+    explanation: '✅ Đúng (B): NHTW mua trái phiếu trên thị trường mở là OMO mở rộng (expansionary OMO). Cơ chế: NHTW trả tiền cho người bán (primary dealer) bằng cách ghi tăng tài khoản dự trữ của ngân hàng tại NHTW → R (dự trữ) tăng → Rs dịch phải → i_ff giảm → chi phí vốn rẻ hơn → ngân hàng cho vay nhiều hơn → qua số nhân tiền, M tăng bội số. 💡 Đây là phản xạ cốt lõi cần nhớ: NHTW mua = bơm tiền = M tăng = lãi suất giảm = kích thích kinh tế. NHTW bán = hút tiền = M giảm = lãi suất tăng = thắt chặt kinh tế. ❌ A: Cung tiền tăng (không giảm) khi NHTW mua. ❌ C: Lãi suất giảm (không tăng). ❌ D: Dự trữ ngân hàng tăng (không giảm).',
   },
   {
     id: 48, chapter: 'C15',
@@ -644,7 +644,7 @@ const QUESTIONS = [
       'Đầu tư tăng',
     ],
     answer: 1,
-    explanation: 'NHTW bán TP = hút tiền khỏi hệ thống: dealer trả tiền cho NHTW → R giảm → RS dịch trái → i_ff↑ → chi phí vay tăng → đầu tư giảm → M giảm. Đây là OMO thắt chặt. Ngược lại với mua TP: mua → M↑, bán → M↓.',
+    explanation: '✅ Đúng (B): NHTW bán trái phiếu là OMO thắt chặt (contractionary OMO) — đối xứng hoàn toàn với mua. Cơ chế: dealer mua trái phiếu → thanh toán bằng cách chuyển tiền cho NHTW → dự trữ ngân hàng tại NHTW giảm → R↓ → Rs dịch TRÁI → i_ff↑ → chi phí vay liên ngân hàng tăng → ngân hàng thắt chặt cho vay → M giảm → lãi suất thị trường tăng → đầu tư giảm → GDP giảm (kìm lạm phát). 💡 Quy tắc đối xứng: Mua TP → M↑, i↓, kích thích kinh tế. Bán TP → M↓, i↑, thắt chặt kinh tế (chống lạm phát). ❌ A: Cung tiền giảm, không tăng. ❌ C: Lãi suất tăng, không giảm. ❌ D: Đầu tư giảm (chi phí vốn cao hơn), không tăng.',
   },
   {
     id: 54, chapter: 'C15',
@@ -692,7 +692,7 @@ const QUESTIONS = [
       'Tất cả các đáp án trên',
     ],
     answer: 3,
-    explanation: 'CSTT mở rộng: M↑ → i↓ → chi phí vốn giảm → I↑ → AD↑ → Y↑. Đây là chuỗi truyền dẫn của kênh lãi suất. Ngoài ra còn tác động qua kênh tỷ giá (nội tệ mất giá → NX↑), kênh tài sản (giá CK↑ → q↑ → I↑), kênh tín dụng. Tất cả ba đáp án đều là tác động đúng của CSTT mở rộng.',
+    explanation: '✅ Đúng (D): CSTT mở rộng kích hoạt một chuỗi phản ứng theo nhiều kênh — tất cả A, B, C đều đúng. Kênh lãi suất (chính): M↑ → i↓ → chi phí vốn giảm → I↑ → AD↑ → Y↑. Kênh tỷ giá: M↑ → i↓ → vốn chảy ra nước ngoài → nội tệ mất giá → xuất khẩu rẻ hơn → NX↑ → Y↑. Kênh giá tài sản: M↑ → i↓ → giá cổ phiếu, bất động sản tăng → của cải tăng → tiêu dùng tăng (wealth effect); Tobin q tăng → đầu tư tăng. Kênh tín dụng: M↑ → ngân hàng có nhiều dự trữ → cho vay dễ hơn → bank lending channel. 💡 Vì vậy: tăng cung tiền (A) + giảm lãi suất (B) + kích thích đầu tư (C) đều là hệ quả đúng của CSTT mở rộng → đáp án là Tất cả (D).',
   },
   {
     id: 58, chapter: 'C17',
