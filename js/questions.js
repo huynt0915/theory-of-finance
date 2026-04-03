@@ -155,7 +155,7 @@ const QUESTIONS = [
       'MB giảm $100M; M giảm đúng $100M',
     ],
     answer: 1,
-    explanation: '✅ Đúng (B): Đây là bẫy tư duy kinh điển — cần phân biệt rõ MB và M. MB (Monetary Base / tiền cơ sở) = C (tiền mặt lưu hành) + R (dự trữ ngân hàng). Khi người dân rút $100M mặt từ ngân hàng: C tăng $100M, R giảm $100M → MB = C + R KHÔNG ĐỔI (hai chiều triệt tiêu nhau). NHƯNG: c = C/D tăng (nhiều tiền mặt hơn so với tiền gửi) → số nhân m = (1+c)/(rr+e+c) giảm → M = m × MB giảm, dù MB không đổi. 💡 Kết luận: cùng một lượng MB nhưng nếu c cao (dân ưa giữ tiền mặt), cung tiền M sẽ thấp hơn. Đây là lý do hành vi công chúng ảnh hưởng đến cung tiền dù Fed không thay đổi chính sách. ❌ A: MB không thay đổi (không phải giảm). ❌ C: MB không tăng. ❌ D: M giảm nhiều hơn $100M do hiệu ứng số nhân.',
+    explanation: '✅ Đúng (B): Đây là bẫy tư duy kinh điển — cần phân biệt rõ MB và M. MB (Monetary Base / tiền cơ sở) = C (tiền mặt lưu hành) + R (dự trữ ngân hàng). Khi người dân rút 100M mặt từ ngân hàng: C tăng 100M, R giảm 100M → MB = C + R KHÔNG ĐỔI (hai chiều triệt tiêu nhau). NHƯNG: c = C/D tăng (nhiều tiền mặt hơn so với tiền gửi) → số nhân m = (1+c)/(rr+e+c) giảm → M = m × MB giảm, dù MB không đổi. 💡 Kết luận: cùng một lượng MB nhưng nếu c cao (dân ưa giữ tiền mặt), cung tiền M sẽ thấp hơn. Đây là lý do hành vi công chúng ảnh hưởng đến cung tiền dù Fed không thay đổi chính sách. ❌ A: MB không thay đổi (không phải giảm). ❌ C: MB không tăng. ❌ D: M giảm nhiều hơn 100M do hiệu ứng số nhân.',
   },
   {
     id: 13, chapter: 'C15',
@@ -186,7 +186,7 @@ const QUESTIONS = [
     text: 'Fed bơm $200 tỷ qua OMO mua, với c=0.3, rr=0.1, e=0.05. Cung tiền M tăng xấp xỉ bao nhiêu?',
     options: ['$200 tỷ', '$2,000 tỷ (1/rr × MB)', '≈ $578 tỷ', '≈ $1,400 tỷ'],
     answer: 2,
-    explanation: '✅ Đúng (C): Từng bước tính: Bước 1 — tính số nhân m: m = (1+c)/(rr+e+c) = (1+0.3)/(0.1+0.05+0.3) = 1.3/0.45 ≈ 2.89. Bước 2 — tính ΔM: ΔM = m × ΔMB = 2.89 × $200 tỷ ≈ $578 tỷ. 💡 So sánh các đáp án: $200 tỷ (A) = chỉ tính MB tăng, bỏ qua hiệu ứng nhân — sai. $2,000 tỷ (B) = dùng 1/rr = 10, bỏ qua c và e — quá lạc quan, không thực tế. $578 tỷ (C) = đúng, dùng công thức đầy đủ. $1,400 tỷ (D) = không khớp bất kỳ công thức nào. Lưu ý: OMO mua → Fed trả tiền bằng cách tăng dự trữ ngân hàng (NBR tăng) → MB tăng $200 tỷ → cung tiền tăng theo số nhân.',
+    explanation: '✅ Đúng (C): Từng bước tính: Bước 1 — tính số nhân m: m = (1+c)/(rr+e+c) = (1+0.3)/(0.1+0.05+0.3) = 1.3/0.45 ≈ 2.89. Bước 2 — tính ΔM: ΔM = m × ΔMB = 2.89 × 200 tỷ ≈ 578 tỷ. 💡 So sánh các đáp án: 200 tỷ (A) = chỉ tính MB tăng, bỏ qua hiệu ứng nhân — sai. 2,000 tỷ (B) = dùng 1/rr = 10, bỏ qua c và e — quá lạc quan, không thực tế. 578 tỷ (C) = đúng, dùng công thức đầy đủ. 1,400 tỷ (D) = không khớp bất kỳ công thức nào. Lưu ý: OMO mua → Fed trả tiền bằng cách tăng dự trữ ngân hàng (NBR tăng) → MB tăng 200 tỷ → cung tiền tăng theo số nhân.',
   },
 
   // ── C16 ─────────────────────────────────────────────────────────────────
@@ -224,7 +224,7 @@ const QUESTIONS = [
       'QE do Bộ Tài chính thực hiện, OMO do Fed',
     ],
     answer: 2,
-    explanation: 'OMO thông thường: CK ngắn hạn, quy mô vừa, điều chỉnh iff. QE: (1) Tài sản dài hạn (Treasury 10Y, MBS); (2) Quy mô khổng lồ (nghìn tỷ $); (3) Mục tiêu: giảm lãi suất DÀI HẠN khi iff đã = 0. QE1 (2008): Fed mua $1.7T MBS và CK CP.',
+    explanation: 'OMO thông thường: CK ngắn hạn, quy mô vừa, điều chỉnh iff. QE: (1) Tài sản dài hạn (Treasury 10Y, MBS); (2) Quy mô khổng lồ (nghìn tỷ USD); (3) Mục tiêu: giảm lãi suất DÀI HẠN khi iff đã = 0. QE1 (2008): Fed mua 1.7T USD MBS và CK CP.',
   },
   {
     id: 19, chapter: 'C16',
@@ -393,7 +393,7 @@ const QUESTIONS = [
       'Tăng cổ tức vì q cao',
     ],
     answer: 1,
-    explanation: "q = Giá thị trường DN / Chi phí thay thế vốn. q=0.7 < 1: mua DN trên thị trường ($0.7) rẻ hơn xây mới ($1) → không có động cơ đầu tư mới → I↓. q>1: đầu tư mới có lợi.",
+    explanation: "q = Giá thị trường DN / Chi phí thay thế vốn. q=0.7 < 1: mua DN trên thị trường (0.7 đồng) rẻ hơn xây mới (1 đồng) → không có động cơ đầu tư mới → I↓. q>1: đầu tư mới có lợi.",
   },
   {
     id: 33, chapter: 'C26',
@@ -450,7 +450,7 @@ const QUESTIONS = [
       'Tổng dự trữ không đổi',
     ],
     answer: 1,
-    explanation: '✅ Đúng (B): Cần phân biệt 2 loại dự trữ: NBR (Non-Borrowed Reserves / Dự trữ không vay) = dự trữ ngân hàng tạo ra từ OMO và các nguồn khác không phải vay Fed. BR (Borrowed Reserves) = dự trữ ngân hàng có được bằng cách vay từ Fed qua discount window. Khi Fed thực hiện OMO mua: Fed mua trái phiếu CP từ ngân hàng → trả tiền bằng cách ghi tăng tài khoản dự trữ của ngân hàng tại Fed → đây là NBR tăng $100 tỷ. MB = NBR + BR + C. OMO chỉ tác động đến NBR, không ảnh hưởng BR (BR chỉ thay đổi khi ngân hàng chủ động vay/trả Fed). 💡 OMO là công cụ CSTT chủ lực vì Fed kiểm soát hoàn toàn — không phụ thuộc vào quyết định vay của ngân hàng. ❌ A: RR thay đổi khi tiền gửi thay đổi, không trực tiếp từ OMO. ❌ C: BR chỉ thay đổi qua discount window.',
+    explanation: '✅ Đúng (B): Cần phân biệt 2 loại dự trữ: NBR (Non-Borrowed Reserves / Dự trữ không vay) = dự trữ ngân hàng tạo ra từ OMO và các nguồn khác không phải vay Fed. BR (Borrowed Reserves) = dự trữ ngân hàng có được bằng cách vay từ Fed qua discount window. Khi Fed thực hiện OMO mua: Fed mua trái phiếu CP từ ngân hàng → trả tiền bằng cách ghi tăng tài khoản dự trữ của ngân hàng tại Fed → đây là NBR tăng 100 tỷ. MB = NBR + BR + C. OMO chỉ tác động đến NBR, không ảnh hưởng BR (BR chỉ thay đổi khi ngân hàng chủ động vay/trả Fed). 💡 OMO là công cụ CSTT chủ lực vì Fed kiểm soát hoàn toàn — không phụ thuộc vào quyết định vay của ngân hàng. ❌ A: RR thay đổi khi tiền gửi thay đổi, không trực tiếp từ OMO. ❌ C: BR chỉ thay đổi qua discount window.',
   },
   {
     id: 38, chapter: 'C17',
@@ -560,7 +560,7 @@ const QUESTIONS = [
       'Chính phủ chi tiêu',
     ],
     answer: 1,
-    explanation: '✅ Đúng (B): Quá trình tạo tiền (money creation) xảy ra khi ngân hàng cho vay, không phải khi nhận tiền gửi. Ví dụ với rr=10%: NH A nhận tiền gửi $1,000 → giữ $100 dự trữ bắt buộc → cho vay $900. Người vay $900 gửi vào NH B → NH B giữ $90 → cho vay $810. NH C nhận $810 → cho vay $729... Tổng tiền gửi tạo ra = $1,000 × (1/0.1) = $10,000. Tổng tiền mới tạo = $9,000. 💡 Cơ chế cốt lõi: mỗi đồng cho vay trở thành tiền gửi ở ngân hàng khác, rồi lại được cho vay tiếp — đây là "fractional reserve banking" (ngân hàng dự trữ một phần). ❌ A: Nhận tiền gửi chỉ là bước đầu — chưa tạo tiền mới. ❌ C: NHTW phát hành tiền là tạo MB (tiền cơ sở), không phải M (cung tiền rộng). ❌ D: Chi tiêu chính phủ tác động gián tiếp qua MB.',
+    explanation: '✅ Đúng (B): Quá trình tạo tiền (money creation) xảy ra khi ngân hàng cho vay, không phải khi nhận tiền gửi. Ví dụ với rr=10%: NH A nhận tiền gửi 1,000 → giữ 100 dự trữ bắt buộc → cho vay 900. Người vay 900 gửi vào NH B → NH B giữ 90 → cho vay 810. NH C nhận 810 → cho vay 729... Tổng tiền gửi tạo ra = 1,000 × (1/0.1) = 10,000. Tổng tiền mới tạo = 9,000. 💡 Cơ chế cốt lõi: mỗi đồng cho vay trở thành tiền gửi ở ngân hàng khác, rồi lại được cho vay tiếp — đây là "fractional reserve banking" (ngân hàng dự trữ một phần). ❌ A: Nhận tiền gửi chỉ là bước đầu — chưa tạo tiền mới. ❌ C: NHTW phát hành tiền là tạo MB (tiền cơ sở), không phải M (cung tiền rộng). ❌ D: Chi tiêu chính phủ tác động gián tiếp qua MB.',
   },
   {
     id: 47, chapter: 'C16',
@@ -656,7 +656,7 @@ const QUESTIONS = [
       'Chỉ tiền gửi có kỳ hạn',
     ],
     answer: 0,
-    explanation: '✅ Đúng (A): Phân cấp cung tiền theo tính thanh khoản giảm dần: M1 (hẹp nhất) = Tiền mặt lưu hành + Tiền gửi không kỳ hạn (checking/demand deposits) + Séc du lịch. M2 (rộng hơn) = M1 + Tiền gửi tiết kiệm (savings deposits) + CDs nhỏ dưới $100k (small time deposits) + Tiền gửi thị trường tiền tệ (money market deposit accounts). M3 (ở một số nước) = M2 + CDs lớn + repo + eurodollar... 💡 Logic phân loại: tiêu chí là tính thanh khoản — dùng được ngay không mất giá trị. M1 dùng được ngay; M2 có thể cần thời gian hoặc chịu phạt khi rút sớm. Fed theo dõi M2 là thước đo cung tiền chính trong thực tế CSTT. ❌ B, C, D: đều mô tả không đầy đủ — bỏ qua M1 là thành phần cơ sở của M2.',
+    explanation: '✅ Đúng (A): Phân cấp cung tiền theo tính thanh khoản giảm dần: M1 (hẹp nhất) = Tiền mặt lưu hành + Tiền gửi không kỳ hạn (checking/demand deposits) + Séc du lịch. M2 (rộng hơn) = M1 + Tiền gửi tiết kiệm (savings deposits) + CDs nhỏ dưới 100k (small time deposits) + Tiền gửi thị trường tiền tệ (money market deposit accounts). M3 (ở một số nước) = M2 + CDs lớn + repo + eurodollar... 💡 Logic phân loại: tiêu chí là tính thanh khoản — dùng được ngay không mất giá trị. M1 dùng được ngay; M2 có thể cần thời gian hoặc chịu phạt khi rút sớm. Fed theo dõi M2 là thước đo cung tiền chính trong thực tế CSTT. ❌ B, C, D: đều mô tả không đầy đủ — bỏ qua M1 là thành phần cơ sở của M2.',
   },
   {
     id: 55, chapter: 'C15',
