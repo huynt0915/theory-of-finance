@@ -24,7 +24,7 @@ const QUESTIONS = [
       'Thị trường sơ cấp có tính thanh khoản cao hơn',
     ],
     answer: 1,
-    explanation: 'Sơ cấp (primary market): IPO, phát hành trái phiếu mới → vốn chảy vào tổ chức phát hành. Thứ cấp (secondary market): NYSE, NASDAQ → giao dịch lại, vốn chảy giữa nhà đầu tư, không vào tổ chức phát hành.',
+    explanation: '✅ Đúng (B): Thị trường sơ cấp (primary market) là nơi phát hành chứng khoán lần đầu — IPO cổ phiếu, phát hành trái phiếu mới. Tiền từ nhà đầu tư chảy thẳng vào tổ chức phát hành để huy động vốn. Thị trường thứ cấp (secondary market) — NYSE, NASDAQ, HoSE — giao dịch lại chứng khoán đã phát hành; tổ chức phát hành KHÔNG nhận thêm tiền, nhưng thứ cấp quan trọng vì tạo thanh khoản, giúp nhà đầu tư sẵn sàng mua sơ cấp. 💡 Nhớ: sơ cấp = sinh ra; thứ cấp = mua bán lại. ❌ A: nói ngược lại. ❌ C: không có sự phân biệt chính phủ/DN. ❌ D: ngược lại — thứ cấp mới có thanh khoản cao.',
   },
   {
     id: 2, chapter: 'C2',
@@ -36,7 +36,7 @@ const QUESTIONS = [
       'Khi lãi suất tăng — người vay tốt rút lui khỏi thị trường',
     ],
     answer: 1,
-    explanation: 'Adverse selection = VẤN ĐỀ TRƯỚC giao dịch. Thông tin bất cân xứng: người vay biết rõ rủi ro của mình, ngân hàng không biết → người rủi ro cao sẵn sàng vay lãi cao hơn → danh mục cho vay có chất lượng xấu hơn trung bình. Giải pháp: sàng lọc (screening), yêu cầu tài sản đảm bảo.',
+    explanation: '✅ Đúng (B): Adverse selection là vấn đề thông tin bất cân xứng xảy ra TRƯỚC giao dịch (ex-ante). Người vay biết rõ rủi ro của mình, ngân hàng thì không. Khi lãi suất tăng, người vay "tốt" (dự án ổn định) rút khỏi thị trường vì chi phí vay cao hơn lợi tức kỳ vọng; người vay "xấu" (rủi ro cao, cần tiền gấp) vẫn chấp nhận vay → danh mục cho vay ngày càng xấu hơn — thị trường tín dụng có thể sụp đổ. 💡 Giải pháp: screening (sàng lọc), credit scoring, yêu cầu tài sản đảm bảo. ❌ A & C: đây là mô tả Moral Hazard (vấn đề SAU giao dịch). ❌ D: đây là hệ quả của adverse selection khi lãi suất tăng, không phải định nghĩa cốt lõi.',
   },
   {
     id: 3, chapter: 'C2',
@@ -48,7 +48,7 @@ const QUESTIONS = [
       'Tài trợ gián tiếp chỉ xảy ra trên thị trường thứ cấp',
     ],
     answer: 1,
-    explanation: 'Gián tiếp: tiết kiệm → NH → cho vay DN. NH đóng vai trò trung gian, chuyển hóa tài sản (asset transformation). Phổ biến hơn ở hầu hết quốc gia. Trực tiếp: tiết kiệm mua cổ phiếu/trái phiếu DN trực tiếp — đặc trưng Mỹ.',
+    explanation: '✅ Đúng (B): Tài trợ trực tiếp (direct finance): người tiết kiệm mua thẳng cổ phiếu/trái phiếu của doanh nghiệp trên thị trường vốn — đặc trưng của Mỹ và Anh. Tài trợ gián tiếp (indirect finance): tiền đi qua trung gian tài chính — ngân hàng nhận tiền gửi rồi cho vay — chiếm ưu thế ở hầu hết các nền kinh tế (Việt Nam, Nhật, Đức...). Tại sao gián tiếp phổ biến hơn? Vì trung gian tài chính có lợi thế trong xử lý thông tin bất cân xứng và giảm chi phí giao dịch nhờ kinh tế quy mô. ❌ A: gián tiếp không "nhanh hơn và rẻ hơn" — ưu thế của nó là xử lý bất cân xứng thông tin, không phải tốc độ. ❌ C & D: không có cơ sở trong lý thuyết.',
   },
   {
     id: 4, chapter: 'C2',
@@ -60,7 +60,7 @@ const QUESTIONS = [
       'Đảm bảo lợi nhuận cao hơn đầu tư trực tiếp',
     ],
     answer: 3,
-    explanation: '3 lý do đúng: (1) Chi phí giao dịch thấp; (2) Risk sharing qua asset transformation; (3) Giải quyết thông tin bất cân xứng. "Đảm bảo lợi nhuận cao hơn" là SAI — trung gian tài chính không đảm bảo lợi nhuận.',
+    explanation: '✅ Đúng (D — là lý do SAI): Ba lý do thực sự trung gian tài chính tồn tại theo Mishkin: (1) Giảm chi phí giao dịch nhờ kinh tế quy mô — ngân hàng xử lý hàng nghìn giao dịch, chi phí đơn vị thấp hơn cá nhân tự làm. (2) Chia sẻ rủi ro / asset transformation — ngân hàng chuyển hóa tài sản rủi ro (khoản vay DN) thành tiền gửi an toàn cho người gửi; đa dạng hóa danh mục làm giảm rủi ro tổng thể. (3) Giải quyết thông tin bất cân xứng — ngân hàng chuyên sàng lọc người vay (giảm adverse selection) và giám sát sau khi cho vay (giảm moral hazard). 💡 Không ai "đảm bảo" lợi nhuận cao hơn đầu tư trực tiếp — đây là điều không thể cam kết trong tài chính.',
   },
   {
     id: 5, chapter: 'C2',
@@ -72,7 +72,7 @@ const QUESTIONS = [
       'Ngân hàng không đủ vốn để cho vay',
     ],
     answer: 1,
-    explanation: 'Moral Hazard = VẤN ĐỀ SAU giao dịch. Sau khi nhận tiền, người vay có động cơ đầu tư rủi ro hơn (nếu thành công hưởng lợi; thất bại → ngân hàng chịu). Giải pháp: giám sát (monitoring), covenant, tài sản đảm bảo.',
+    explanation: '✅ Đúng (B): Moral Hazard là vấn đề thông tin bất cân xứng xảy ra SAU giao dịch (ex-post). Sau khi nhận tiền vay, người vay có thể đầu tư vào dự án rủi ro hơn cam kết — vì nếu thành công họ hưởng lợi lớn, nếu thất bại thì ngân hàng gánh phần lớn tổn thất (asymmetric payoff/lệch thưởng phạt). 💡 So sánh then chốt: Adverse selection = TRƯỚC vay (ai là người vay?), Moral hazard = SAU vay (người vay làm gì với tiền?). Giải pháp moral hazard: restrictive covenants (ràng buộc hành vi), monitoring (giám sát định kỳ), collateral (tài sản đảm bảo). ❌ C: "giấu thông tin xấu trước khi vay" là mô tả Adverse Selection, không phải Moral Hazard.',
   },
 
   // ── C9 ──────────────────────────────────────────────────────────────────
@@ -500,7 +500,7 @@ const QUESTIONS = [
       'Phương tiện cất trữ giá trị và phương tiện trao đổi',
     ],
     answer: 0,
-    explanation: 'Ba chức năng cơ bản của tiền: (1) Phương tiện trao đổi — giúp mua bán hàng hóa/dịch vụ; (2) Thước đo giá trị (đơn vị tính toán) — định giá mọi thứ bằng tiền; (3) Phương tiện cất trữ giá trị — lưu giữ sức mua qua thời gian.',
+    explanation: '✅ Đúng (A): Tiền có 3 chức năng cơ bản theo kinh tế học: (1) Phương tiện trao đổi (medium of exchange) — chức năng quan trọng nhất, giải quyết vấn đề "double coincidence of wants" của kinh tế barter (trao đổi hiện vật cần cả hai bên đều muốn thứ kia có). (2) Thước đo giá trị / đơn vị tính toán (unit of account) — định giá mọi hàng hóa/dịch vụ bằng một đơn vị chung, giúp so sánh giá trị dễ dàng. (3) Phương tiện cất trữ giá trị (store of value) — lưu giữ sức mua theo thời gian (dù không hoàn hảo vì lạm phát). 💡 "Phương tiện thanh toán" không phải chức năng riêng biệt — nó là hệ quả của chức năng trao đổi. ❌ B, C, D: đều thiếu đủ 3 chức năng chuẩn.',
   },
   {
     id: 42, chapter: 'C2',
@@ -512,7 +512,7 @@ const QUESTIONS = [
       'Séc du lịch',
     ],
     answer: 2,
-    explanation: 'M1 = Tiền mặt lưu hành + Tiền gửi không kỳ hạn (demand deposits) + Séc du lịch. Tiền gửi tiết kiệm (savings deposits) KHÔNG thuộc M1 — nó nằm trong M2 (M2 = M1 + tiền gửi tiết kiệm + CDs nhỏ).',
+    explanation: '✅ Đúng (C — tiền gửi tiết kiệm KHÔNG thuộc M1): M1 (cung tiền hẹp) = Tiền mặt lưu hành ngoài ngân hàng + Tiền gửi không kỳ hạn (demand deposits/checking accounts) + Séc du lịch. M2 (cung tiền rộng) = M1 + Tiền gửi tiết kiệm (savings deposits) + Tiền gửi có kỳ hạn nhỏ (small CDs) + Money market mutual funds. 💡 Logic phân loại: M1 là tiền có tính thanh khoản cao nhất — dùng được ngay lập tức không cần chờ. Tiền gửi tiết kiệm có giới hạn rút tiền hoặc cần thông báo trước → kém thanh khoản hơn → chỉ nằm trong M2. Nhớ: M1 ⊂ M2, mọi thứ trong M1 đều thuộc M2 nhưng không chiều ngược lại.',
   },
   {
     id: 43, chapter: 'C17',
