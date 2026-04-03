@@ -262,7 +262,7 @@ const QUESTIONS = [
       'NHTW mất quá nhiều thời gian ra quyết định',
     ],
     answer: 1,
-    explanation: 'Time-inconsistency: NHTW hứa LP thấp → kỳ vọng LP thấp → Sau đó bị cám dỗ mở rộng tiền tệ (để Y↑ ngắn hạn) → LP tăng → mất uy tín. Giải pháp: Neo danh nghĩa + Độc lập NHTW + Minh bạch/trách nhiệm giải trình.',
+    explanation: '✅ Đúng (B): Time-inconsistency là vấn đề mang tính cấu trúc của CSTT, không phải do NHTW "xấu tính" mà do logic kinh tế. Chuỗi sự kiện: (1) NHTW tuyên bố sẽ duy trì lạm phát thấp → (2) Người lao động và doanh nghiệp tin, đàm phán lương/giá ở mức thấp → (3) Tại thời điểm đó, NHTW có động cơ "lén" mở rộng tiền tệ (cung tiền tăng bất ngờ → sản lượng tăng ngắn hạn, thất nghiệp giảm) → (4) Lạm phát thực tế cao hơn kỳ vọng → (5) Mất uy tín, lần sau không ai tin nữa → kỳ vọng lạm phát tăng → lạm phát thực tế tăng. 💡 Kydland & Prescott (1977) phát triển lý thuyết này — đoạt Nobel Kinh tế 2004. Giải pháp: (1) Neo danh nghĩa (ràng buộc công khai). (2) Độc lập NHTW (tách khỏi áp lực chính trị). (3) Minh bạch và trách nhiệm giải trình. ❌ A: Không phải vấn đề tần suất thay đổi mục tiêu. ❌ C & D: Không liên quan đến bản chất của vấn đề.',
   },
   {
     id: 22, chapter: 'C17',
@@ -274,14 +274,14 @@ const QUESTIONS = [
       'Minh bạch thông qua báo cáo lạm phát định kỳ',
     ],
     answer: 2,
-    explanation: '5 yếu tố của IT: (1) Công bố mục tiêu LP số cụ thể; (2) Ổn định giá là ưu tiên; (3) Sử dụng NHIỀU chỉ số thông tin (không chỉ M2 — vì mối quan hệ M-LP không ổn định); (4) Minh bạch; (5) Trách nhiệm giải trình. Đáp án C SAI.',
+    explanation: '✅ Đúng (C — là yếu tố KHÔNG thuộc IT): Inflation Targeting (IT) theo Mishkin gồm 5 yếu tố: (1) Công bố công khai mục tiêu lạm phát số cụ thể (VD: 2% ± 1% — New Zealand là nước đầu tiên áp dụng 1990). (2) Cam kết ổn định giá là mục tiêu ưu tiên dài hạn của CSTT. (3) Sử dụng NHIỀU biến thông tin (không chỉ M2) — vì sau 1990s, mối quan hệ giữa M và lạm phát không còn ổn định, targeting M2 thất bại ở Mỹ và Đức. (4) Minh bạch chiến lược qua báo cáo lạm phát định kỳ (Inflation Report). (5) Trách nhiệm giải trình của NHTW khi lệch mục tiêu. 💡 IT thành công ở NZ, Canada, Anh, Thụy Điển... giúp neo kỳ vọng lạm phát hiệu quả mà không đòi hỏi tuân thủ cứng nhắc một chỉ tiêu trung gian duy nhất. ❌ C: IT từ bỏ việc target M2 vì tương quan M-LP không ổn định (velocity thay đổi).',
   },
   {
     id: 23, chapter: 'C17',
     text: 'Taylor Rule: π=4%, π*=2%, r*=2%, output gap=+2%. Lãi suất mục tiêu i_ff là:',
     options: ['6%', '7%', '8%', '9%'],
     answer: 2,
-    explanation: 'i_ff = π + r* + 0.5(π−π*) + 0.5(gap) = 4 + 2 + 0.5(4−2) + 0.5(2) = 4+2+1+1 = 8%. LP vượt mục tiêu 2pp → +1pp; Sản lượng vượt tiềm năng 2% → +1pp.',
+    explanation: '✅ Đúng (C): Taylor Rule (John Taylor, 1993): i_ff = π + r* + 0.5×(π − π*) + 0.5×(output gap). Thay số: π=4%, π*=2%, r*=2%, gap=+2%. i_ff = 4 + 2 + 0.5×(4−2) + 0.5×(2) = 4 + 2 + 1 + 1 = 8%. 💡 Hiểu từng thành phần: π = lạm phát thực tế (4%) — lãi suất danh nghĩa cần bù lạm phát. r* = lãi suất thực cân bằng (2%) — lãi suất "trung tính" khi kinh tế ở tiềm năng. 0.5×(π−π*) = phản ứng với lạm phát vượt mục tiêu: 4−2=2pp, ×0.5 = +1pp. 0.5×gap = phản ứng với sản lượng vượt tiềm năng: gap=+2%, ×0.5 = +1pp. Lạm phát quá cao (+1pp) và kinh tế quá nóng (+1pp) → i_ff cần ở mức cao 8% để thắt chặt. Taylor Rule mô tả khá tốt hành vi thực tế của Fed trước 2008.',
   },
   {
     id: 24, chapter: 'C17',
@@ -293,7 +293,7 @@ const QUESTIONS = [
       'Cả hai đều có mandate như nhau, chỉ khác tên gọi',
     ],
     answer: 2,
-    explanation: 'ECB (Hierarchical): ổn định giá > tất cả → chậm nới lỏng khi suy thoái nếu LP chưa về mục tiêu. Fed (Dual): LP và việc làm ngang nhau → nới lỏng mạnh hơn/sớm hơn khi thất nghiệp tăng. Bằng chứng: 2008-2009, Fed cắt lãi suất nhanh và mạnh hơn ECB nhiều.',
+    explanation: '✅ Đúng (C): Sự khác biệt cốt lõi nằm ở cách xếp ưu tiên mục tiêu. ECB — Hierarchical Mandate (phân cấp): ổn định giá (lạm phát gần nhưng dưới 2%) là mục tiêu TUYỆT ĐỐI ưu tiên. Chỉ khi đã đảm bảo ổn định giá, ECB mới xem xét các mục tiêu khác (tăng trưởng, việc làm). Trong suy thoái, nếu lạm phát chưa về mục tiêu, ECB chậm nới lỏng hơn. Fed — Dual Mandate (song hành): Ổn định giá VÀ Việc làm tối đa NGANG NHAU về trọng số. Fed phải cân bằng cả hai, sẵn sàng hy sinh một phần ổn định giá để hỗ trợ việc làm. 💡 Bằng chứng thực tế 2008-2009: Fed cắt lãi suất từ 5.25% xuống 0-0.25% trong vòng 15 tháng. ECB cắt lãi suất chậm hơn và ít hơn — thậm chí ECB tăng lãi suất 2 lần năm 2011 (khi lạm phát lên 2.7%) dù Eurozone đang suy thoái. ❌ B: nói ngược — ECB, không phải Fed, ưu tiên tuyệt đối ổn định giá.',
   },
   {
     id: 25, chapter: 'C17',
@@ -305,7 +305,7 @@ const QUESTIONS = [
       'Tăng 2pp',
     ],
     answer: 2,
-    explanation: '"Taylor Principle": khi LP tăng 1pp, i_ff phải tăng 1.5pp (1pp từ hạng π + 0.5pp từ hạng 0.5×(π−π*)) → lãi suất thực r = i − π tăng 0.5pp. NẾU i chỉ tăng 1pp → r không đổi → CSTT không đủ thắt chặt → LP không kiềm được.',
+    explanation: '✅ Đúng (C): Đây là "Taylor Principle" — nguyên tắc nền tảng để CSTT ổn định lạm phát. Từ công thức Taylor Rule, khi π tăng 1pp: Hạng π tăng 1pp (i tăng 1 vì bù lạm phát). Hạng 0.5×(π−π*) tăng thêm 0.5pp (vì π−π* tăng 1pp). Tổng: i_ff phải tăng 1.5pp. 💡 Tại sao 1.5pp lại đủ, 1pp lại không? Lãi suất thực r = i − π. Nếu i tăng chỉ 1pp trong khi π tăng 1pp → r = i − π không đổi → CSTT không thực sự thắt chặt → không có lực kéo lạm phát xuống. Nếu i tăng 1.5pp trong khi π tăng 1pp → r tăng 0.5pp → lãi suất thực cao hơn → đầu tư giảm → tổng cầu giảm → lạm phát giảm. Nguyên tắc: hệ số trước π trong Taylor Rule phải > 1 (ở đây là 1+0.5=1.5) để CSTT ổn định. ❌ A: +0.5pp — lãi suất thực giảm 0.5pp → CSTT nới lỏng thực sự dù nghe có vẻ thắt chặt. ❌ B: +1pp — lãi suất thực không đổi — CSTT trung tính, không đủ để kìm lạm phát.',
   },
 
   // ── C18 ─────────────────────────────────────────────────────────────────
@@ -462,7 +462,7 @@ const QUESTIONS = [
       'Dual mandate hoạt động hiệu quả',
     ],
     answer: 1,
-    explanation: 'Time-inconsistency điển hình: hứa LP=2% → kỳ vọng thấp → "lén" mở rộng tiền tệ vì muốn Y↑ ngắn hạn → LP tăng → mất uy tín. Đây là lý do NHTW cần độc lập và neo danh nghĩa ràng buộc.',
+    explanation: '✅ Đúng (B): Đây là ví dụ điển hình của time-inconsistency trong thực tế. Phân tích: Giai đoạn 1 — NHTW cam kết LP=2% công khai → doanh nghiệp và người lao động tin tưởng, đàm phán lương/giá thấp → kỳ vọng lạm phát được neo ở 2%. Giai đoạn 2 — Với kỳ vọng đã thấp, NHTW "phát hiện" mình có thể khai thác: mở rộng tiền tệ bất ngờ → sản lượng tăng ngắn hạn (do lương thực tế giảm), thất nghiệp giảm. Giai đoạn 3 — Nhưng lạm phát thực tế vượt 2% → người lao động yêu cầu tăng lương bù lạm phát → lần sau không ai tin cam kết nữa → kỳ vọng LP tăng → lạm phát kết quả cao hơn dù sản lượng không tăng. 💡 Đây là "inflation bias" — xu hướng cấu trúc dẫn đến lạm phát cao hơn tối ưu. Giải pháp: neo danh nghĩa rõ ràng, độc lập NHTW, chọn Thống đốc có "reputation" chống lạm phát (Rogoff conservative central banker). ❌ A: Không phải phản chu kỳ hợp lý — nếu hợp lý thì phải thông báo trước, không phải vi phạm cam kết.',
   },
   {
     id: 39, chapter: 'C26',
@@ -524,7 +524,7 @@ const QUESTIONS = [
       'Tất cả các đáp án trên',
     ],
     answer: 3,
-    explanation: 'NHTW thường theo đuổi đồng thời nhiều mục tiêu: ổn định giá cả (kiểm soát lạm phát), tăng trưởng kinh tế bền vững, và giảm thất nghiệp. Fed (Mỹ) có "dual mandate" — ổn định giá + việc làm tối đa. ECB ưu tiên ổn định giá (hierarchical mandate). Các NHTW còn theo đuổi ổn định tài chính, tỷ giá.',
+    explanation: '✅ Đúng (D): Theo Mishkin, NHTW thường theo đuổi 6 mục tiêu CSTT: (1) Ổn định giá cả — mục tiêu trung tâm, nền tảng uy tín NHTW. (2) Tăng trưởng kinh tế — GDP thực tăng bền vững. (3) Việc làm cao — thất nghiệp thấp, gần mức tự nhiên (NAIRU). (4) Ổn định lãi suất — tránh biến động lớn ảnh hưởng đầu tư. (5) Ổn định thị trường tài chính — ngăn khủng hoảng, panic, bank runs. (6) Ổn định thị trường ngoại hối — tỷ giá không biến động mạnh, đặc biệt quan trọng với nền kinh tế mở. 💡 Trong thực tế các mục tiêu này thường mâu thuẫn nhau — khi thất nghiệp tăng, NHTW muốn nới lỏng (giảm lãi suất) nhưng điều này có thể gây lạm phát (mâu thuẫn với mục tiêu 1). Đây là nguồn gốc của mọi tranh luận về CSTT. Fed giải quyết bằng dual mandate; ECB ưu tiên tuyệt đối ổn định giá.',
   },
   {
     id: 44, chapter: 'C16',
@@ -596,7 +596,7 @@ const QUESTIONS = [
       'Sự tăng thất nghiệp',
     ],
     answer: 0,
-    explanation: 'Lạm phát (inflation) = sự tăng liên tục và bền vững của mức giá chung trong nền kinh tế. Từ khoá quan trọng: "liên tục" (không phải tăng giá một lần) và "mức giá chung" (không phải giá một mặt hàng). Giảm phát (deflation) = mức giá giảm liên tục. Thiểu phát (disinflation) = lạm phát giảm nhưng vẫn dương.',
+    explanation: '✅ Đúng (A): Lạm phát (inflation) = sự tăng liên tục và bền vững của mức giá CHUNG trong nền kinh tế. Hai từ khóa quan trọng: "liên tục" — không phải tăng giá một lần (VD: xăng tăng vì chiến tranh rồi ổn định = không phải lạm phát). "Mức giá chung" — không phải một mặt hàng, mà là rổ hàng hóa đại diện. 💡 Các khái niệm liên quan dễ nhầm: Giảm phát (deflation): mức giá giảm liên tục → nguy hiểm vì người tiêu dùng trì hoãn mua → cầu giảm → suy thoái (Japan 1990s, bài học lớn). Thiểu phát (disinflation): lạm phát đang giảm tốc nhưng vẫn dương (VD: từ 8% → 4% → 2%) — khác hoàn toàn với giảm phát. Siêu lạm phát (hyperinflation): lạm phát >50%/tháng (Zimbabwe 2008, Venezuela 2018). ❌ B: Đây là định nghĩa giảm phát. ❌ C & D: Không liên quan đến định nghĩa lạm phát.',
   },
   {
     id: 50, chapter: 'C17',
@@ -608,7 +608,7 @@ const QUESTIONS = [
       'NNP',
     ],
     answer: 1,
-    explanation: 'CPI (Consumer Price Index — Chỉ số giá tiêu dùng) là thước đo lạm phát phổ biến nhất: đo giá của một "rổ" hàng hóa tiêu dùng cố định. Ngoài CPI còn có PCE deflator (Fed ưa dùng) và GDP deflator. GDP đo sản lượng, GNP/NNP là các chỉ số thu nhập quốc dân.',
+    explanation: '✅ Đúng (B): CPI (Consumer Price Index / Chỉ số Giá Tiêu Dùng) là thước đo lạm phát phổ biến và trực quan nhất — đo chi phí để mua một "rổ" hàng hóa và dịch vụ cố định đại diện cho tiêu dùng của hộ gia đình trung bình. 💡 Các thước đo lạm phát khác: PCE Deflator (Personal Consumption Expenditures): Fed Mỹ ưa dùng hơn CPI — linh hoạt hơn (thay đổi rổ hàng theo hành vi thực tế), thường thấp hơn CPI 0.3-0.5pp. Mục tiêu 2% của Fed là theo PCE. Core inflation (lạm phát lõi): CPI hoặc PCE loại trừ thực phẩm và năng lượng (volatile items) — phản ánh xu hướng dài hạn tốt hơn. GDP Deflator: đo giá toàn bộ hàng hóa trong GDP — rộng hơn CPI. ❌ A: GDP là thước đo sản lượng, không phải giá. ❌ C & D: GNP và NNP là thước đo thu nhập quốc dân.',
   },
   {
     id: 51, chapter: 'C17',
@@ -620,7 +620,7 @@ const QUESTIONS = [
       'Phụ thuộc vào lãi suất',
     ],
     answer: 1,
-    explanation: 'Đường Phillips ngắn hạn: quan hệ nghịch chiều giữa lạm phát (π) và thất nghiệp (u) — khi nền kinh tế mở rộng, thất nghiệp giảm nhưng lạm phát tăng. Tuy nhiên trong dài hạn, đường Phillips thẳng đứng tại tỷ lệ thất nghiệp tự nhiên (NAIRU) — không có sự đánh đổi dài hạn.',
+    explanation: '✅ Đúng (B): Đường Phillips (A.W. Phillips, 1958) mô tả mối quan hệ NGHỊCH CHIỀU giữa lạm phát và thất nghiệp trong ngắn hạn: khi nền kinh tế mở rộng (AD tăng) → doanh nghiệp thuê thêm lao động → thất nghiệp giảm → áp lực tăng lương → chi phí sản xuất tăng → giá tăng → lạm phát tăng. Và ngược lại. 💡 Phân biệt ngắn hạn vs dài hạn: Ngắn hạn: đường Phillips dốc xuống — có sự đánh đổi π vs u. CSTT có thể "chọn" điểm trên đường này. Dài hạn: đường Phillips THẲNG ĐỨNG tại NAIRU (tỷ lệ thất nghiệp tự nhiên) — không có sự đánh đổi. Friedman & Phelps (1968): trong dài hạn, kỳ vọng lạm phát điều chỉnh hoàn toàn → đường thẳng đứng. Stagflation 1970s: lạm phát cao + thất nghiệp cao cùng lúc — phá vỡ mô hình Phillips đơn giản, chứng minh kỳ vọng quan trọng. ❌ A: Nghịch chiều (không phải thuận chiều). ❌ C: Có mối quan hệ rõ ràng trong ngắn hạn.',
   },
   {
     id: 52, chapter: 'C17',
@@ -632,7 +632,7 @@ const QUESTIONS = [
       'Tăng chi tiêu chính phủ',
     ],
     answer: 0,
-    explanation: 'CSTT thắt chặt (contractionary monetary policy): giảm M → tăng i → giảm I và C → giảm AD → giảm áp lực lạm phát. Công cụ: bán TP (OMO), tăng rr, tăng i_d. Ví dụ: Fed tăng mạnh lãi suất 2022–2023 để kiềm lạm phát từ 9% xuống còn ~3%.',
+    explanation: '✅ Đúng (A): CSTT thắt chặt (contractionary monetary policy) là phản ứng của NHTW khi lạm phát quá cao. Chuỗi truyền dẫn: M↓ → i↑ → chi phí vay tăng → I (đầu tư) và C (tiêu dùng) giảm → AD (tổng cầu) giảm → áp lực lạm phát giảm → π↓. Công cụ thực hiện: OMO bán trái phiếu (rút tiền khỏi hệ thống), tăng lãi suất chiết khấu, tăng tỷ lệ dự trữ bắt buộc, tăng IOR. 💡 Ví dụ thực tế nổi bật: Volcker Shock (1979-1982): Fed tăng iff lên 20% để diệt lạm phát 13% — gây suy thoái nặng nhưng thành công. Fed 2022-2023: tăng lãi suất từ 0% lên 5.25-5.5% trong 18 tháng (nhanh nhất 40 năm) để hạ lạm phát từ 9.1% xuống ~3%. ❌ B: Tăng lạm phát là mục tiêu của CSTT MỞ RỘNG. ❌ C & D: Tăng cung tiền và tăng chi tiêu chính phủ là biện pháp kích thích, không phải thắt chặt.',
   },
   {
     id: 53, chapter: 'C16',
@@ -704,7 +704,7 @@ const QUESTIONS = [
       'Giảm thất nghiệp',
     ],
     answer: 1,
-    explanation: 'Neo danh nghĩa (tỷ giá cố định, mục tiêu M, mục tiêu lạm phát) neo kỳ vọng lạm phát của dân chúng và thị trường. Khi kỳ vọng lạm phát thấp → tiền lương và giá được đàm phán ở mức thấp → lạm phát thực tế thấp (self-fulfilling). Đây là cơ chế "commitment device" giải quyết bài toán time-inconsistency.',
+    explanation: '✅ Đúng (B): Neo danh nghĩa (nominal anchor) là một cam kết công khai, ràng buộc NHTW vào một biến danh nghĩa cụ thể — giúp giải quyết vấn đề time-inconsistency. Cơ chế hoạt động: NHTW cam kết rõ ràng (VD: inflation ≤ 2%) → thị trường và dân chúng tin → kỳ vọng lạm phát được neo ở mức thấp → tiền lương và giá được đàm phán thấp → lạm phát thực tế thấp (self-fulfilling prophecy tích cực). 💡 Các loại neo danh nghĩa theo lịch sử: Tỷ giá cố định (Gold Standard, Bretton Woods) — neo tiền tệ vào vàng hoặc USD. Mục tiêu cung tiền (Money targeting) — Đức, Thụy Sĩ 1970s-1980s. Mục tiêu lạm phát (Inflation targeting) — hiện đại nhất, NZ từ 1990. Lý do neo hoạt động: ràng buộc NHTW trước công chúng (commitment device) → giảm cám dỗ time-inconsistency → uy tín tích lũy → kỳ vọng ổn định → lạm phát thực tế thấp. ❌ A, C, D: Các công cụ tài khóa, không liên quan đến cơ chế neo danh nghĩa.',
   },
   {
     id: 59, chapter: 'C26',
