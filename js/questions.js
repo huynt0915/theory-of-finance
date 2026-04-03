@@ -86,7 +86,7 @@ const QUESTIONS = [
       'Rủi ro pháp lý — vi phạm quy định',
     ],
     answer: 1,
-    explanation: 'Borrow short: huy động tiền gửi ngắn hạn (lãi thả nổi). Lend long: cho vay dài hạn (lãi cố định). Khi lãi suất tăng: chi phí huy động tăng ngay, thu nhập từ cho vay không tăng → NIM giảm → lợi nhuận giảm.',
+    explanation: '✅ Đúng (B): Ngân hàng hoạt động theo mô hình "borrow short, lend long" — huy động tiền gửi ngắn hạn (lãi suất thả nổi, đáo hạn nhanh) rồi cho vay dài hạn (lãi suất cố định, đáo hạn lâu). Khi lãi suất thị trường tăng: chi phí huy động tăng ngay lập tức (phải trả lãi cao hơn cho người gửi), nhưng thu nhập từ khoản vay dài hạn lãi cố định không tăng → Net Interest Margin (NIM = lãi suất cho vay - lãi suất huy động) thu hẹp → lợi nhuận giảm, thậm chí thua lỗ. Đây chính là rủi ro lãi suất (interest rate risk). 💡 Bài học thực tế: Khủng hoảng Savings & Loan (S&L) Mỹ thập niên 1980 — hàng trăm tổ chức phá sản vì lãi suất tăng mạnh trong khi danh mục cho vay cố định dài hạn. ❌ A: Rủi ro tín dụng là khi khách hàng không trả được nợ — khác với rủi ro lãi suất. ❌ C & D: Không liên quan đến mô hình borrow short-lend long.',
   },
   {
     id: 7, chapter: 'C9',
@@ -98,7 +98,7 @@ const QUESTIONS = [
       'NH B an toàn hơn vì EM cao hơn',
     ],
     answer: 1,
-    explanation: 'A: ROE=1.5%×10=15%. B: ROE=0.8%×18=14.4%. NH A vừa ROE cao hơn, vừa an toàn hơn (EM=10 vs 18 — đòn bẩy thấp hơn). NH B phải dùng đòn bẩy cao hơn để đạt ROE gần tương đương. EM cao = rủi ro phá sản cao hơn.',
+    explanation: '✅ Đúng (B): Tính toán: NH A: ROE = ROA × EM = 1.5% × 10 = 15%. NH B: ROE = 0.8% × 18 = 14.4%. 💡 Hiểu công thức: ROA (Return on Assets) = Lợi nhuận ròng / Tổng tài sản — đo hiệu quả sử dụng tài sản. EM (Equity Multiplier) = Tổng tài sản / Vốn CSH — đo mức độ đòn bẩy tài chính. ROE = ROA × EM: ngân hàng có thể tăng ROE bằng cách tăng đòn bẩy (EM), nhưng đây là con dao hai lưỡi — EM cao nghĩa là vốn CSH mỏng, rủi ro phá sản cao hơn khi tài sản mất giá. NH A vừa ROE cao hơn (15% > 14.4%), vừa an toàn hơn (EM thấp hơn: 10 vs 18). NH B phải "đánh đổi" an toàn để đạt ROE xấp xỉ NH A. ❌ D: EM cao = kém an toàn hơn, không phải ngược lại.',
   },
   {
     id: 8, chapter: 'C9',
@@ -110,7 +110,7 @@ const QUESTIONS = [
       'Thu hồi hoặc bán các khoản cho vay',
     ],
     answer: 3,
-    explanation: 'Thu hồi/bán cho vay có chi phí cao nhất: (1) Mất quan hệ khách hàng dài hạn; (2) Phải bán với chiết khấu lớn (thị trường kém thanh khoản); (3) Mất thu nhập lãi tương lai. Vay Fed funds: nhanh, rẻ. Discount window: có stigma nhưng thấp hơn bán cho vay.',
+    explanation: '✅ Đúng (D): Khi thiếu thanh khoản đột ngột, ngân hàng có nhiều lựa chọn — xếp từ rẻ đến đắt: (1) Vay Fed funds (liên ngân hàng): nhanh, lãi suất thị trường, không cần thế chấp — rẻ nhất. (2) Bán chứng khoán: thanh khoản khá cao, mất thu nhập lãi nhưng không mất quan hệ khách hàng. (3) Vay chiết khấu Fed (discount window): có "stigma" (thị trường nghi ngờ ngân hàng đang gặp khó), nhưng chi phí tài chính vẫn thấp hơn bán cho vay. (4) Thu hồi/bán khoản cho vay: tốn kém nhất — phải bán với chiết khấu lớn (thị trường kém thanh khoản cho loại tài sản này), mất quan hệ khách hàng dài hạn, mất toàn bộ dòng thu nhập lãi tương lai. 💡 Bài học: ngân hàng quản lý thanh khoản tốt sẽ duy trì "liquidity buffer" (tiền mặt + chứng khoán có thể bán nhanh) để tránh phải bán cho vay trong tình huống khủng hoảng.',
   },
   {
     id: 9, chapter: 'C9',
@@ -122,7 +122,7 @@ const QUESTIONS = [
       'Cho phép ngân hàng tăng đòn bẩy tối đa',
     ],
     answer: 2,
-    explanation: 'Capital requirements: tỷ lệ vốn CSH tối thiểu / tài sản có trọng số rủi ro. Mục đích: vốn hấp thụ tổn thất trước khi ảnh hưởng đến người gửi tiền. Nhược điểm: ROE giảm vì EM bị giới hạn → NH có động cơ lách quy định (regulatory arbitrage).',
+    explanation: '✅ Đúng (C): Yêu cầu vốn tối thiểu (capital adequacy requirements) theo Basel buộc ngân hàng phải duy trì tỷ lệ vốn chủ sở hữu tối thiểu so với tài sản có trọng số rủi ro (risk-weighted assets). Mục đích cốt lõi: vốn CSH đóng vai trò "bộ đệm" (buffer) — khi tài sản mất giá hoặc có tổn thất tín dụng, vốn CSH hấp thụ trước, bảo vệ người gửi tiền và hệ thống tài chính. 💡 Trade-off quan trọng: vốn cao hơn → an toàn hơn, nhưng EM giảm → ROE giảm (ROE = ROA × EM). Vì vậy, ngân hàng có động cơ tối thiểu hóa vốn CSH và tìm cách lách quy định (regulatory arbitrage) — ví dụ chuyển tài sản ra ngoại bảng để giảm risk-weighted assets. Basel III (sau 2008) siết chặt hơn Basel II nhằm vá lỗ hổng này. ❌ A & B: Vốn yêu cầu thường làm giảm lợi nhuận và tăng chi phí huy động. ❌ D: Ngược lại — yêu cầu vốn giới hạn đòn bẩy, không cho phép tăng tối đa.',
   },
   {
     id: 10, chapter: 'C9',
@@ -134,7 +134,7 @@ const QUESTIONS = [
       'Tư vấn tài chính',
     ],
     answer: 1,
-    explanation: 'Phái sinh đầu cơ: đòn bẩy cực cao, tổn thất có thể vượt xa giá trị ghi sổ. Không xuất hiện trên bảng CĐKT nhưng rủi ro thực rất lớn. Bài học: Barings Bank (1995), Société Générale (2008) — thiệt hại hàng tỷ đô từ phái sinh.',
+    explanation: '✅ Đúng (B): Hoạt động ngoại bảng (off-balance-sheet) là những cam kết/rủi ro KHÔNG xuất hiện trực tiếp trên bảng cân đối kế toán, nhưng có thể gây tổn thất thực sự rất lớn. Giao dịch phái sinh (derivatives) để đầu cơ nguy hiểm nhất vì: đòn bẩy cực cao (kiểm soát giá trị hợp đồng lớn với vốn ban đầu nhỏ), tổn thất tiềm năng không có giới hạn (đặc biệt với options bán khống, futures), và biến động giá tài sản cơ sở có thể khuếch đại lỗ theo hệ số hàng chục lần. 💡 Bài học thực tế: Barings Bank (1995) — Nick Leeson thua lỗ 1.3 tỷ USD từ futures, phá sản ngân hàng 233 tuổi. Société Générale (2008) — Jérôme Kerviel lỗ 4.9 tỷ EUR từ futures. AIG (2008) — phái sinh credit default swaps gây khủng hoảng tài chính toàn cầu. ❌ A: Cho thuê tài chính thường có tài sản đảm bảo rõ ràng. ❌ C & D: Dịch vụ thanh toán và tư vấn tạo phí, rủi ro tương đối thấp.',
   },
 
   // ── C15 ─────────────────────────────────────────────────────────────────
