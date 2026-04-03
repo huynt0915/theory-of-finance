@@ -319,7 +319,7 @@ const QUESTIONS = [
       'Unsterilized: MB thay đổi → M thay đổi → tác động MẠNH; Sterilized: MB không đổi → tác động YẾU',
     ],
     answer: 3,
-    explanation: 'Unsterilized = không bù đắp → MB thay đổi → M thay đổi → tác động MẠNH lên tỷ giá và kinh tế. Sterilized = kèm OMO bù đắp → MB không đổi → M không đổi → tác động YẾU (chỉ qua kênh trực tiếp, ngắn hạn).',
+    explanation: '✅ Đúng (D): Phân biệt 2 loại can thiệp ngoại hối: Unsterilized (không vô hiệu hóa): NHTW mua/bán ngoại tệ mà KHÔNG thực hiện OMO bù đắp → MB thay đổi → qua số nhân tiền, M thay đổi → tác động MẠNH và kéo dài lên tỷ giá, lãi suất, lạm phát. Ví dụ: NHTW mua USD bằng nội tệ (không vô hiệu hóa) → cung nội tệ tăng → MB tăng → M tăng → nội tệ mất giá (thêm kênh tiền tệ). Sterilized (có vô hiệu hóa): NHTW can thiệp ngoại hối đồng thời thực hiện OMO ngược chiều để bù đắp → MB không đổi → M không đổi → tác động YẾU, chủ yếu qua "portfolio balance channel" ngắn hạn. Ví dụ: NHTW mua USD → đồng thời bán trái phiếu CP (OMO bán) → rút lại lượng nội tệ vừa bơm → MB trung tính. 💡 Tại sao sterilized tác động yếu? Vì không thay đổi cung tiền — chỉ hoán đổi tài sản trong danh mục nhà đầu tư, hiệu lực phụ thuộc mức độ "portfolio balance" của thị trường. ❌ B: mô tả ngược lại (sterilized và unsterilized hoán đổi cho nhau).',
   },
   {
     id: 27, chapter: 'C18',
@@ -331,7 +331,7 @@ const QUESTIONS = [
       'Độc lập tài khóa, độc lập tiền tệ và thặng dư ngân sách',
     ],
     answer: 1,
-    explanation: 'Mundell-Fleming Impossible Trinity: (1) Tỷ giá cố định, (2) Tự do dòng vốn, (3) CSTT độc lập. Chỉ chọn được 2/3. HK=(1)+(2); TQ=(1)+(3) kiểm soát vốn; Mỹ=(2)+(3) tỷ giá thả nổi.',
+    explanation: '✅ Đúng (B): Bộ ba bất khả thi (Impossible Trinity / Mundell-Fleming Trilemma): không một quốc gia nào có thể đồng thời duy trì cả 3 mục tiêu: (1) Tỷ giá cố định (exchange rate stability). (2) Tự do di chuyển vốn (free capital mobility). (3) CSTT độc lập (autonomous monetary policy). Chỉ chọn được tối đa 2/3. 💡 Lựa chọn thực tế của các nước: Mỹ, EU, Nhật, Anh: (2)+(3) — tỷ giá thả nổi, vốn tự do, CSTT độc lập. Hy sinh: tỷ giá biến động. Trung Quốc: (1)+(3) — tỷ giá quản lý, CSTT độc lập. Hy sinh: kiểm soát vốn chặt. Hong Kong (Currency Board): (1)+(2) — tỷ giá cố định cứng 7.8 HKD/USD, vốn tự do. Hy sinh: hoàn toàn mất CSTT độc lập, lãi suất phải đi theo Fed. Việt Nam: gần với (1)+(3) — tỷ giá biên độ quản lý, kiểm soát vốn một phần. ❌ A: Đây là "tam giác ma" kinh tế vĩ mô (growth-employment-inflation), không phải Impossible Trinity.',
   },
   {
     id: 28, chapter: 'C18',
@@ -343,7 +343,7 @@ const QUESTIONS = [
       'Cung tiền nội địa giảm tự động',
     ],
     answer: 1,
-    explanation: 'CA + FA = 0. CA < 0 → FA phải > 0 (nhập ròng vốn). Nhập khẩu > xuất khẩu → cần vốn nước ngoài vào để tài trợ. Mỹ: thâm hụt CA lớn → FA > 0 (TQ, Nhật mua trái phiếu Mỹ). Nếu FA không đủ → dự trữ ngoại hối giảm.',
+    explanation: '✅ Đúng (B): Đồng nhất thức BOP (Balance of Payments): CA + FA + ΔR = 0. Trong đó: CA = Tài khoản vãng lai (xuất - nhập khẩu hàng hóa, dịch vụ, thu nhập, chuyển tiền). FA = Tài khoản tài chính (dòng vốn vào - ra). ΔR = Thay đổi dự trữ ngoại hối chính thức. Khi CA < 0 (thâm hụt): CA + FA = 0 → FA phải > 0. FA > 0 = nhập ròng vốn (net capital inflow) — nước ngoài đầu tư vào nhiều hơn trong nước đầu tư ra ngoài. 💡 Ví dụ thực tế kinh điển — Mỹ: CA thâm hụt hàng nghìn tỷ USD mỗi năm (nhập khẩu > xuất khẩu) → FA thặng dư tương ứng (Trung Quốc, Nhật Bản, Saudi Arabia mua trái phiếu Kho bạc Mỹ). Điều này giải thích tại sao USD vẫn mạnh dù Mỹ nhập siêu — vốn ngoại tệ liên tục chảy vào. Nếu FA không đủ bù CA: ΔR < 0 — dự trữ ngoại hối giảm để bù đắp. ❌ C: Tỷ giá không nhất thiết phá giá ngay — phụ thuộc chế độ tỷ giá. ❌ D: Cung tiền không tự động giảm.',
   },
   {
     id: 29, chapter: 'C18',
@@ -355,7 +355,7 @@ const QUESTIONS = [
       'Làm tăng thất nghiệp',
     ],
     answer: 1,
-    explanation: 'Khi neo tỷ giá vào USD: nước neo PHẢI giữ lãi suất tương đương Mỹ để tránh dòng vốn rời đi. Mỹ tăng lãi suất → nước neo phải tăng theo (dù kinh tế không cần) → mất tự chủ CSTT. Thêm: dễ bị tấn công đầu cơ (bài học: Thái Lan 1997, Anh 1992).',
+    explanation: '✅ Đúng (B): Đây trực tiếp từ Impossible Trinity. Khi neo tỷ giá vào USD (chọn mục tiêu 1) và cho vốn tự do di chuyển (mục tiêu 2) → buộc phải từ bỏ CSTT độc lập (mục tiêu 3). Cơ chế: nếu lãi suất nước neo thấp hơn Mỹ → vốn chảy sang Mỹ tìm lợi suất cao hơn → nội tệ bị áp lực mất giá → NHTW phải tăng lãi suất để bảo vệ tỷ giá → mất quyền tự chủ hoàn toàn. 💡 Bài học lịch sử: Khủng hoảng châu Á 1997: Thái Lan neo baht vào USD + tự do vốn → khi dòng vốn đảo chiều, NHTW không đủ dự trữ bảo vệ tỷ giá → phá giá 40% trong vài ngày → khủng hoảng lan sang Indonesia, Hàn Quốc. Anh 1992 (Black Wednesday): Soros tấn công GBP neo vào ERM → BoE thua, buộc rút khỏi ERM, Soros lãi 1 tỷ USD. ❌ A: Không phức tạp hơn các chế độ tỷ giá khác về kỹ thuật. ❌ C & D: Tỷ giá cố định thực ra giúp kiểm soát lạm phát nhập khẩu và thất nghiệp không phải hệ quả trực tiếp.',
   },
   {
     id: 30, chapter: 'C18',
@@ -367,7 +367,7 @@ const QUESTIONS = [
       'Lạm phát Mỹ tăng vì hàng nhập khẩu đắt hơn',
     ],
     answer: 1,
-    explanation: 'USD mạnh: hàng Mỹ đắt hơn với người nước ngoài → XK↓; hàng nước ngoài rẻ hơn với người Mỹ → NK↑ → NX↓ → Y↓. Thêm: nhập khẩu rẻ → lạm phát Mỹ có xu hướng↓ (không phải tăng).',
+    explanation: '✅ Đúng (B): USD tăng giá (USD appreciation) ảnh hưởng đến NX theo 2 chiều: Xuất khẩu: hàng Mỹ tính bằng EUR đắt hơn → người châu Âu mua ít hàng Mỹ hơn → XK↓. Nhập khẩu: hàng EU tính bằng USD rẻ hơn → người Mỹ mua nhiều hàng ngoại hơn → NK↑. Kết quả: NX = XK − NK giảm → AD giảm → Y giảm → đây là kênh tỷ giá của CSTT. 💡 Liên hệ CSTT: CSTT thắt chặt (i↑) → vốn ngoại chảy vào → USD tăng giá → NX↓ → kênh tỷ giá khuếch đại tác động thắt chặt. CSTT mở rộng (i↓) → USD giảm giá → NX↑ → kênh tỷ giá khuếch đại tác động kích thích. Đây là lý do CSTT của Fed ảnh hưởng toàn cầu: Fed tăng lãi suất 2022 → USD mạnh → hàng hóa USD tính đắt hơn → lạm phát tại các nước nhập khẩu tăng. ❌ A: ngược lại. ❌ D: USD mạnh → nhập khẩu rẻ hơn → lạm phát Mỹ CÓ XU HƯỚNG GIẢM, không tăng.',
   },
 
   // ── C26 ─────────────────────────────────────────────────────────────────
@@ -381,7 +381,7 @@ const QUESTIONS = [
       'M↑ → Tỷ giá tăng → Nhập khẩu rẻ hơn → C↑ → Y↑',
     ],
     answer: 1,
-    explanation: 'Kênh tỷ giá: M↑ → i↓ → tài sản nội địa kém hấp dẫn → vốn chảy ra → nội tệ mất giá (E↑) → hàng xuất khẩu rẻ hơn tương đối → XK↑, NK↓ → NX↑ → Y↑. Quan trọng với nền kinh tế mở nhỏ (VN, Singapore).',
+    explanation: '✅ Đúng (B): Kênh tỷ giá (exchange rate channel) là một trong 5 kênh truyền dẫn CSTT quan trọng, đặc biệt với nền kinh tế mở nhỏ. Chuỗi đầy đủ: M↑ → i↓ → tài sản nội địa kém hấp dẫn hơn so với tài sản nước ngoài → vốn chảy ra nước ngoài (capital outflow) → cầu nội tệ giảm, cung ngoại tệ giảm → nội tệ mất giá (E tăng — số đơn vị nội tệ/ngoại tệ tăng) → hàng xuất khẩu rẻ hơn tương đối với người nước ngoài → XK↑; hàng nhập khẩu đắt hơn → NK↓ → NX = XK−NK tăng → AD tăng → Y↑. 💡 Tầm quan trọng theo quy mô kinh tế: Nền kinh tế mở nhỏ (VN, Singapore, NZ): kênh tỷ giá cực kỳ quan trọng — có thể là kênh chính. Nền kinh tế lớn đóng (Mỹ): kênh lãi suất quan trọng hơn vì thương mại quốc tế chiếm tỷ trọng GDP thấp hơn. ❌ A: M↑ → i↓ (không phải i↑) → vốn ra (không vào) → nội tệ yếu (không mạnh).',
   },
   {
     id: 32, chapter: 'C26',
@@ -393,7 +393,7 @@ const QUESTIONS = [
       'Tăng cổ tức vì q cao',
     ],
     answer: 1,
-    explanation: "q = Giá thị trường DN / Chi phí thay thế vốn. q=0.7 < 1: mua DN trên thị trường (0.7 đồng) rẻ hơn xây mới (1 đồng) → không có động cơ đầu tư mới → I↓. q>1: đầu tư mới có lợi.",
+    explanation: "✅ Đúng (B): Tobin's q (James Tobin, Nobel 1981) = Giá trị thị trường của doanh nghiệp / Chi phí thay thế vốn (replacement cost of capital). Khi q = 0.7 < 1: mua lại toàn bộ DN trên thị trường chứng khoán chỉ tốn 0.7 đồng, nhưng xây dựng DN tương đương từ đầu tốn 1 đồng → hợp lý hơn khi MUA lại DN hiện có thay vì đầu tư mới → I (đầu tư mới) giảm. Khi q > 1: xây mới có lợi hơn mua lại → I tăng. 💡 Liên hệ CSTT: CSTT mở rộng (M↑ → i↓) → giá cổ phiếu tăng → tử số tăng → q↑ → doanh nghiệp có động cơ đầu tư mới → I↑ → Y↑. Đây là kênh giá tài sản (asset price channel) / kênh Tobin's q. ❌ A: q < 1 → KHÔNG đầu tư mới. ❌ C: Phát hành cổ phiếu có lợi khi q > 1 (giá thị trường cao hơn chi phí thực). ❌ D: q thấp → không phải thời điểm tăng cổ tức.",
   },
   {
     id: 33, chapter: 'C26',
@@ -405,7 +405,7 @@ const QUESTIONS = [
       'Lạm phát tăng tốc theo cấp số nhân',
     ],
     answer: 1,
-    explanation: 'Financial Accelerator: cú sốc ban đầu → net worth DN↓ → adverse selection↑, moral hazard↑ → NH siết tín dụng → I↓ → Y↓ → giá TS tiếp tục↓ → net worth↓ thêm... Vòng xoáy tự khuếch đại. Giải thích tại sao suy thoái sau khủng hoảng tài chính sâu và kéo dài hơn.',
+    explanation: '✅ Đúng (B): Financial Accelerator (Bernanke, Gertler & Gilchrist, 1999) mô tả cơ chế khuếch đại tự phản hồi (feedback loop) trong hệ thống tài chính. Cơ chế: Cú sốc ban đầu (suy thoái, giá tài sản giảm) → Net worth (tài sản ròng) của doanh nghiệp và hộ gia đình giảm → Thông tin bất cân xứng trầm trọng hơn: adverse selection↑ (khó phân biệt người vay tốt/xấu) và moral hazard↑ (doanh nghiệp khó khăn có động cơ đầu cơ) → Ngân hàng siết tín dụng (credit crunch) → I↓ → Y↓ → giá tài sản tiếp tục giảm → net worth giảm thêm → vòng xoáy tự khuếch đại (self-reinforcing spiral). 💡 Ý nghĩa chính sách: Giải thích tại sao suy thoái sau khủng hoảng tài chính (2008-2009) sâu và kéo dài hơn suy thoái thông thường. CSTT cần "phá vỡ" vòng xoáy bằng cách khôi phục net worth (QE, bơm vốn ngân hàng, lãi suất thấp kéo giá tài sản). ❌ A: Accelerator không hoạt động "luôn luôn" — chỉ khi có cú sốc âm kích hoạt vòng xoáy. ❌ C & D: mô tả sai cơ chế.',
   },
   {
     id: 34, chapter: 'C26',
@@ -417,7 +417,7 @@ const QUESTIONS = [
       'Số nhân tiền âm khi i = 0',
     ],
     answer: 1,
-    explanation: 'ZLB: i không thể giảm dưới 0 → Kênh lãi suất truyền thống bị tắc. Thêm: NH giữ ER lớn (e↑) → m↓ → dù MB↑ nhiều, M tăng ít. Giải pháp: QE (kênh giá tài sản), Forward Guidance (kênh kỳ vọng), kênh tỷ giá.',
+    explanation: '✅ Đúng (B): Tại Zero Lower Bound (ZLB), CSTT truyền thống gặp 2 trở ngại lớn: Trở ngại 1 — Kênh lãi suất bị tắc: lãi suất danh nghĩa không thể âm (tiền mặt có lợi suất = 0, luôn là lựa chọn thay thế) → i đã = 0, không thể giảm thêm → không khuyến khích thêm đầu tư và tiêu dùng qua kênh lãi suất. Trở ngại 2 — Bẫy thanh khoản (Liquidity Trap): khi triển vọng kinh tế u ám, ngân hàng giữ dự trữ vượt mức lớn (e↑) thay vì cho vay → số nhân m↓ → dù Fed bơm MB mạnh, M tăng rất ít. 💡 Giải pháp phi truyền thống khi ZLB: QE — mua tài sản dài hạn để kéo giảm lãi suất dài hạn (kênh giá tài sản vẫn hoạt động). Forward Guidance — cam kết giữ lãi suất thấp trong thời gian dài để neo kỳ vọng (kênh kỳ vọng). Lãi suất âm — một số NHTW (ECB, Nhật, Thụy Điển) thử nghiệm NIRP. ❌ A: Fed vẫn có thể mua trái phiếu dài hạn (QE) — không bị giới hạn. ❌ C: ZLB thực ra làm CSTT kém hiệu quả, không gây lạm phát cao. ❌ D: Số nhân không âm — có thể rất thấp nhưng không âm.',
   },
   {
     id: 35, chapter: 'C26',
@@ -429,7 +429,7 @@ const QUESTIONS = [
       'Kênh balance sheet',
     ],
     answer: 2,
-    explanation: 'Kênh kỳ vọng: thị trường phản ứng ngay khi Fed thông báo. Giá CK, tỷ giá, lãi suất dài hạn điều chỉnh ngay dựa trên kỳ vọng về CSTT tương lai. Forward Guidance hoạt động hoàn toàn qua kênh này.',
+    explanation: '✅ Đúng (C): Kênh kỳ vọng (expectations channel) là kênh duy nhất hoạt động TỨC THỜI — ngay khi thông báo chính sách, trước khi bất kỳ hành động thực tế nào. Cơ chế: Khi Fed thông báo cắt giảm lãi suất hoặc cam kết giữ lãi suất thấp → thị trường lập tức điều chỉnh kỳ vọng về lãi suất tương lai → Lãi suất dài hạn giảm ngay (lãi suất dài hạn = trung bình kỳ vọng lãi suất ngắn hạn tương lai) → Giá cổ phiếu tăng ngay → Tỷ giá điều chỉnh ngay → Giá trái phiếu tăng ngay. 💡 Forward Guidance hoạt động hoàn toàn qua kênh này: "Fed cam kết giữ lãi suất gần 0 đến ít nhất năm 2023" → lãi suất 2-5 năm giảm ngay dù Fed chưa làm gì. Đây là lý do giao tiếp của NHTW (communication policy) ngày càng được coi trọng — đôi khi lời nói có sức mạnh ngang hành động. ❌ A & B: Kênh lãi suất và tín dụng cần thời gian để truyền dẫn qua hệ thống ngân hàng. ❌ D: Balance sheet channel cũng cần thay đổi thực tế về tài sản.',
   },
 
   // ── TỔNG HỢP ─────────────────────────────────────────────────────────────
@@ -474,7 +474,7 @@ const QUESTIONS = [
       'Giảm phát làm tăng MB',
     ],
     answer: 1,
-    explanation: '4 cơ chế giảm phát nguy hiểm: (1) r_thực↑ → I↓; (2) Gánh nặng nợ thực tăng → NW↓ → tín dụng co (Debt deflation — Fisher 1933); (3) Kỳ vọng giảm phát → hoãn tiêu dùng → tự củng cố; (4) ZLB: i không thể âm → CSTT truyền thống bất lực.',
+    explanation: '✅ Đúng (B): Giảm phát nguy hiểm hơn lạm phát vừa phải vì 4 cơ chế tự củng cố: (1) Lãi suất thực tăng: r_thực = i_danh nghĩa − π^e. Khi π^e < 0 (kỳ vọng giảm phát), r_thực tăng dù i danh nghĩa không đổi → chi phí vốn thực tăng → I↓ → Y↓. (2) Debt deflation (Fisher 1933): giá giảm → gánh nặng nợ thực (debt/income) tăng → doanh nghiệp và hộ gia đình phải trả nợ thay vì đầu tư/tiêu dùng → net worth↓ → tín dụng siết → vòng xoáy. (3) Kỳ vọng tự củng cố: "giá sẽ còn rẻ hơn" → người tiêu dùng hoãn mua → cầu giảm → giá giảm thêm → kỳ vọng giảm phát mạnh hơn. (4) ZLB trap: i danh nghĩa không thể âm → khi giảm phát sâu, r_thực tăng rất cao → CSTT mất tác dụng. 💡 Bài học Nhật Bản (Lost Decade 1990s-2000s): giảm phát + ZLB + Financial Accelerator = "bẫy giảm phát" cực khó thoát. Đây là nỗi sợ lớn nhất của Bernanke (Fed 2008) — lý do bơm tiền mạnh tay. ❌ A: Giảm phát làm xuất khẩu CÓ THỂ tăng nhờ giá rẻ hơn, nhưng đây là tác động thứ cấp, không phải lý do nguy hiểm.',
   },
   {
     id: 40, chapter: 'C18',
@@ -486,7 +486,7 @@ const QUESTIONS = [
       'VND mất giá; M2 không đổi',
     ],
     answer: 1,
-    explanation: 'NHNN mua USD = bán VND → cung VND tăng → VND mất giá. Không vô hiệu hóa → MB VND tăng → M2 tăng. Tác động phụ: lạm phát có thể tăng. Đây là lý do NHNN thường kèm vô hiệu hóa khi can thiệp để kiểm soát M2.',
+    explanation: '✅ Đúng (B): Phân tích từng bước: NHNN mua USD = NHNN trả VND cho người bán USD → cung VND trên thị trường tăng → VND mất giá (depreciation) so với USD. Không vô hiệu hóa: NHNN không thực hiện OMO rút VND lại → MB VND tăng → qua số nhân tiền, M2 VND tăng → áp lực lạm phát. 💡 Tại sao NHNN mua USD? Mục tiêu: ngăn VND tăng giá quá mạnh (bảo vệ xuất khẩu) và tích lũy dự trữ ngoại hối. Vấn đề: bơm VND không kiểm soát → lạm phát. Giải pháp thực tế của NHNN: can thiệp có vô hiệu hóa — mua USD đồng thời phát hành tín phiếu NHNN (hút VND về) → MB không đổi, dự trữ ngoại hối tăng, VND ổn định. Đây là bài toán điển hình của các NHTW ở nền kinh tế mở nhỏ như Việt Nam khi phải cân bằng giữa tỷ giá và lạm phát. ❌ A: VND mất giá (không tăng giá) khi NHNN bơm VND ra mua USD. ❌ C & D: M2 thay đổi (tăng) khi không vô hiệu hóa.',
   },
 
   // ── ĐỀ THI KHOÁ TRƯỚC ──────────────────────────────────────────────────
@@ -716,7 +716,7 @@ const QUESTIONS = [
       'Giảm đầu tư',
     ],
     answer: 2,
-    explanation: 'AD = C + I + G + NX. Tăng G trực tiếp làm AD↑ (dịch đường AD sang phải). Đây là chính sách tài khoá mở rộng. Lưu ý hiệu ứng "crowding out": G↑ → cần vay nhiều hơn → i↑ → I↓ (một phần). Nhưng nếu các yếu tố khác không đổi (đề bài giả định), tác động ròng là AD↑.',
+    explanation: '✅ Đúng (C): Từ đồng nhất thức AD: AD = C + I + G + NX. G là chi tiêu chính phủ — một trong 4 thành phần trực tiếp của tổng cầu. Khi G tăng (các yếu tố khác không đổi) → AD tăng trực tiếp tương ứng → đường AD dịch sang phải → Y↑ và/hoặc P↑ tùy vị trí đường AS. Đây là chính sách tài khóa mở rộng (expansionary fiscal policy). 💡 Tuy nhiên trên thực tế có hiệu ứng "crowding out" (lấn át đầu tư): G↑ → chính phủ cần vay nhiều hơn (phát hành trái phiếu) → cầu vốn tăng → i↑ → I tư nhân↓ → một phần AD tăng từ G bị triệt tiêu bởi I giảm. Mức độ crowding out phụ thuộc độ dốc đường IS-LM. Khi ZLB (i=0): crowding out gần như bằng 0 → fiscal multiplier lớn nhất — đây là lý do gói kích thích tài khóa hiệu quả nhất trong khủng hoảng 2008-2009. ❌ A & B: Tăng G trực tiếp làm AD tăng, không giảm hay trung tính. ❌ D: Đầu tư tư nhân có thể giảm do crowding out, nhưng đây là tác động gián tiếp, không phải kết quả trực tiếp.',
   },
   {
     id: 60, chapter: 'C15',
